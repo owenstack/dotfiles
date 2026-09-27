@@ -1,0 +1,11 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !gh auth git-credential
+[user]
+	name = owenstack
+	email = 89314101+owenstack@users.noreply.github.com
+[alias]
+	dotfiles = !git --git-dir=$HOME/.dotfiles --work-tree=$HOME
