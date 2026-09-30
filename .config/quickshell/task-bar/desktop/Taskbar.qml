@@ -63,20 +63,19 @@ PanelWindow {
     QtObject {
         id: palette
         // Surfaces + text drive from ThemeEngine (auto-switch with dark/light).
-        // Accent colours use their own taskbarAccent config key so the taskbar
-        // can have a different colour from the hub without losing theme reactivity.
+        // Wallpaper accent drives the bar unless a custom accent was selected.
         property color bg:            Qt.rgba(theme.bgCard.r, theme.bgCard.g, theme.bgCard.b, 0.78)
         property color workspaces:    Qt.rgba(theme.bgCard.r, theme.bgCard.g, theme.bgCard.b, 0.92)
         property color textPrimary:   String(theme.textPrimary)
         property color textSecondary: String(theme.textSecondary)
-        property color textAlternate: taskbar.isDarkMode ? "#2b3033" : '#2b3033'
-        property color accent:        String(Lib.Configuration.taskbarAccent)
-        property color activePill:    String(Lib.Configuration.taskbarAccent)
+        property color textAlternate: theme.textOnAccent
+        property color accent:        String(theme.taskbarAccent)
+        property color activePill:    String(theme.taskbarAccent)
         property color hoverSpotlight:String(theme.hoverSpotlight)
         property color border:        String(theme.outline)
-        property color hoverPillG0:   Qt.rgba(Lib.Configuration.taskbarAccent.r, Lib.Configuration.taskbarAccent.g, Lib.Configuration.taskbarAccent.b, 0.35)
-        property color hoverPillG1:   Qt.rgba(Lib.Configuration.taskbarAccent.r, Lib.Configuration.taskbarAccent.g, Lib.Configuration.taskbarAccent.b, 0.55)
-        property color hoverPillG2:   Qt.rgba(Lib.Configuration.taskbarAccent.r, Lib.Configuration.taskbarAccent.g, Lib.Configuration.taskbarAccent.b, 0.35)
+        property color hoverPillG0:   Qt.rgba(theme.taskbarAccent.r, theme.taskbarAccent.g, theme.taskbarAccent.b, 0.35)
+        property color hoverPillG1:   Qt.rgba(theme.taskbarAccent.r, theme.taskbarAccent.g, theme.taskbarAccent.b, 0.55)
+        property color hoverPillG2:   Qt.rgba(theme.taskbarAccent.r, theme.taskbarAccent.g, theme.taskbarAccent.b, 0.35)
     }
 
     // -----------------------------------------------
@@ -794,7 +793,7 @@ PanelWindow {
                                         lineHeight: 0.8
                                         verticalAlignment: Text.AlignVCenter
                                         Behavior on color { ColorAnimation { duration: 140 } }
-                                        color: isActive ? "#2d353b" : (wsHover.hovered ? (taskbar.isDarkMode ? "#f2f2f2" : "#2d353b") : (taskbar.isDarkMode ? "#d5c9b2" : "#5c6a72"))
+                                        color: isActive ? theme.textOnAccent : (wsHover.hovered ? theme.textPrimary : theme.textSecondary)
                                     }
 
                                     Row {
@@ -820,12 +819,12 @@ PanelWindow {
 
                                                 QtObject {
                                                     id: flashColor
-                                                    property color val: taskbar.isDarkMode ? "#d5c9b2" : "#1e2326"
+                                                    property color val: theme.textPrimary
                                                     SequentialAnimation on val {
                                                         running: modelData.urgent
                                                         loops: Animation.Infinite
-                                                        ColorAnimation { to: "#e67e80"; duration: 200 }
-                                                        ColorAnimation { to: "#dbbc7f"; duration: 200 }
+                                                        ColorAnimation { to: theme.accentRed; duration: 200 }
+                                                        ColorAnimation { to: theme.accentBlue; duration: 200 }
                                                     }
                                                 }
                                                 
@@ -843,10 +842,9 @@ PanelWindow {
                                                     Behavior on color { enabled: !modelData.urgent; ColorAnimation { duration: 140 } }
                                                     scale: (wsDelegate.isActive && wsHover.hovered) ? 1.25 : 1.0
                                                     Behavior on scale { NumberAnimation { duration: 200; easing.type: Easing.OutBack; easing.overshoot: 1.5 } }
-                                                    color: wsDelegate.isActive ? '#2b3033' :
+                                                    color: wsDelegate.isActive ? theme.textOnAccent :
                                                            (modelData.urgent ? flashColor.val :
-                                                           (wsHover.hovered ? (taskbar.isDarkMode ? "#f2f2f2" : "#2d353b") :
-                                                           (taskbar.isDarkMode ? "#d5c9b2" : "#1e2326")))
+                                                           (wsHover.hovered ? theme.textPrimary : theme.textSecondary))
                                                 }
                                             }
                                         }

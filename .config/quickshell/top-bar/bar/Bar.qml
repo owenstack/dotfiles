@@ -22,6 +22,25 @@ PanelWindow {
     // 1. GLOBAL STATE 
     // Theme mode: default is always dark, false will activate light mode
     property bool isDarkMode: true
+    property var wallpaperPalette: ({})
+    readonly property string wallpaperPalettePath: Quickshell.env("HOME") + "/.config/quickshell/qml_color.json"
+
+    function loadWallpaperPalette(content) {
+        try {
+            wallpaperPalette = JSON.parse(content || "{}")
+        } catch (error) {
+            console.warn("[TopBar] Could not load wallpaper palette:", error)
+        }
+    }
+
+    FileView {
+        id: wallpaperPaletteFile
+        path: win.wallpaperPalettePath
+        watchChanges: true
+        preload: true
+        onFileChanged: reload()
+        onLoaded: win.loadWallpaperPalette(String(text() || ""))
+    }
     readonly property string _themeModePath: Quickshell.env("HOME") + "/.cache/quickshell/theme_mode"
     FileView {
         id: themeModeFile
@@ -53,17 +72,18 @@ PanelWindow {
     // 2. THEME
     QtObject {
         id: palette
-        property color bg: win.isDarkMode ? Qt.rgba(0.23, 0.25, 0.22, 0.25) : '#edc5c6b0'
-        property color textPrimary: win.isDarkMode ? "#d5c9b2" : "#1e2326"
-        property color textSecondary: win.isDarkMode ? "#6a6f75" : "#5c6a72"
-        property color accent: win.isDarkMode ? "#a7c080" : "#273018"
-        property color activePill: win.isDarkMode ? "#a7c080" : "#87C080"
-        property color hoverSpotlight: win.isDarkMode ? Qt.rgba(1,1,1,0.14) : Qt.rgba(0,0,0,0.10)
-        property color border: win.isDarkMode ? Qt.rgba(1,1,1,0.08) : Qt.rgba(0,0,0,0.1)
+        property color baseBg: win.wallpaperPalette.windowBackground || (win.isDarkMode ? "#23292a" : "#edc5c6")
+        property color bg: Qt.rgba(baseBg.r, baseBg.g, baseBg.b, 0.25)
+        property color textPrimary: win.wallpaperPalette.primaryText || (win.isDarkMode ? "#d5c9b2" : "#1e2326")
+        property color textSecondary: win.wallpaperPalette.secondaryText || (win.isDarkMode ? "#6a6f75" : "#5c6a72")
+        property color accent: win.wallpaperPalette.accentPrimary || (win.isDarkMode ? "#a7c080" : "#273018")
+        property color activePill: win.wallpaperPalette.accentPrimary || (win.isDarkMode ? "#a7c080" : "#87C080")
+        property color hoverSpotlight: Qt.rgba(accent.r, accent.g, accent.b, 0.14)
+        property color border: Qt.rgba(accent.r, accent.g, accent.b, 0.18)
 
-        property color hoverPillG0: win.isDarkMode ? Qt.rgba(167/255, 192/255, 128/255, 0.15) : Qt.rgba(39/255, 48/255, 24/255, 0.14)
-        property color hoverPillG1: win.isDarkMode ? Qt.rgba(230/255, 255/255, 200/255, 0.25) : Qt.rgba(39/255, 48/255, 24/255, 0.22)
-        property color hoverPillG2: win.isDarkMode ? Qt.rgba(167/255, 192/255, 128/255, 0.15) : Qt.rgba(39/255, 48/255, 24/255, 0.14)
+        property color hoverPillG0: Qt.rgba(accent.r, accent.g, accent.b, 0.15)
+        property color hoverPillG1: Qt.rgba(accent.r, accent.g, accent.b, 0.25)
+        property color hoverPillG2: Qt.rgba(accent.r, accent.g, accent.b, 0.15)
     }
 
     // 2b. THEME ENGINE (font & sizing constants for the bar)

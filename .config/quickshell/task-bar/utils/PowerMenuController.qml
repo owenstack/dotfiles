@@ -12,6 +12,7 @@ FocusScope {
     // Livingthings reads `livingAccent`; Cassini reads `cassiniSelBg`.
     property string livingAccent: ""
     property string cassiniSelBg: ""
+    property var wallpaperPalette: ({})
 
     // Sizes 
     width: style === "cassini" ? 600 : 400

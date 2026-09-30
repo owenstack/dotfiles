@@ -1,10 +1,9 @@
-@define-color bg    #17272f;
-@define-color bg1   
-#3c444a;
-@define-color fg    
-#d5c9b2;
-@define-color blue  
-#7aa2f7;
+@import "wallust/colors-waybar.css";
+
+@define-color bg    @background;
+@define-color bg1   @color0;
+@define-color fg    @foreground;
+@define-color blue  @color12;
 * {
   border: none;
   border-radius: 0;
@@ -14,7 +13,7 @@
 }
 window#waybar {
   background-color: @bg;
-  border-top: 3px solid #5d666d;
+  border-top: 3px solid @color8;
   color: @fg;
 }
 #cpu,
@@ -29,29 +28,29 @@ window#waybar {
 #tray {
   background: @bg;
   color: @fg;
-  border-top: 2px solid #5d666d;
-  border-left: 2px solid #5d666d;
-  border-right: 2px solid #1a1e21;
-  border-bottom: 2px solid #1a1e21;
+  border-top: 2px solid @color8;
+  border-left: 2px solid @color8;
+  border-right: 2px solid @color0;
+  border-bottom: 2px solid @color0;
   margin: 4px 2px;
   padding: 0 10px;
 }
 #cpu,
 #memory {
   color: @blue;
-  background: #252c31;
-  border-top: 2px solid #1a1e21;
-  border-left: 2px solid #1a1e21;
-  border-right: 2px solid #5d666d;
-  border-bottom: 2px solid #5d666d;
+  background: @background-alt;
+  border-top: 2px solid @color0;
+  border-left: 2px solid @color0;
+  border-right: 2px solid @color8;
+  border-bottom: 2px solid @color8;
 }
 #workspaces button.active {
   color: @fg;
   background: @bg1;
-  border-top: 2px solid #1a1e21;
-  border-left: 2px solid #1a1e21;
-  border-right: 2px solid #5d666d;
-  border-bottom: 2px solid #5d666d;
+  border-top: 2px solid @color0;
+  border-left: 2px solid @color0;
+  border-right: 2px solid @color8;
+  border-bottom: 2px solid @color8;
 }
 /* So that dynamic icons don't squash together */
 #workspaces button label {
@@ -64,5 +63,5 @@ window#waybar {
   padding: 0 6px;
 }
 #custom-launcher {
-  color: #20c93d;
+  color: @color14;
 }

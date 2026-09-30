@@ -18,16 +18,16 @@ Item {
     // Black & white palette (+ red / green accents).
     QtObject {
         id: theme
-        property color bg:      skin.dark ? "#0c0c0d" : "#fbfbf9"
-        property color fg:      skin.dark ? "#161616" : "#f2f2f0"
-        property color dim:     skin.dark ? "#8b8b88" : "#6c6c6a"
-        property color line:    skin.dark ? "#262628" : "#e3e3df"
+        property color bg:      skin.ctrl.wallpaperPalette.layerBackground1 || (skin.dark ? "#0c0c0d" : "#fbfbf9")
+        property color fg:      skin.ctrl.wallpaperPalette.primaryText || (skin.dark ? "#161616" : "#f2f2f0")
+        property color dim:     skin.ctrl.wallpaperPalette.secondaryText || (skin.dark ? "#8b8b88" : "#6c6c6a")
+        property color line:    skin.ctrl.wallpaperPalette.borderSecondary || (skin.dark ? "#262628" : "#e3e3df")
         // configurable via settings (falls back to the built-in default)
         property color selBg:   skin.ctrl.cassiniSelBg !== "" ? skin.ctrl.cassiniSelBg
-                                                              : (skin.dark ? '#d57fb069' : "#759b61")
-        property color selFg:   skin.dark ? "#0c0c0d" : "#fbfbf9"
+                                                              : (skin.ctrl.wallpaperPalette.accentPrimary || (skin.dark ? '#d57fb069' : "#759b61"))
+        property color selFg:   skin.ctrl.wallpaperPalette.accentPrimaryText || (skin.dark ? "#0c0c0d" : "#fbfbf9")
         property color danger:  skin.dark ? "#e06c75" : "#c0392b"
-        property color confirm: skin.dark ? "#7fb069" : "#2e7d32"
+        property color confirm: skin.ctrl.wallpaperPalette.accentSecondary || (skin.dark ? "#7fb069" : "#2e7d32")
         property color onAccent: "#ffffff"
     }
 

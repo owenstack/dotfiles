@@ -56,9 +56,10 @@ Item {
 
   Timer {
     id: snapTimer
-    interval: 320
+    // Let the hub's 320 ms close animation finish before slurp opens.
+    interval: 450
     repeat: false
-    onTriggered: Quickshell.execDetached(["bash", "-lc", Lib.Configuration.screenshotScript])
+    onTriggered: Quickshell.execDetached(["bash", Lib.Configuration.screenshotScript])
   }
 
   ColumnLayout {

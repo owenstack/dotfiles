@@ -213,6 +213,7 @@ hl.bind(mod .. " + SPACE", hl.dsp.global("quickshell:hubToggle"), { description 
 hl.bind(mod .. " + R", hl.dsp.global("quickshell:drawerToggle"), { description = "Toggle app drawer" })
 hl.bind(mod .. " + F1", hl.dsp.exec_cmd(scripts .. "/shortcut-menu.sh"), { description = "Show keyboard shortcuts" })
 hl.bind(mod .. " + V", hl.dsp.exec_cmd(scripts .. "/ClipManager.sh"), { description = "Open clipboard history" })
+hl.bind(mod .. " + " .. alt .. " + W", hl.dsp.exec_cmd(scripts .. "/WallpaperCycle.sh"), { description = "Next wallpaper and refresh colors" })
 
 -- Apps
 hl.bind(mod .. " + Q", hl.dsp.exec_cmd("kitty"), { description = "Open terminal" })

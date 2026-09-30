@@ -16,15 +16,15 @@ Item {
 
     QtObject {
         id: theme
-        property color card: skin.isDarkMode ? "#172022" : "#EBE9DE"
-        property color tile: skin.isDarkMode ? "#232A2E" : "#E2DFD3"
-        property color tileHover: skin.isDarkMode ? "#2D353B" : "#D1CEC0"
-        property color text: skin.isDarkMode ? "#D3C6AA" : "#5C6A72"
+        property color card: skin.ctrl.wallpaperPalette.layerBackground1 || (skin.isDarkMode ? "#172022" : "#EBE9DE")
+        property color tile: skin.ctrl.wallpaperPalette.layerBackground2 || (skin.isDarkMode ? "#232A2E" : "#E2DFD3")
+        property color tileHover: skin.ctrl.wallpaperPalette.layerBackground3 || (skin.isDarkMode ? "#2D353B" : "#D1CEC0")
+        property color text: skin.ctrl.wallpaperPalette.primaryText || (skin.isDarkMode ? "#D3C6AA" : "#5C6A72")
         // configurable via settings
         property color accent: skin.ctrl.livingAccent !== "" ? skin.ctrl.livingAccent
-                                                            : (skin.isDarkMode ? '#859866' : "#6c8453")
+                                                            : (skin.ctrl.wallpaperPalette.accentPrimary || (skin.isDarkMode ? '#859866' : "#6c8453"))
         property color danger: skin.isDarkMode ? "#E67E80" : "#F85552"
-        property color activeText: skin.isDarkMode ? "#1e2326" : "#F2F0E5"
+        property color activeText: skin.ctrl.wallpaperPalette.accentPrimaryText || (skin.isDarkMode ? "#1e2326" : "#F2F0E5")
         property url activeImg: skin.isDarkMode ? skin.imgDark : skin.imgLight
     }
 

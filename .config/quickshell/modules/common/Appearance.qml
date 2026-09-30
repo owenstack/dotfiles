@@ -1,5 +1,6 @@
 import QtQuick
 import Quickshell
+import Quickshell.Io
 import "root:/modules/common/functions/color_utils.js" as ColorUtils
 pragma Singleton
 pragma ComponentBehavior: Bound
@@ -7,6 +8,29 @@ pragma ComponentBehavior: Bound
 
 Singleton {
     id: root
+    readonly property string wallpaperPalettePath: Quickshell.env("HOME") + "/.config/quickshell/qml_color.json"
+
+    function applyWallpaperPalette(content) {
+        try {
+            const palette = JSON.parse(content || "{}")
+            for (const key in palette) {
+                if (palette.hasOwnProperty(key) && root.m3colors["m3" + key] !== undefined)
+                    root.m3colors["m3" + key] = palette[key]
+            }
+            root.m3colors.darkmode = (root.m3colors.m3windowBackground.hslLightness < 0.5)
+        } catch (error) {
+            console.warn("[Appearance] Could not load wallpaper palette:", error)
+        }
+    }
+
+    FileView {
+        id: wallpaperPaletteFile
+        path: root.wallpaperPalettePath
+        watchChanges: true
+        preload: true
+        onFileChanged: reload()
+        onLoaded: root.applyWallpaperPalette(String(text() || ""))
+    }
     property QtObject m3colors
     property QtObject animation
     property QtObject animationCurves

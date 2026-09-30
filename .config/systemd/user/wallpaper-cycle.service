@@ -1,0 +1,6 @@
+[Unit]
+Description=Advance wallpaper and regenerate its color palette
+
+[Service]
+Type=oneshot
+ExecStart=%h/.config/hypr/scripts/WallpaperCycle.sh

@@ -10,6 +10,7 @@ passed_path="${1:-}"
 cache_dir="$HOME/.cache/swww/"
 rofi_link="$HOME/.config/rofi/.current_wallpaper"
 wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
+hypr_wallust="$HOME/.config/hypr/wallust/wallust-hyprland.conf"
 read_cached_wallpaper() {
   local cache_file="$1"
   if [[ -f "$cache_file" ]]; then
@@ -80,43 +81,52 @@ cp -f "$wallpaper_path" "$wallpaper_current" || true
 
 # Ensure Ghostty directory exists so Wallust can write target even if Ghostty isn't installed
 mkdir -p "$HOME/.config/ghostty" || true
-wait_for_templates() {
-  local start_ts="$1"
-  shift
-  local files=("$@")
-  for _ in {1..50}; do
-    local ready=true
-    for file in "${files[@]}"; do
-      if [[ ! -s "$file" ]]; then
-        ready=false
-        break
-      fi
-      local mtime
-      mtime=$(stat -c %Y "$file" 2>/dev/null || echo 0)
-      if (( mtime < start_ts )); then
-        ready=false
-        break
-      fi
-    done
-    $ready && return 0
-    sleep 0.1
-  done
-  return 1
-}
 
 # Run wallust (silent) to regenerate templates defined in ~/.config/wallust/wallust.toml
-# -s is used in this repo to keep things quiet and avoid extra prompts
-start_ts=$(date +%s)
-wallust run -s "$wallpaper_path" || true
+# Skip terminal escape sequences and force extraction for every new wallpaper.
+detach_generated_target() {
+  local target="$1"
+  [[ -L "$target" ]] || return 0
+
+  local temporary
+  temporary=$(mktemp "${target}.tmp.XXXXXX")
+  cp -L --preserve=mode -- "$target" "$temporary"
+  mv -f -- "$temporary" "$target"
+}
+
+# These generated files live in the home config tree, but are also checked into
+# the dotfiles repo. Replace their home links with runtime copies before Wallust
+# writes them so an atomic template write cannot leave the old palette in place.
+detach_generated_target "$HOME/.config/kitty/kitty-themes/01-Wallust.conf"
+detach_generated_target "$HOME/.config/quickshell/qml_color.json"
+
+wallust run -q -s -n "$wallpaper_path"
 wallust_targets=(
   "$HOME/.config/waybar/wallust/colors-waybar.css"
   "$HOME/.config/rofi/wallust/colors-rofi.rasi"
+  "$HOME/.config/kitty/kitty-themes/01-Wallust.conf"
+  "$hypr_wallust"
+  "$HOME/.config/quickshell/qml_color.json"
+  "$HOME/.config/ghostty/wallust.conf"
 )
-wait_for_templates "$start_ts" "${wallust_targets[@]}" || true
+for target in "${wallust_targets[@]}"; do
+  if [[ ! -s "$target" ]]; then
+    printf 'Wallust did not create its palette target: %s\n' "$target" >&2
+    exit 1
+  fi
+done
 
 # Normalize Ghostty palette syntax in case ':' was used by older files
 if [ -f "$HOME/.config/ghostty/wallust.conf" ]; then
   sed -i -E 's/^(\s*palette\s*=\s*)([0-9]{1,2}):/\1\2=/' "$HOME/.config/ghostty/wallust.conf" 2>/dev/null || true
+fi
+
+# Apply the generated accent and neutral colors to the running Hyprland session.
+if command -v hyprctl >/dev/null 2>&1 && [ -s "$hypr_wallust" ]; then
+  active_color=$(sed -nE 's/^\$color12 = rgb\(([[:xdigit:]]{6})\)$/\1/p' "$hypr_wallust" | head -n1)
+  inactive_color=$(sed -nE 's/^\$color8 = rgb\(([[:xdigit:]]{6})\)$/\1/p' "$hypr_wallust" | head -n1)
+  [ -z "$active_color" ] || hyprctl keyword general:col.active_border "rgba(${active_color}ff)" >/dev/null 2>&1 || true
+  [ -z "$inactive_color" ] || hyprctl keyword general:col.inactive_border "rgba(${inactive_color}aa)" >/dev/null 2>&1 || true
 fi
 
 # Light wait for Ghostty colors file to be present then signal Ghostty to reload (SIGUSR2)
@@ -126,6 +136,9 @@ for _ in 1 2 3; do
 done
 if pidof ghostty >/dev/null; then
   for pid in $(pidof ghostty); do kill -SIGUSR2 "$pid" 2>/dev/null || true; done
+fi
+if pidof kitty >/dev/null; then
+  for pid in $(pidof kitty); do kill -SIGUSR1 "$pid" 2>/dev/null || true; done
 fi
 
 # Prompt Waybar to reload colors

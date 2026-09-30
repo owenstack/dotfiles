@@ -25,18 +25,40 @@ PanelWindow {
     property bool isDarkMode: true
     property string style: "life"
 
-    readonly property string _baseDir: Qt.resolvedUrl(".").toString().replace(/^file:\/\//, "").replace(/\/$/, "")
-    readonly property string cacheDir: _baseDir.split("/").slice(0, -2).join("/") + "/.cache"
+    readonly property string cacheDir: Quickshell.env("HOME") + "/.cache/quickshell"
     readonly property string styleFile: cacheDir + "/power_menu_style"
     readonly property string colorsFile: cacheDir + "/power_menu_colors"
+    readonly property string paletteFile: Quickshell.env("HOME") + "/.config/quickshell/qml_color.json"
+    property var wallpaperPalette: ({})
+    readonly property color wallpaperBackground: wallpaperPalette.windowBackground || (isDarkMode ? "#141719" : "#f0ece6")
+    readonly property color wallpaperAccent: wallpaperPalette.accentPrimary || (isDarkMode ? "#859866" : "#6c8453")
+
+    function loadWallpaperPalette(content) {
+        try {
+            const colors = JSON.parse(content || "{}")
+            if (colors.accentPrimary && colors.windowBackground)
+                wallpaperPalette = colors
+        } catch (error) {
+            console.warn("[PowerMenu] Could not load wallpaper palette:", error)
+        }
+    }
+
+    FileView {
+        id: wallpaperPaletteView
+        path: win.paletteFile
+        watchChanges: true
+        preload: true
+        onFileChanged: reload()
+        onLoaded: win.loadWallpaperPalette(String(text() || ""))
+    }
 
     // Per-skin accent overrides (empty = skin keeps its built-in default).
     property string colLifeDark: ""
     property string colLifeLight: ""
     property string colCassiniDark: ""
     property string colCassiniLight: ""
-    readonly property string livingAccent: win.isDarkMode ? win.colLifeDark : win.colLifeLight
-    readonly property string cassiniSelBg: win.isDarkMode ? win.colCassiniDark : win.colCassiniLight
+    readonly property string livingAccent: win.colLifeDark !== "" ? win.colLifeDark : String(win.wallpaperAccent)
+    readonly property string cassiniSelBg: win.colCassiniDark !== "" ? win.colCassiniDark : String(win.wallpaperAccent)
 
     // Dark/light: shared with the rest of the shell
     Process {
@@ -85,10 +107,17 @@ PanelWindow {
                     const t = text.trim()
                     if (t.length > 0) {
                         const d = JSON.parse(t)
-                        if (d.lifeDark)     win.colLifeDark     = d.lifeDark
-                        if (d.lifeLight)    win.colLifeLight    = d.lifeLight
-                        if (d.cassiniDark)  win.colCassiniDark  = d.cassiniDark
-                        if (d.cassiniLight) win.colCassiniLight = d.cassiniLight
+                if (d.custom === true) {
+                    if (d.lifeDark)     win.colLifeDark     = d.lifeDark
+                    if (d.lifeLight)    win.colLifeLight    = d.lifeLight
+                    if (d.cassiniDark)  win.colCassiniDark  = d.cassiniDark
+                    if (d.cassiniLight) win.colCassiniLight = d.cassiniLight
+                } else {
+                    win.colLifeDark = ""
+                    win.colLifeLight = ""
+                    win.colCassiniDark = ""
+                    win.colCassiniLight = ""
+                }
                     }
                 } catch (e) {}
                 colorsCheck.running = false
@@ -99,7 +128,7 @@ PanelWindow {
     // Dim / click-to-dismiss backdrop
     Rectangle {
         anchors.fill: parent
-        color: win.isDarkMode ? '#8c000000' : '#9ce9e7e7'
+        color: Qt.rgba(win.wallpaperBackground.r, win.wallpaperBackground.g, win.wallpaperBackground.b, win.isDarkMode ? 0.55 : 0.35)
 
         MouseArea {
             anchors.fill: parent
@@ -111,6 +140,7 @@ PanelWindow {
         id: controller
         isDarkMode: win.isDarkMode
         style: win.style
+        wallpaperPalette: win.wallpaperPalette
         livingAccent: win.livingAccent
         cassiniSelBg: win.cassiniSelBg
 

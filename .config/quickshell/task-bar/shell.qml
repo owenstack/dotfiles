@@ -62,6 +62,7 @@ ShellRoot {
             Dock.Drawer {
                 id: appDrawer
                 isDarkMode: screenTheme.isDarkMode
+                theme: screenTheme
             }
 
             // Wide App Drawer (Workspace Mode) — rofi replacement

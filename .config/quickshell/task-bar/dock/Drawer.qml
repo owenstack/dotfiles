@@ -5,7 +5,6 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 import Qt5Compat.GraphicalEffects
-import "../theme.js" as Theme      // will  consolidate to theme engine soon!            
 
 PanelWindow {
     id: drawerWin
@@ -22,6 +21,7 @@ PanelWindow {
 
     property bool isOpen: false
     property bool isDarkMode: true 
+    required property var theme
     property bool hasLoadedApps: false
     property var contextApp: ({})
 
@@ -198,7 +198,7 @@ PanelWindow {
                 width: drawerContainer.width
                 height: drawerContainer.height
                 radius: 16
-                color: drawerWin.isDarkMode ? '#141719' : "#F0ECE6"
+                color: drawerWin.theme.bgMain
                 //border.width: 1
                 //border.color: drawerWin.isDarkMode ? "#25FFFFFF" : "#40000000"
 
@@ -214,7 +214,7 @@ PanelWindow {
                         Layout.preferredHeight: 40
                         Layout.alignment: Qt.AlignCenter
                         radius: 12
-                        color: drawerWin.isDarkMode ? "#25FFFFFF" : "#20000000"
+                        color: drawerWin.theme.bgItem
                         
                         Text {
                             anchors.left: parent.left
@@ -222,7 +222,7 @@ PanelWindow {
                             anchors.verticalCenter: parent.verticalCenter
                             text: "Type to search..."
                             font.pixelSize: 15
-                            color: drawerWin.isDarkMode ? '#d5c9b2' : '#333b26'
+                            color: drawerWin.theme.textSecondary
                             visible: searchField.text === ""
                         }
 
@@ -233,9 +233,9 @@ PanelWindow {
                             verticalAlignment: Text.AlignVCenter
                             font.pixelSize: 15
                             
-                            color: drawerWin.isDarkMode ? '#d5c9b2' : '#333b26'
-                            selectionColor: "#a7c080"
-                            selectedTextColor: "#282828"
+                            color: drawerWin.theme.textPrimary
+                            selectionColor: drawerWin.theme.accent
+                            selectedTextColor: drawerWin.theme.textOnAccent
                             
                             selectByMouse: true
                             onTextChanged: drawerWin.filterApps()
@@ -402,7 +402,7 @@ PanelWindow {
                                         wrapMode: Text.Wrap
                                         maximumLineCount: 2
                                         elide: Text.ElideRight
-                                        color: drawerWin.isDarkMode ? "#fffcf4" : "#282828"
+                                        color: drawerWin.theme.textPrimary
                                         font.pixelSize: 11
                                         font.weight: Font.Medium
                                     }
