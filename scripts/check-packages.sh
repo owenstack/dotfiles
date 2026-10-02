@@ -42,8 +42,14 @@ fi
   echo 'Run this check inside an Arch Linux or CachyOS container.' >&2
   exit 2
 }
-command -v pacman >/dev/null || { echo 'pacman is required.' >&2; exit 2; }
-command -v python3 >/dev/null || { echo 'python3 is required for the AUR RPC check.' >&2; exit 2; }
+command -v pacman >/dev/null || {
+  echo 'pacman is required.' >&2
+  exit 2
+}
+command -v python3 >/dev/null || {
+  echo 'python3 is required for the AUR RPC check.' >&2
+  exit 2
+}
 
 echo 'Synchronizing Arch package databases before validation.'
 pacman -Sy --noconfirm
