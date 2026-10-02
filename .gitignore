@@ -1,0 +1,7 @@
+
+# User-generated state and rendered absolute-path configs
+.config/quickshell/weather_api.conf
+.config/quickshell/.cache/
+.cache/quickshell/
+.config/qt5ct/qt5ct.conf
+.config/qt6ct/qt6ct.conf

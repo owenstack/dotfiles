@@ -4,7 +4,8 @@
 
 local mod     = "SUPER"
 local alt     = "ALT"
-local home    = os.getenv("HOME") or "/home/owenstack"
+local home    = os.getenv("HOME")
+assert(home and home ~= "", "HOME must be set to load the Hyprland configuration")
 local scripts = home .. "/.config/hypr/scripts"
 
 -- Import Shader Manager and Inject Core
@@ -13,13 +14,9 @@ local shader = require("shader")
 -- =========================================================================
 -- Monitors
 -- =========================================================================
-hl.monitor({
-    output   = "eDP-1",
-    mode     = "1920x1080@60",
-    position = "0x0",
-    scale    = 1,
-    bitdepth = 10
-})
+-- GDK_SCALE=2 is retained intentionally as current behavior; it scales GTK apps.
+-- Confirm whether this is wanted on the 1080p eDP-1 panel before changing it.
+require("monitors")(hl)
 
 
 -- =========================================================================
@@ -52,7 +49,7 @@ hl.env("QT_QPA_PLATFORM",      "wayland;xcb")
 -- Autostart
 -- =========================================================================
 hl.on("hyprland.start", function()
-    hl.exec_cmd("sleep 1 && mpv --no-video --volume=100 " .. home .. "/.config/hypr/sounds/startup.wav")
+    hl.exec_cmd("sleep 1; [ ! -f " .. home .. "/.config/hypr/sounds/startup.wav ] || mpv --no-video --volume=100 " .. home .. "/.config/hypr/sounds/startup.wav")
     shader.toggle("Main")
     hl.exec_cmd("dunst")
     hl.exec_cmd("blueman-applet")

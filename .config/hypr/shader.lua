@@ -1,7 +1,7 @@
 -- shader.lua: Screen shader manager for my hyprland setup. 
 -- hyprshade is no longer required
 
-local home       = os.getenv("HOME") or "/home/owenstack"
+local home       = assert(os.getenv("HOME"), "HOME must be set to load shader configuration")
 local shader_dir = home .. "/.config/hypr/shaders/"
 
 -- Cache files
