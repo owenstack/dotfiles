@@ -16,7 +16,19 @@ local shader = require("shader")
 -- =========================================================================
 -- GDK_SCALE=2 is retained intentionally as current behavior; it scales GTK apps.
 -- Confirm whether this is wanted on the 1080p eDP-1 panel before changing it.
-require("monitors")(hl)
+local monitors_ok, configure_monitors = pcall(require, "monitors")
+if monitors_ok then
+	configure_monitors(hl)
+else
+	-- Keep startup working if an existing checkout has not picked up monitors.lua yet.
+	hl.monitor({
+		output = "eDP-1",
+		mode = "1920x1080@60",
+		position = "0x0",
+		scale = 1,
+		bitdepth = 10,
+	})
+end
 
 -- =========================================================================
 -- Environment Variables
