@@ -7,7 +7,7 @@ Personal CachyOS / Hyprland dotfiles, kept in the repository root as a mirror of
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/owenstack/dotfiles/main/bootstrap/bootstrap.sh | bash
+curl -fsSL https://raw.githubusercontent.com/owenstack/dotfiles/a097a3eb3286dd12336225dfc4697f6981308e14/bootstrap/bootstrap.sh | bash
 ```
 
 The bootstrap checks out the bare repository, backs up conflicting files, installs packages listed under `bootstrap/packages/`, configures zsh plugins, renders machine-specific Qt paths, and prints any manual steps. Use `--dry-run`, `--no-packages`, or `--yes` when running a checked-out copy. `--no-post-install` skips user-level setup for controlled recovery or checkout tests.
@@ -49,6 +49,18 @@ The active Quickshell entry points are `.config/quickshell/task-bar/shell.qml` a
 ## Adding files
 
 Place files at their `$HOME`-relative path. Since unknown paths are ignored, stage only the intended file with `dot add -f path`, run `scripts/gen-gitignore.sh` to refresh the allow-list from the index, review it, then commit. Do not add caches, generated output, credentials, `.env` files, or anything from `~/.cache`.
+
+## Secrets policy
+
+Never commit API keys, tokens, passwords, private keys, `.env` files, or machine-local caches. Runtime credentials belong under `$XDG_STATE_HOME` (falling back to `~/.local/state`) and must be stored with mode `0600`. Do not put secrets in tracked configuration, even temporarily; use an environment variable or a state file excluded from Git.
+
+An owner can enable GitHub secret scanning and push protection with:
+
+```bash
+gh api --method PATCH repos/owenstack/dotfiles --input - <<'JSON'
+{"security_and_analysis":{"secret_scanning":{"status":"enabled"},"secret_scanning_push_protection":{"status":"enabled"}}}
+JSON
+```
 
 ## Troubleshooting
 
