@@ -1,7 +1,1096 @@
+/*
+!/.gitignore
+!/.bash_profile
+!/.bashrc
+!/.config/
+!/.config/Kvantum/
+!/.config/Kvantum/EverforestGreenDark/
+!/.config/Kvantum/EverforestGreenDark/EverforestGreenDark.kvconfig
+!/.config/Kvantum/EverforestGreenDark/EverforestGreenDark.svg
+!/.config/Kvantum/EverforestGreenDark/kdeglobals.dark
+!/.config/Kvantum/EverforestGreenLight/
+!/.config/Kvantum/EverforestGreenLight/EverforestGreenLight.kvconfig
+!/.config/Kvantum/EverforestGreenLight/EverforestGreenLight.svg
+!/.config/Kvantum/EverforestGreenLight/kdeglobals.light
+!/.config/Kvantum/catppuccin-latte-blue/
+!/.config/Kvantum/catppuccin-latte-blue/catppuccin-latte-blue.kvconfig
+!/.config/Kvantum/catppuccin-latte-blue/catppuccin-latte-blue.svg
+!/.config/Kvantum/catppuccin-mocha-blue/
+!/.config/Kvantum/catppuccin-mocha-blue/catppuccin-mocha-blue.kvconfig
+!/.config/Kvantum/catppuccin-mocha-blue/catppuccin-mocha-blue.svg
+!/.config/Kvantum/kvantum.kvconfig
+!/.config/Thunar/
+!/.config/Thunar/accels.scm
+!/.config/Thunar/uca.xml
+!/.config/btop/
+!/.config/btop/btop.conf
+!/.config/btop/themes/
+!/.config/btop/themes/catppuccin_frappe.theme
+!/.config/btop/themes/catppuccin_latte.theme
+!/.config/btop/themes/catppuccin_macchiato.theme
+!/.config/btop/themes/catppuccin_mocha.theme
+!/.config/cava/
+!/.config/cava/config
+!/.config/cava/shaders/
+!/.config/cava/shaders/bar_spectrum.frag
+!/.config/cava/shaders/eye_of_phi.frag
+!/.config/cava/shaders/normalized_bars.frag
+!/.config/cava/shaders/northern_lights.frag
+!/.config/cava/shaders/pass_through.vert
+!/.config/cava/shaders/spectrogram.frag
+!/.config/cava/shaders/winamp_line_style_spectrum.frag
+!/.config/cava/themes/
+!/.config/cava/themes/solarized_dark
+!/.config/cava/themes/tricolor
+!/.config/dunst/
+!/.config/dunst/alert.sh
+!/.config/dunst/dunstrc
+!/.config/dunst/dunstrc_dark
+!/.config/dunst/dunstrc_light
+!/.config/fastfetch/
+!/.config/fastfetch/arch.png
+!/.config/fastfetch/config-compact.jsonc
+!/.config/fastfetch/config-pokemon.jsonc
+!/.config/fastfetch/config-v2.jsonc
+!/.config/fastfetch/config.jsonc
+!/.config/fastfetch/h.png
+!/.config/fastfetch/h3.png
+!/.config/fastfetch/j.png
+!/.config/fish/
+!/.config/fish/config.fish
+!/.config/ghostty/
+!/.config/ghostty/config
+!/.config/ghostty/wallust.conf
+!/.config/git/
+!/.config/git/ignore
+!/.config/gtk-3.0/
+!/.config/gtk-3.0/settings.ini
+!/.config/hypr/
+!/.config/hypr/Monitor_Profiles/
+!/.config/hypr/Monitor_Profiles/README
+!/.config/hypr/Monitor_Profiles/default.conf
+!/.config/hypr/UserConfigs/
+!/.config/hypr/UserConfigs/00-Readme
+!/.config/hypr/UserConfigs/01-UserDefaults.conf
+!/.config/hypr/UserConfigs/ENVariables.conf
+!/.config/hypr/UserConfigs/LaptopDisplay.conf
+!/.config/hypr/UserConfigs/Laptops.conf
+!/.config/hypr/UserConfigs/Startup_Apps.conf
+!/.config/hypr/UserConfigs/UserAnimations.conf
+!/.config/hypr/UserConfigs/UserDecorations.conf
+!/.config/hypr/UserConfigs/UserKeybinds.conf
+!/.config/hypr/UserConfigs/UserSettings.conf
+!/.config/hypr/UserConfigs/WindowRules.conf
+!/.config/hypr/UserConfigs/WorkSpaceRules.conf
+!/.config/hypr/UserScripts/
+!/.config/hypr/UserScripts/00-Readme
+!/.config/hypr/UserScripts/RainbowBorders.sh
+!/.config/hypr/UserScripts/RofiBeats.sh
+!/.config/hypr/UserScripts/RofiCalc.sh
+!/.config/hypr/UserScripts/Tak0-Autodispatch.sh
+!/.config/hypr/UserScripts/WallpaperAutoChange.sh
+!/.config/hypr/UserScripts/WallpaperEffects.sh
+!/.config/hypr/UserScripts/WallpaperRandom.sh
+!/.config/hypr/UserScripts/WallpaperSelect.sh
+!/.config/hypr/UserScripts/Weather.py
+!/.config/hypr/UserScripts/Weather.sh
+!/.config/hypr/UserScripts/WeatherWrap.sh
+!/.config/hypr/UserScripts/ZshChangeTheme.sh
+!/.config/hypr/animations/
+!/.config/hypr/animations/00-default.conf
+!/.config/hypr/animations/01-default - v2.conf
+!/.config/hypr/animations/03- Disable Animation.conf
+!/.config/hypr/animations/END-4.conf
+!/.config/hypr/animations/HYDE - Vertical.conf
+!/.config/hypr/animations/HYDE - default.conf
+!/.config/hypr/animations/HYDE - minimal-1.conf
+!/.config/hypr/animations/HYDE - minimal-2.conf
+!/.config/hypr/animations/HYDE - optimized.conf
+!/.config/hypr/animations/ML4W - classic.conf
+!/.config/hypr/animations/ML4W - dynamic.conf
+!/.config/hypr/animations/ML4W - fast.conf
+!/.config/hypr/animations/ML4W - high.conf
+!/.config/hypr/animations/ML4W - moving.conf
+!/.config/hypr/animations/ML4W - standard.conf
+!/.config/hypr/animations/Mahaveer - me-1.conf
+!/.config/hypr/animations/Mahaveer - me-2.conf
+!/.config/hypr/application-style.conf
+!/.config/hypr/configs/
+!/.config/hypr/configs/ENVariables.conf
+!/.config/hypr/configs/Keybinds.conf
+!/.config/hypr/configs/Laptops.conf
+!/.config/hypr/configs/Startup_Apps.conf
+!/.config/hypr/configs/SystemSettings.conf
+!/.config/hypr/configs/WindowRules-config-v3.conf
+!/.config/hypr/configs/WindowRules-pre-53.conf
+!/.config/hypr/configs/WindowRules.conf
+!/.config/hypr/hypridle.conf
+!/.config/hypr/hyprland.lua
+!/.config/hypr/hyprlock-2k.conf
+!/.config/hypr/hyprlock.conf
+!/.config/hypr/initial-boot.sh
+!/.config/hypr/monitors.conf
+!/.config/hypr/monitors.lua
+!/.config/hypr/screenshots/
+!/.config/hypr/screenshots/captureAll.sh
+!/.config/hypr/screenshots/captureArea.sh
+!/.config/hypr/screenshots/captureScreen.sh
+!/.config/hypr/scripts/
+!/.config/hypr/scripts/AirplaneMode.sh
+!/.config/hypr/scripts/Animations.sh
+!/.config/hypr/scripts/Battery.sh
+!/.config/hypr/scripts/Brightness.sh
+!/.config/hypr/scripts/BrightnessKbd.sh
+!/.config/hypr/scripts/ChangeBlur.sh
+!/.config/hypr/scripts/ChangeLayout.sh
+!/.config/hypr/scripts/ClipManager.sh
+!/.config/hypr/scripts/DarkLight.sh
+!/.config/hypr/scripts/Distro_update.sh
+!/.config/hypr/scripts/Dropterminal.sh
+!/.config/hypr/scripts/GameMode.sh
+!/.config/hypr/scripts/Hypridle.sh
+!/.config/hypr/scripts/Hyprsunset.sh
+!/.config/hypr/scripts/KeyBinds.sh
+!/.config/hypr/scripts/KeyHints.sh
+!/.config/hypr/scripts/KeybindsLayoutInit.sh
+!/.config/hypr/scripts/KeyboardLayout.sh
+!/.config/hypr/scripts/KillActiveProcess.sh
+!/.config/hypr/scripts/Kitty_themes.sh
+!/.config/hypr/scripts/KooLsDotsUpdate.sh
+!/.config/hypr/scripts/Kool_Quick_Settings.sh
+!/.config/hypr/scripts/LockScreen.sh
+!/.config/hypr/scripts/MediaCtrl.sh
+!/.config/hypr/scripts/MonitorProfiles.sh
+!/.config/hypr/scripts/OverviewToggle.sh
+!/.config/hypr/scripts/Polkit.sh
+!/.config/hypr/scripts/PortalHyprland.sh
+!/.config/hypr/scripts/Refresh.sh
+!/.config/hypr/scripts/RefreshNoWaybar.sh
+!/.config/hypr/scripts/RofiEmoji.sh
+!/.config/hypr/scripts/RofiSearch.sh
+!/.config/hypr/scripts/RofiThemeSelector-modified.sh
+!/.config/hypr/scripts/RofiThemeSelector.sh
+!/.config/hypr/scripts/ScreenShot.sh
+!/.config/hypr/scripts/Sounds.sh
+!/.config/hypr/scripts/Tak0-Autodispatch.sh
+!/.config/hypr/scripts/Tak0-Per-Window-Switch.sh
+!/.config/hypr/scripts/ThemeChanger.sh
+!/.config/hypr/scripts/TouchPad.sh
+!/.config/hypr/scripts/UserConfigsSwitcher.sh
+!/.config/hypr/scripts/Volume.sh
+!/.config/hypr/scripts/WallpaperCycle.sh
+!/.config/hypr/scripts/WallustSwww.sh
+!/.config/hypr/scripts/WaybarCava.sh
+!/.config/hypr/scripts/WaybarLayout.sh
+!/.config/hypr/scripts/WaybarScripts.sh
+!/.config/hypr/scripts/WaybarStyles.sh
+!/.config/hypr/scripts/Wlogout.sh
+!/.config/hypr/scripts/audiocontrol.sh
+!/.config/hypr/scripts/brightnesscontrol.sh
+!/.config/hypr/scripts/keybinds_parser.py
+!/.config/hypr/scripts/lock-clock.sh
+!/.config/hypr/scripts/lock-moon.sh
+!/.config/hypr/scripts/lock-weather.sh
+!/.config/hypr/scripts/mediacontrol.sh
+!/.config/hypr/scripts/screenshot.sh
+!/.config/hypr/scripts/sddm_wallpaper.sh
+!/.config/hypr/scripts/shortcut-menu.sh
+!/.config/hypr/scripts/update_WindowRules.sh
+!/.config/hypr/scripts/wallpaperdaemon.sh
+!/.config/hypr/scripts/weather.sh
+!/.config/hypr/shader.lua
+!/.config/hypr/shaders/
+!/.config/hypr/shaders/amano.glsl
+!/.config/hypr/shaders/art_canvas.glsl
+!/.config/hypr/shaders/cinema.glsl
+!/.config/hypr/shaders/crt_mode.glsl
+!/.config/hypr/shaders/dither.glsl
+!/.config/hypr/shaders/fuji_acros.glsl
+!/.config/hypr/shaders/gameboy.glsl
+!/.config/hypr/shaders/greens.glsl
+!/.config/hypr/shaders/main.glsl
+!/.config/hypr/shaders/night.glsl
+!/.config/hypr/shaders/old/
+!/.config/hypr/shaders/old/IBM5151.glsl
+!/.config/hypr/shaders/old/clarity_inefficient.glsl
+!/.config/hypr/shaders/old/focus.glsl
+!/.config/hypr/shaders/old/matte.glsl
+!/.config/hypr/shaders/old/night_vision.glsl
+!/.config/hypr/shaders/outdoor.glsl
+!/.config/hypr/shaders/reading_mode.glsl
+!/.config/hypr/shaders/silent_hill.glsl
+!/.config/hypr/shaders/smart_invert.glsl
+!/.config/hypr/shaders/soft.glsl
+!/.config/hypr/shaders/vhs.glsl
+!/.config/hypr/workspaces.conf
+!/.config/kitty/
+!/.config/kitty/Typewriter Variable/
+!/.config/kitty/Typewriter Variable/OFL-FAQ.txt
+!/.config/kitty/Typewriter Variable/OFL.txt
+!/.config/kitty/Typewriter Variable/README.txt
+!/.config/kitty/Typewriter Variable/cmun-typewriter-variable.css
+!/.config/kitty/Typewriter Variable/cmunvi.eot
+!/.config/kitty/Typewriter Variable/cmunvi.svg
+!/.config/kitty/Typewriter Variable/cmunvi.ttf
+!/.config/kitty/Typewriter Variable/cmunvi.woff
+!/.config/kitty/Typewriter Variable/cmunvt.eot
+!/.config/kitty/Typewriter Variable/cmunvt.svg
+!/.config/kitty/Typewriter Variable/cmunvt.ttf
+!/.config/kitty/Typewriter Variable/cmunvt.woff
+!/.config/kitty/kitty-themes/
+!/.config/kitty/kitty-themes/00-Default.conf
+!/.config/kitty/kitty-themes/01-Wallust.conf
+!/.config/kitty/kitty-themes/3024_Day.conf
+!/.config/kitty/kitty-themes/3024_Night.conf
+!/.config/kitty/kitty-themes/AdventureTime.conf
+!/.config/kitty/kitty-themes/Afterglow.conf
+!/.config/kitty/kitty-themes/AlienBlood.conf
+!/.config/kitty/kitty-themes/Alucard.conf
+!/.config/kitty/kitty-themes/Apprentice.conf
+!/.config/kitty/kitty-themes/Argonaut.conf
+!/.config/kitty/kitty-themes/Arthur.conf
+!/.config/kitty/kitty-themes/AtelierSulphurpool.conf
+!/.config/kitty/kitty-themes/Atom.conf
+!/.config/kitty/kitty-themes/AtomOneLight.conf
+!/.config/kitty/kitty-themes/Batman.conf
+!/.config/kitty/kitty-themes/Belafonte_Day.conf
+!/.config/kitty/kitty-themes/Belafonte_Night.conf
+!/.config/kitty/kitty-themes/BirdsOfParadise.conf
+!/.config/kitty/kitty-themes/Blazer.conf
+!/.config/kitty/kitty-themes/Borland.conf
+!/.config/kitty/kitty-themes/Bright_Lights.conf
+!/.config/kitty/kitty-themes/Broadcast.conf
+!/.config/kitty/kitty-themes/Brogrammer.conf
+!/.config/kitty/kitty-themes/C64.conf
+!/.config/kitty/kitty-themes/CLRS.conf
+!/.config/kitty/kitty-themes/Chalk.conf
+!/.config/kitty/kitty-themes/Chalkboard.conf
+!/.config/kitty/kitty-themes/Ciapre.conf
+!/.config/kitty/kitty-themes/Cobalt2.conf
+!/.config/kitty/kitty-themes/Cobalt_Neon.conf
+!/.config/kitty/kitty-themes/CrayonPonyFish.conf
+!/.config/kitty/kitty-themes/Dark_Pastel.conf
+!/.config/kitty/kitty-themes/Darkside.conf
+!/.config/kitty/kitty-themes/Desert.conf
+!/.config/kitty/kitty-themes/DimmedMonokai.conf
+!/.config/kitty/kitty-themes/DotGov.conf
+!/.config/kitty/kitty-themes/Dracula.conf
+!/.config/kitty/kitty-themes/Dumbledore.conf
+!/.config/kitty/kitty-themes/Duotone_Dark.conf
+!/.config/kitty/kitty-themes/ENCOM.conf
+!/.config/kitty/kitty-themes/Earthsong.conf
+!/.config/kitty/kitty-themes/Elemental.conf
+!/.config/kitty/kitty-themes/Espresso.conf
+!/.config/kitty/kitty-themes/Espresso_Libre.conf
+!/.config/kitty/kitty-themes/Fideloper.conf
+!/.config/kitty/kitty-themes/FishTank.conf
+!/.config/kitty/kitty-themes/Flat.conf
+!/.config/kitty/kitty-themes/Flatland.conf
+!/.config/kitty/kitty-themes/Floraverse.conf
+!/.config/kitty/kitty-themes/FrontEndDelight.conf
+!/.config/kitty/kitty-themes/FunForrest.conf
+!/.config/kitty/kitty-themes/Galaxy.conf
+!/.config/kitty/kitty-themes/Github.conf
+!/.config/kitty/kitty-themes/Glacier.conf
+!/.config/kitty/kitty-themes/GoaBase.conf
+!/.config/kitty/kitty-themes/Grape.conf
+!/.config/kitty/kitty-themes/Grass.conf
+!/.config/kitty/kitty-themes/Hardcore.conf
+!/.config/kitty/kitty-themes/Harper.conf
+!/.config/kitty/kitty-themes/Highway.conf
+!/.config/kitty/kitty-themes/Hipster_Green.conf
+!/.config/kitty/kitty-themes/Homebrew.conf
+!/.config/kitty/kitty-themes/Hurtado.conf
+!/.config/kitty/kitty-themes/Hybrid.conf
+!/.config/kitty/kitty-themes/IC_Green_PPL.conf
+!/.config/kitty/kitty-themes/IC_Orange_PPL.conf
+!/.config/kitty/kitty-themes/IR_Black.conf
+!/.config/kitty/kitty-themes/Jackie_Brown.conf
+!/.config/kitty/kitty-themes/Japanesque.conf
+!/.config/kitty/kitty-themes/Jellybeans.conf
+!/.config/kitty/kitty-themes/JetBrains_Darcula.conf
+!/.config/kitty/kitty-themes/Kibble.conf
+!/.config/kitty/kitty-themes/Later_This_Evening.conf
+!/.config/kitty/kitty-themes/Lavandula.conf
+!/.config/kitty/kitty-themes/LiquidCarbon.conf
+!/.config/kitty/kitty-themes/LiquidCarbonTransparent.conf
+!/.config/kitty/kitty-themes/LiquidCarbonTransparentInverse.conf
+!/.config/kitty/kitty-themes/Man_Page.conf
+!/.config/kitty/kitty-themes/Material.conf
+!/.config/kitty/kitty-themes/MaterialDark.conf
+!/.config/kitty/kitty-themes/Mathias.conf
+!/.config/kitty/kitty-themes/Medallion.conf
+!/.config/kitty/kitty-themes/Misterioso.conf
+!/.config/kitty/kitty-themes/Molokai.conf
+!/.config/kitty/kitty-themes/MonaLisa.conf
+!/.config/kitty/kitty-themes/Monokai.conf
+!/.config/kitty/kitty-themes/Monokai_Classic.conf
+!/.config/kitty/kitty-themes/Monokai_Pro.conf
+!/.config/kitty/kitty-themes/Monokai_Pro_(Filter_Machine).conf
+!/.config/kitty/kitty-themes/Monokai_Pro_(Filter_Octagon).conf
+!/.config/kitty/kitty-themes/Monokai_Pro_(Filter_Ristretto).conf
+!/.config/kitty/kitty-themes/Monokai_Pro_(Filter_Spectrum).conf
+!/.config/kitty/kitty-themes/Monokai_Soda.conf
+!/.config/kitty/kitty-themes/N0tch2k.conf
+!/.config/kitty/kitty-themes/Neopolitan.conf
+!/.config/kitty/kitty-themes/Neutron.conf
+!/.config/kitty/kitty-themes/NightLion_v1.conf
+!/.config/kitty/kitty-themes/NightLion_v2.conf
+!/.config/kitty/kitty-themes/Nova.conf
+!/.config/kitty/kitty-themes/Novel.conf
+!/.config/kitty/kitty-themes/Obsidian.conf
+!/.config/kitty/kitty-themes/Ocean.conf
+!/.config/kitty/kitty-themes/OceanicMaterial.conf
+!/.config/kitty/kitty-themes/Ollie.conf
+!/.config/kitty/kitty-themes/OneDark.conf
+!/.config/kitty/kitty-themes/Parasio_Dark.conf
+!/.config/kitty/kitty-themes/PaulMillr.conf
+!/.config/kitty/kitty-themes/PencilDark.conf
+!/.config/kitty/kitty-themes/PencilLight.conf
+!/.config/kitty/kitty-themes/Piatto_Light.conf
+!/.config/kitty/kitty-themes/Pnevma.conf
+!/.config/kitty/kitty-themes/Pro.conf
+!/.config/kitty/kitty-themes/Red_Alert.conf
+!/.config/kitty/kitty-themes/Red_Sands.conf
+!/.config/kitty/kitty-themes/Relaxed_Afterglow.conf
+!/.config/kitty/kitty-themes/Renault_Style.conf
+!/.config/kitty/kitty-themes/Renault_Style_Light.conf
+!/.config/kitty/kitty-themes/Rippedcasts.conf
+!/.config/kitty/kitty-themes/Royal.conf
+!/.config/kitty/kitty-themes/SeaShells.conf
+!/.config/kitty/kitty-themes/Seafoam_Pastel.conf
+!/.config/kitty/kitty-themes/Seti.conf
+!/.config/kitty/kitty-themes/Shaman.conf
+!/.config/kitty/kitty-themes/Slate.conf
+!/.config/kitty/kitty-themes/Smyck.conf
+!/.config/kitty/kitty-themes/SoftServer.conf
+!/.config/kitty/kitty-themes/Solarized_Darcula.conf
+!/.config/kitty/kitty-themes/Solarized_Dark.conf
+!/.config/kitty/kitty-themes/Solarized_Dark_-_Patched.conf
+!/.config/kitty/kitty-themes/Solarized_Dark_Higher_Contrast.conf
+!/.config/kitty/kitty-themes/Solarized_Light.conf
+!/.config/kitty/kitty-themes/Source_Code_X.conf
+!/.config/kitty/kitty-themes/SpaceGray.conf
+!/.config/kitty/kitty-themes/SpaceGray_Eighties.conf
+!/.config/kitty/kitty-themes/SpaceGray_Eighties_Dull.conf
+!/.config/kitty/kitty-themes/Spacedust.conf
+!/.config/kitty/kitty-themes/Spiderman.conf
+!/.config/kitty/kitty-themes/Spring.conf
+!/.config/kitty/kitty-themes/Square.conf
+!/.config/kitty/kitty-themes/Sundried.conf
+!/.config/kitty/kitty-themes/Symfonic.conf
+!/.config/kitty/kitty-themes/Tango_Dark.conf
+!/.config/kitty/kitty-themes/Tango_Light.conf
+!/.config/kitty/kitty-themes/Teerb.conf
+!/.config/kitty/kitty-themes/Thayer_Bright.conf
+!/.config/kitty/kitty-themes/The_Hulk.conf
+!/.config/kitty/kitty-themes/Tomorrow.conf
+!/.config/kitty/kitty-themes/Tomorrow_Night.conf
+!/.config/kitty/kitty-themes/Tomorrow_Night_Blue.conf
+!/.config/kitty/kitty-themes/Tomorrow_Night_Bright.conf
+!/.config/kitty/kitty-themes/Tomorrow_Night_Eighties.conf
+!/.config/kitty/kitty-themes/ToyChest.conf
+!/.config/kitty/kitty-themes/Treehouse.conf
+!/.config/kitty/kitty-themes/Twilight.conf
+!/.config/kitty/kitty-themes/Ubuntu.conf
+!/.config/kitty/kitty-themes/Urple.conf
+!/.config/kitty/kitty-themes/Vaughn.conf
+!/.config/kitty/kitty-themes/VibrantInk.conf
+!/.config/kitty/kitty-themes/WarmNeon.conf
+!/.config/kitty/kitty-themes/Wez.conf
+!/.config/kitty/kitty-themes/WildCherry.conf
+!/.config/kitty/kitty-themes/Wombat.conf
+!/.config/kitty/kitty-themes/Wryan.conf
+!/.config/kitty/kitty-themes/Zenburn.conf
+!/.config/kitty/kitty-themes/ayu.conf
+!/.config/kitty/kitty-themes/ayu_light.conf
+!/.config/kitty/kitty-themes/ayu_mirage.conf
+!/.config/kitty/kitty-themes/gruvbox_dark.conf
+!/.config/kitty/kitty-themes/gruvbox_light.conf
+!/.config/kitty/kitty-themes/idleToes.conf
+!/.config/kitty/kitty-themes/snazzy.conf
+!/.config/kitty/kitty.conf
+!/.config/kitty/themes/
+!/.config/kitty/themes/everforest.conf
+!/.config/kitty/themes/everforest_light.conf
+!/.config/kitty/themes/theme_switcher.sh
+!/.config/mako/
+!/.config/mako/config
+!/.config/mako/config_dark
+!/.config/mako/config_light
+!/.config/micro/
+!/.config/micro/colorschemes/
+!/.config/micro/colorschemes/catppuccin-frappe.micro
+!/.config/micro/colorschemes/catppuccin-latte.micro
+!/.config/micro/colorschemes/catppuccin-macchiato.micro
+!/.config/micro/colorschemes/catppuccin-mocha.micro
+!/.config/micro/settings.json
+!/.config/micro/syntax/
+!/.config/micro/syntax/LICENSE
+!/.config/micro/syntax/PowerShell.yaml
+!/.config/micro/syntax/README.md
+!/.config/micro/syntax/ada.yaml
+!/.config/micro/syntax/apacheconf.yaml
+!/.config/micro/syntax/arduino.yaml
+!/.config/micro/syntax/asciidoc.yaml
+!/.config/micro/syntax/asm.yaml
+!/.config/micro/syntax/ats.yaml
+!/.config/micro/syntax/awk.yaml
+!/.config/micro/syntax/bat.yaml
+!/.config/micro/syntax/c.yaml
+!/.config/micro/syntax/caddyfile.yaml
+!/.config/micro/syntax/clojure.yaml
+!/.config/micro/syntax/cmake.yaml
+!/.config/micro/syntax/coffeescript.yaml
+!/.config/micro/syntax/colortest.yaml
+!/.config/micro/syntax/conky.yaml
+!/.config/micro/syntax/cpp.yaml
+!/.config/micro/syntax/crontab.yaml
+!/.config/micro/syntax/crystal.yaml
+!/.config/micro/syntax/csharp.yaml
+!/.config/micro/syntax/css.yaml
+!/.config/micro/syntax/csx.yaml
+!/.config/micro/syntax/cython.yaml
+!/.config/micro/syntax/d.yaml
+!/.config/micro/syntax/dart.yaml
+!/.config/micro/syntax/dockerfile.yaml
+!/.config/micro/syntax/dot.yaml
+!/.config/micro/syntax/elixir.yaml
+!/.config/micro/syntax/elm.yaml
+!/.config/micro/syntax/erb.yaml
+!/.config/micro/syntax/erlang.yaml
+!/.config/micro/syntax/fish.yaml
+!/.config/micro/syntax/forth.yaml
+!/.config/micro/syntax/fortran.yaml
+!/.config/micro/syntax/freebsd-kernel.yaml
+!/.config/micro/syntax/fsharp.yaml
+!/.config/micro/syntax/gdscript.yaml
+!/.config/micro/syntax/gemini.yaml
+!/.config/micro/syntax/gentoo-ebuild.yaml
+!/.config/micro/syntax/gentoo-etc-portage.yaml
+!/.config/micro/syntax/git-commit.yaml
+!/.config/micro/syntax/git-config.yaml
+!/.config/micro/syntax/git-rebase-todo.yaml
+!/.config/micro/syntax/glsl.yaml
+!/.config/micro/syntax/gnuplot.yaml
+!/.config/micro/syntax/go.yaml
+!/.config/micro/syntax/godoc.yaml
+!/.config/micro/syntax/golo.yaml
+!/.config/micro/syntax/graphql.yaml
+!/.config/micro/syntax/groff.yaml
+!/.config/micro/syntax/groovy.yaml
+!/.config/micro/syntax/haml.yaml
+!/.config/micro/syntax/haskell.yaml
+!/.config/micro/syntax/hc.yaml
+!/.config/micro/syntax/html.yaml
+!/.config/micro/syntax/html4.yaml
+!/.config/micro/syntax/html5.yaml
+!/.config/micro/syntax/ini.yaml
+!/.config/micro/syntax/inputrc.yaml
+!/.config/micro/syntax/java.yaml
+!/.config/micro/syntax/javascript.yaml
+!/.config/micro/syntax/jinja2.yaml
+!/.config/micro/syntax/json.yaml
+!/.config/micro/syntax/jsonnet.yaml
+!/.config/micro/syntax/julia.yaml
+!/.config/micro/syntax/keymap.yaml
+!/.config/micro/syntax/kickstart.yaml
+!/.config/micro/syntax/kotlin.yaml
+!/.config/micro/syntax/ledger.yaml
+!/.config/micro/syntax/lfe.yaml
+!/.config/micro/syntax/lilypond.yaml
+!/.config/micro/syntax/lisp.yaml
+!/.config/micro/syntax/lua.yaml
+!/.config/micro/syntax/mail.yaml
+!/.config/micro/syntax/make_headers.go
+!/.config/micro/syntax/makefile.yaml
+!/.config/micro/syntax/man.yaml
+!/.config/micro/syntax/markdown.yaml
+!/.config/micro/syntax/mc.yaml
+!/.config/micro/syntax/micro.yaml
+!/.config/micro/syntax/mpdconf.yaml
+!/.config/micro/syntax/nanorc.yaml
+!/.config/micro/syntax/nginx.yaml
+!/.config/micro/syntax/nim.yaml
+!/.config/micro/syntax/nix.yaml
+!/.config/micro/syntax/nu.yaml
+!/.config/micro/syntax/objc.yaml
+!/.config/micro/syntax/ocaml.yaml
+!/.config/micro/syntax/octave.yaml
+!/.config/micro/syntax/odin.yaml
+!/.config/micro/syntax/pascal.yaml
+!/.config/micro/syntax/patch.yaml
+!/.config/micro/syntax/peg.yaml
+!/.config/micro/syntax/perl.yaml
+!/.config/micro/syntax/php.yaml
+!/.config/micro/syntax/pkg-config.yaml
+!/.config/micro/syntax/po.yaml
+!/.config/micro/syntax/pony.yaml
+!/.config/micro/syntax/pov.yaml
+!/.config/micro/syntax/privoxy-action.yaml
+!/.config/micro/syntax/privoxy-config.yaml
+!/.config/micro/syntax/privoxy-filter.yaml
+!/.config/micro/syntax/proto.yaml
+!/.config/micro/syntax/puppet.yaml
+!/.config/micro/syntax/python2.yaml
+!/.config/micro/syntax/python3.yaml
+!/.config/micro/syntax/r.yaml
+!/.config/micro/syntax/raku.yaml
+!/.config/micro/syntax/reST.yaml
+!/.config/micro/syntax/renpy.yaml
+!/.config/micro/syntax/rpmspec.yaml
+!/.config/micro/syntax/ruby.yaml
+!/.config/micro/syntax/rust.yaml
+!/.config/micro/syntax/sage.yaml
+!/.config/micro/syntax/scala.yaml
+!/.config/micro/syntax/sed.yaml
+!/.config/micro/syntax/sh.yaml
+!/.config/micro/syntax/sls.yaml
+!/.config/micro/syntax/solidity.yaml
+!/.config/micro/syntax/sql.yaml
+!/.config/micro/syntax/stata.yaml
+!/.config/micro/syntax/svelte.yaml
+!/.config/micro/syntax/swift.yaml
+!/.config/micro/syntax/syntax_converter.go
+!/.config/micro/syntax/systemd.yaml
+!/.config/micro/syntax/tcl.yaml
+!/.config/micro/syntax/terraform.yaml
+!/.config/micro/syntax/tex.yaml
+!/.config/micro/syntax/toml.yaml
+!/.config/micro/syntax/twig.yaml
+!/.config/micro/syntax/typescript.yaml
+!/.config/micro/syntax/v.yaml
+!/.config/micro/syntax/vala.yaml
+!/.config/micro/syntax/verilog.yaml
+!/.config/micro/syntax/vhdl.yaml
+!/.config/micro/syntax/vi.yaml
+!/.config/micro/syntax/vue.yaml
+!/.config/micro/syntax/xml.yaml
+!/.config/micro/syntax/xresources.yaml
+!/.config/micro/syntax/yaml.yaml
+!/.config/micro/syntax/yum.yaml
+!/.config/micro/syntax/zig.yaml
+!/.config/micro/syntax/zscript.yaml
+!/.config/micro/syntax/zsh.yaml
+!/.config/mise/
+!/.config/mise/config.toml
+!/.config/nwg-look/
+!/.config/nwg-look/config
+!/.config/qt5ct/
+!/.config/qt5ct/colors/
+!/.config/qt5ct/colors/Catppuccin-Latte.conf
+!/.config/qt5ct/colors/Catppuccin-Mocha.conf
+!/.config/qt5ct/qt5ct.conf.tmpl
+!/.config/qt6ct/
+!/.config/qt6ct/colors/
+!/.config/qt6ct/colors/Catppuccin-Latte.conf
+!/.config/qt6ct/colors/Catppuccin-Mocha.conf
+!/.config/qt6ct/colors/Everforest-Dark.conf
+!/.config/qt6ct/colors/Everforest-Light.conf
+!/.config/qt6ct/qt6ct.conf.tmpl
+!/.config/quickshell/
+!/.config/quickshell/GlobalStates.qml
+!/.config/quickshell/config.json
+!/.config/quickshell/modules/
+!/.config/quickshell/modules/common/
+!/.config/quickshell/modules/common/Appearance.qml
+!/.config/quickshell/modules/common/ConfigOptions.qml
+!/.config/quickshell/modules/common/Directories.qml
+!/.config/quickshell/modules/common/functions/
+!/.config/quickshell/modules/common/functions/color_utils.js
+!/.config/quickshell/modules/common/functions/file_utils.js
+!/.config/quickshell/modules/common/functions/fuzzysort.js
+!/.config/quickshell/modules/common/functions/levendist.js
+!/.config/quickshell/modules/common/functions/object_utils.js
+!/.config/quickshell/modules/common/functions/string_utils.js
+!/.config/quickshell/modules/common/widgets/
+!/.config/quickshell/modules/common/widgets/CliphistImage.qml
+!/.config/quickshell/modules/common/widgets/DialogButton.qml
+!/.config/quickshell/modules/common/widgets/MaterialSymbol.qml
+!/.config/quickshell/modules/common/widgets/PointingHandInteraction.qml
+!/.config/quickshell/modules/common/widgets/RippleButton.qml
+!/.config/quickshell/modules/common/widgets/RoundCorner.qml
+!/.config/quickshell/modules/common/widgets/StyledRectangularShadow.qml
+!/.config/quickshell/modules/common/widgets/StyledText.qml
+!/.config/quickshell/modules/common/widgets/StyledTextArea.qml
+!/.config/quickshell/modules/common/widgets/StyledToolTip.qml
+!/.config/quickshell/modules/overview/
+!/.config/quickshell/modules/overview/Overview.qml
+!/.config/quickshell/modules/overview/OverviewWidget.qml
+!/.config/quickshell/modules/overview/OverviewWindow.qml
+!/.config/quickshell/modules/overview/SearchItem.qml
+!/.config/quickshell/modules/overview/SearchWidget.qml
+!/.config/quickshell/overview/
+!/.config/quickshell/overview/README.md
+!/.config/quickshell/overview/common/
+!/.config/quickshell/overview/common/Appearance.qml
+!/.config/quickshell/overview/common/Config.qml
+!/.config/quickshell/overview/common/functions/
+!/.config/quickshell/overview/common/functions/ColorUtils.qml
+!/.config/quickshell/overview/common/functions/qmldir
+!/.config/quickshell/overview/common/qmldir
+!/.config/quickshell/overview/common/widgets/
+!/.config/quickshell/overview/common/widgets/StyledRectangularShadow.qml
+!/.config/quickshell/overview/common/widgets/StyledText.qml
+!/.config/quickshell/overview/common/widgets/StyledToolTip.qml
+!/.config/quickshell/overview/common/widgets/StyledToolTipContent.qml
+!/.config/quickshell/overview/common/widgets/qmldir
+!/.config/quickshell/overview/modules/
+!/.config/quickshell/overview/modules/overview/
+!/.config/quickshell/overview/modules/overview/Overview.qml
+!/.config/quickshell/overview/modules/overview/OverviewWidget.qml
+!/.config/quickshell/overview/modules/overview/OverviewWindow.qml
+!/.config/quickshell/overview/modules/overview/qmldir
+!/.config/quickshell/overview/services/
+!/.config/quickshell/overview/services/GlobalStates.qml
+!/.config/quickshell/overview/services/HyprlandData.qml
+!/.config/quickshell/overview/services/qmldir
+!/.config/quickshell/overview/shell.qml
+!/.config/quickshell/qml_color.json
+!/.config/quickshell/services/
+!/.config/quickshell/services/AppSearch.qml
+!/.config/quickshell/services/ConfigLoader.qml
+!/.config/quickshell/services/HyprlandData.qml
+!/.config/quickshell/services/HyprlandKeybinds.qml
+!/.config/quickshell/services/MaterialThemeLoader.qml
+!/.config/quickshell/task-bar/
+!/.config/quickshell/task-bar/config.js
+!/.config/quickshell/task-bar/desktop/
+!/.config/quickshell/task-bar/desktop/ScreenBorder.qml
+!/.config/quickshell/task-bar/desktop/Taskbar.qml
+!/.config/quickshell/task-bar/dock/
+!/.config/quickshell/task-bar/dock/Drawer.qml
+!/.config/quickshell/task-bar/dock/WideDrawer.qml
+!/.config/quickshell/task-bar/dock/applist.sh
+!/.config/quickshell/task-bar/dock/shader-icons/
+!/.config/quickshell/task-bar/dock/shader-icons/canvas.svg
+!/.config/quickshell/task-bar/dock/shader-icons/cinema.svg
+!/.config/quickshell/task-bar/dock/shader-icons/clarity.svg
+!/.config/quickshell/task-bar/dock/shader-icons/crt.svg
+!/.config/quickshell/task-bar/dock/shader-icons/dither.svg
+!/.config/quickshell/task-bar/dock/shader-icons/focus.svg
+!/.config/quickshell/task-bar/dock/shader-icons/fuji.svg
+!/.config/quickshell/task-bar/dock/shader-icons/gameboy.svg
+!/.config/quickshell/task-bar/dock/shader-icons/green.svg
+!/.config/quickshell/task-bar/dock/shader-icons/ibm.svg
+!/.config/quickshell/task-bar/dock/shader-icons/invert.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/
+!/.config/quickshell/task-bar/dock/shader-icons/light/canvas.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/cinema.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/clarity.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/crt.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/dither.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/focus.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/fuji.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/gameboy.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/glasses-svgrepo-com(1).svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/green.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/ibm.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/index.theme
+!/.config/quickshell/task-bar/dock/shader-icons/light/invert.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/main.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/matte.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/night-vision-binoculars-svgrepo-com.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/night.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/night_vision.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/off.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/outdoor.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/reading.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/sh.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/soft.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/studio-printed-paper-svgrepo-com.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/terminal-svgrepo-com.svg
+!/.config/quickshell/task-bar/dock/shader-icons/light/vhs.svg
+!/.config/quickshell/task-bar/dock/shader-icons/main.svg
+!/.config/quickshell/task-bar/dock/shader-icons/matte.svg
+!/.config/quickshell/task-bar/dock/shader-icons/night.svg
+!/.config/quickshell/task-bar/dock/shader-icons/night_vision.svg
+!/.config/quickshell/task-bar/dock/shader-icons/off.svg
+!/.config/quickshell/task-bar/dock/shader-icons/outdoor.svg
+!/.config/quickshell/task-bar/dock/shader-icons/reading.svg
+!/.config/quickshell/task-bar/dock/shader-icons/sh.svg
+!/.config/quickshell/task-bar/dock/shader-icons/soft.svg
+!/.config/quickshell/task-bar/dock/shader-icons/vhs.svg
+!/.config/quickshell/task-bar/hub/
+!/.config/quickshell/task-bar/hub/BatteryHealthCard.qml
+!/.config/quickshell/task-bar/hub/ButtonsSlidersCard.qml
+!/.config/quickshell/task-bar/hub/CalendarGrid.qml
+!/.config/quickshell/task-bar/hub/CalendarWeatherCard.qml
+!/.config/quickshell/task-bar/hub/Events.qml
+!/.config/quickshell/task-bar/hub/Header.qml
+!/.config/quickshell/task-bar/hub/HubWindow.qml
+!/.config/quickshell/task-bar/hub/MediaCard.qml
+!/.config/quickshell/task-bar/hub/NotifItem.qml
+!/.config/quickshell/task-bar/hub/NotificationsCard.qml
+!/.config/quickshell/task-bar/hub/PowerMenuGrid.qml
+!/.config/quickshell/task-bar/hub/SettingsPanel.qml
+!/.config/quickshell/task-bar/hub/WallpaperPanel.qml
+!/.config/quickshell/task-bar/shell.qml
+!/.config/quickshell/task-bar/term.svg
+!/.config/quickshell/task-bar/theme.js
+!/.config/quickshell/task-bar/utils/
+!/.config/quickshell/task-bar/utils/Cassini.qml
+!/.config/quickshell/task-bar/utils/Livingthings.qml
+!/.config/quickshell/task-bar/utils/PowerMenu.qml
+!/.config/quickshell/task-bar/utils/PowerMenuController.qml
+!/.config/quickshell/task-bar/utils/theme-mode.sh
+!/.config/quickshell/top-bar/
+!/.config/quickshell/top-bar/bar/
+!/.config/quickshell/top-bar/bar/Bar.qml
+!/.config/quickshell/top-bar/bar/BarItem.qml
+!/.config/quickshell/top-bar/bar/PowerMenu.qml
+!/.config/quickshell/top-bar/bar/theme-mode.sh
+!/.config/quickshell/top-bar/config.js
+!/.config/quickshell/top-bar/hub/
+!/.config/quickshell/top-bar/hub/BatteryHealthCard.qml
+!/.config/quickshell/top-bar/hub/ButtonsSlidersCard.qml
+!/.config/quickshell/top-bar/hub/CalendarGrid.qml
+!/.config/quickshell/top-bar/hub/CalendarWeatherCard.qml
+!/.config/quickshell/top-bar/hub/Header.qml
+!/.config/quickshell/top-bar/hub/HubWindow.qml
+!/.config/quickshell/top-bar/hub/MediaCard.qml
+!/.config/quickshell/top-bar/hub/NotifItem.qml
+!/.config/quickshell/top-bar/hub/NotificationsCard.qml
+!/.config/quickshell/top-bar/hub/PowerMenuGrid.qml
+!/.config/quickshell/top-bar/now_playing/
+!/.config/quickshell/top-bar/now_playing/now_playing
+!/.config/quickshell/top-bar/shell.qml
+!/.config/quickshell/top-bar/theme.js
+!/.config/rofi/
+!/.config/rofi/.current_wallpaper
+!/.config/rofi/0-shared-fonts.rasi
+!/.config/rofi/config-Animations.rasi
+!/.config/rofi/config-Monitors.rasi
+!/.config/rofi/config-calc.rasi
+!/.config/rofi/config-clipboard.rasi
+!/.config/rofi/config-edit.rasi
+!/.config/rofi/config-emoji.rasi
+!/.config/rofi/config-keybinds.rasi
+!/.config/rofi/config-kitty-theme.rasi
+!/.config/rofi/config-rofi-Beats-menu.rasi
+!/.config/rofi/config-rofi-Beats.rasi
+!/.config/rofi/config-rofi-theme.rasi
+!/.config/rofi/config-search.rasi
+!/.config/rofi/config-wallpaper-effect.rasi
+!/.config/rofi/config-wallpaper.rasi
+!/.config/rofi/config-waybar-layout.rasi
+!/.config/rofi/config-waybar-style.rasi
+!/.config/rofi/config-zsh-theme.rasi
+!/.config/rofi/config.rasi
+!/.config/rofi/crt/
+!/.config/rofi/crt/launcher.sh
+!/.config/rofi/crt/style.rasi
+!/.config/rofi/google.sh
+!/.config/rofi/icons/
+!/.config/rofi/icons/canvas.svg
+!/.config/rofi/icons/cinema.svg
+!/.config/rofi/icons/clarity.svg
+!/.config/rofi/icons/crt.svg
+!/.config/rofi/icons/dither.svg
+!/.config/rofi/icons/focus.svg
+!/.config/rofi/icons/fuji.svg
+!/.config/rofi/icons/gameboy.svg
+!/.config/rofi/icons/green.svg
+!/.config/rofi/icons/ibm.svg
+!/.config/rofi/icons/invert.svg
+!/.config/rofi/icons/light/
+!/.config/rofi/icons/light/canvas.svg
+!/.config/rofi/icons/light/cinema.svg
+!/.config/rofi/icons/light/clarity.svg
+!/.config/rofi/icons/light/crt.svg
+!/.config/rofi/icons/light/dither.svg
+!/.config/rofi/icons/light/focus.svg
+!/.config/rofi/icons/light/fuji.svg
+!/.config/rofi/icons/light/gameboy.svg
+!/.config/rofi/icons/light/glasses-svgrepo-com(1).svg
+!/.config/rofi/icons/light/green.svg
+!/.config/rofi/icons/light/ibm.svg
+!/.config/rofi/icons/light/index.theme
+!/.config/rofi/icons/light/invert.svg
+!/.config/rofi/icons/light/main.svg
+!/.config/rofi/icons/light/matte.svg
+!/.config/rofi/icons/light/night-vision-binoculars-svgrepo-com.svg
+!/.config/rofi/icons/light/night.svg
+!/.config/rofi/icons/light/night_vision.svg
+!/.config/rofi/icons/light/off.svg
+!/.config/rofi/icons/light/outdoor.svg
+!/.config/rofi/icons/light/reading.svg
+!/.config/rofi/icons/light/sh.svg
+!/.config/rofi/icons/light/soft.svg
+!/.config/rofi/icons/light/studio-printed-paper-svgrepo-com.svg
+!/.config/rofi/icons/light/terminal-svgrepo-com.svg
+!/.config/rofi/icons/light/vhs.svg
+!/.config/rofi/icons/main.svg
+!/.config/rofi/icons/matte.svg
+!/.config/rofi/icons/night.svg
+!/.config/rofi/icons/night_vision.svg
+!/.config/rofi/icons/off.svg
+!/.config/rofi/icons/outdoor.svg
+!/.config/rofi/icons/reading.svg
+!/.config/rofi/icons/sh.svg
+!/.config/rofi/icons/soft.svg
+!/.config/rofi/icons/vhs.svg
+!/.config/rofi/jellyfish.jpg
+!/.config/rofi/launcher.sh
+!/.config/rofi/launcher_2.sh
+!/.config/rofi/moths.jpg
+!/.config/rofi/online_music.list
+!/.config/rofi/rofi.sh
+!/.config/rofi/rofi_wide.sh
+!/.config/rofi/shaders_menu.sh
+!/.config/rofi/shaders_menu_light.sh
+!/.config/rofi/style-dark.rasi
+!/.config/rofi/style-light.rasi
+!/.config/rofi/themes/
+!/.config/rofi/themes/KooL_LonerOrZ.rasi
+!/.config/rofi/themes/KooL_style-1.rasi
+!/.config/rofi/themes/KooL_style-10-Fancy-v2.rasi
+!/.config/rofi/themes/KooL_style-10-Fancy.rasi
+!/.config/rofi/themes/KooL_style-11-Win11-list-dark.rasi
+!/.config/rofi/themes/KooL_style-11-Win11-list-light.rasi
+!/.config/rofi/themes/KooL_style-12-TOP-Docu.rasi
+!/.config/rofi/themes/KooL_style-13-Vertical.rasi
+!/.config/rofi/themes/KooL_style-14.rasi
+!/.config/rofi/themes/KooL_style-15-solarized.rasi
+!/.config/rofi/themes/KooL_style-2-Dark.rasi
+!/.config/rofi/themes/KooL_style-2-Light.rasi
+!/.config/rofi/themes/KooL_style-3-FullScreen-v1.rasi
+!/.config/rofi/themes/KooL_style-3-Fullscreen-v2.rasi
+!/.config/rofi/themes/KooL_style-4.rasi
+!/.config/rofi/themes/KooL_style-5.rasi
+!/.config/rofi/themes/KooL_style-6.rasi
+!/.config/rofi/themes/KooL_style-7.rasi
+!/.config/rofi/themes/KooL_style-8.rasi
+!/.config/rofi/themes/KooL_style-9.rasi
+!/.config/rofi/themes/saint-rofi.rasi
+!/.config/rofi/wide.rasi
+!/.config/rofi/wide.sh
+!/.config/rofi/wide_light.rasi
+!/.config/rofi/wide_light.sh
+!/.config/swaync/
+!/.config/swaync/config.json
+!/.config/swaync/icons/
+!/.config/swaync/icons/backup.png
+!/.config/swaync/icons/battery-quarter-solid.svg
+!/.config/swaync/icons/battery-status.png
+!/.config/swaync/icons/brightness-100.png
+!/.config/swaync/icons/brightness-20.png
+!/.config/swaync/icons/brightness-40.png
+!/.config/swaync/icons/brightness-60.png
+!/.config/swaync/icons/brightness-80.png
+!/.config/swaync/icons/dropper.png
+!/.config/swaync/icons/microphone-mute.png
+!/.config/swaync/icons/microphone.png
+!/.config/swaync/icons/music.png
+!/.config/swaync/icons/palette.png
+!/.config/swaync/icons/picture.png
+!/.config/swaync/icons/timer.png
+!/.config/swaync/icons/uptime.png
+!/.config/swaync/icons/volume-high.png
+!/.config/swaync/icons/volume-low.png
+!/.config/swaync/icons/volume-mid.png
+!/.config/swaync/icons/volume-mute.png
+!/.config/swaync/icons/vpn.png
+!/.config/swaync/images/
+!/.config/swaync/images/bell.png
+!/.config/swaync/images/error.png
+!/.config/swaync/images/ja.png
+!/.config/swaync/images/note.png
+!/.config/swaync/style.css
+!/.config/systemd/
+!/.config/systemd/user/
+!/.config/systemd/user/wallpaper-cycle.service
+!/.config/systemd/user/wallpaper-cycle.timer
+!/.config/wallust/
+!/.config/wallust/templates/
+!/.config/wallust/templates/colors-cava
+!/.config/wallust/templates/colors-ghostty.conf
+!/.config/wallust/templates/colors-hyprland.conf
+!/.config/wallust/templates/colors-kitty.conf
+!/.config/wallust/templates/colors-rofi.rasi
+!/.config/wallust/templates/colors-swaync.css
+!/.config/wallust/templates/colors-waybar.css
+!/.config/wallust/templates/qml_color.json
+!/.config/wallust/wallust.toml
+!/.config/waybar/
+!/.config/waybar/Modules
+!/.config/waybar/ModulesCustom
+!/.config/waybar/ModulesGroups
+!/.config/waybar/ModulesVertical
+!/.config/waybar/ModulesWorkspaces
+!/.config/waybar/UserModules
+!/.config/waybar/config
+!/.config/waybar/config.jsonc
+!/.config/waybar/configs/
+!/.config/waybar/configs/[BOT & Left] SouthWest
+!/.config/waybar/configs/[BOT & Right] SouthEast
+!/.config/waybar/configs/[BOT] Camellia
+!/.config/waybar/configs/[BOT] Chrysanthemum
+!/.config/waybar/configs/[BOT] Default Laptop
+!/.config/waybar/configs/[BOT] Gardenia
+!/.config/waybar/configs/[BOT] Peony
+!/.config/waybar/configs/[BOT] Simple
+!/.config/waybar/configs/[BOT] Sleek
+!/.config/waybar/configs/[LEFT] WestWing
+!/.config/waybar/configs/[LEFT] WestWing v2
+!/.config/waybar/configs/[RIGHT] EastWing
+!/.config/waybar/configs/[RIGHT] EastWing v2
+!/.config/waybar/configs/[TOP & BOT] SummitSplit
+!/.config/waybar/configs/[TOP & BOT] SummitSplit v2
+!/.config/waybar/configs/[TOP & BOT] SummitSplit v3
+!/.config/waybar/configs/[TOP & BOT] SummitSplit-glass
+!/.config/waybar/configs/[TOP & Left] NorthWest
+!/.config/waybar/configs/[TOP & Right] NorthEast
+!/.config/waybar/configs/[TOP] 0-Ja-0
+!/.config/waybar/configs/[TOP] Arrow
+!/.config/waybar/configs/[TOP] Camellia
+!/.config/waybar/configs/[TOP] Chrysanthemum
+!/.config/waybar/configs/[TOP] Default Laptop
+!/.config/waybar/configs/[TOP] Default Laptop (old v1)
+!/.config/waybar/configs/[TOP] Default Laptop (old v2)
+!/.config/waybar/configs/[TOP] Default Laptop (old v3)
+!/.config/waybar/configs/[TOP] Default Laptop (old v4)
+!/.config/waybar/configs/[TOP] Default Laptop (old v5)
+!/.config/waybar/configs/[TOP] Default Laptop-glass
+!/.config/waybar/configs/[TOP] Everforest
+!/.config/waybar/configs/[TOP] Everforest-glass
+!/.config/waybar/configs/[TOP] Gardenia
+!/.config/waybar/configs/[TOP] Minimal - Long
+!/.config/waybar/configs/[TOP] Minimal - Short
+!/.config/waybar/configs/[TOP] Peony
+!/.config/waybar/configs/[TOP] Simple
+!/.config/waybar/configs/[TOP] Simpliest
+!/.config/waybar/configs/[TOP] Sleek
+!/.config/waybar/scripts/
+!/.config/waybar/scripts/title.sh
+!/.config/waybar/style.css
+!/.config/waybar/style/
+!/.config/waybar/style/Crystal Clear Glass.css
+!/.config/waybar/style/ML4W Glass-3d.css
+!/.config/waybar/style/ML4W Glass.css
+!/.config/waybar/style/ML4W/
+!/.config/waybar/style/ML4W/glass.css
+!/.config/waybar/style/[0 VERTICAL] Golden Noir.css
+!/.config/waybar/style/[0 VERTICAL] Oglo Chicklets.css
+!/.config/waybar/style/[0 VERTICAL] [Catpuccin] Mocha.css
+!/.config/waybar/style/[Black & White] Monochrome.css
+!/.config/waybar/style/[Catppuccin] Frappe.css
+!/.config/waybar/style/[Catppuccin] Latte.css
+!/.config/waybar/style/[Catppuccin] Mocha.css
+!/.config/waybar/style/[Colored] Chroma Glow.css
+!/.config/waybar/style/[Colored] Translucent.css
+!/.config/waybar/style/[Colorful] Aurora Blossom.css
+!/.config/waybar/style/[Colorful] Aurora.css
+!/.config/waybar/style/[Colorful] Oglo Chicklets.css
+!/.config/waybar/style/[Colorful] Rainbow Spectrum.css
+!/.config/waybar/style/[Colorful] stolen-style.css
+!/.config/waybar/style/[Dark] Golden Eclipse.css
+!/.config/waybar/style/[Dark] Golden Noir.css
+!/.config/waybar/style/[Dark] Half-Moon.css
+!/.config/waybar/style/[Dark] Latte-Wallust combined v2.css
+!/.config/waybar/style/[Dark] Latte-Wallust combined.css
+!/.config/waybar/style/[Dark] Purpl.css
+!/.config/waybar/style/[Dark] Wallust Obsidian Edge.css
+!/.config/waybar/style/[Extra] Arrow.css
+!/.config/waybar/style/[Extra] Crimson.css
+!/.config/waybar/style/[Extra] EverForest.css
+!/.config/waybar/style/[Extra] ML4W starter.css
+!/.config/waybar/style/[Extra] Mauve.css
+!/.config/waybar/style/[Extra] Modern-Combined - Transparent.css
+!/.config/waybar/style/[Extra] Modern-Combined.css
+!/.config/waybar/style/[Extra] Neon Circuit.css
+!/.config/waybar/style/[Extra] Prismatic Glow.css
+!/.config/waybar/style/[Extra] Rose Pine.css
+!/.config/waybar/style/[Extra] Simple Pink.css
+!/.config/waybar/style/[Light] Monochrome Contrast.css
+!/.config/waybar/style/[Light] Obsidian Glow.css
+!/.config/waybar/style/[Rainbow] RGB Bordered.css
+!/.config/waybar/style/[Retro] Simple Style.css
+!/.config/waybar/style/[Transparent] Crystal Clear.css
+!/.config/waybar/style/[VERTICAL] [Catpuccin] Mocha.css
+!/.config/waybar/style/[WALLUST] ML4W-modern-mixed.css
+!/.config/waybar/style/[WALLUST] ML4W-modern.css
+!/.config/waybar/style/[Wallust Bordered] Chroma Fusion Edge.css
+!/.config/waybar/style/[Wallust Bordered] Chroma Simple.css
+!/.config/waybar/style/[Wallust Transparent] Crystal Clear.css
+!/.config/waybar/style/[Wallust] Box type.css
+!/.config/waybar/style/[Wallust] Chroma Edge.css
+!/.config/waybar/style/[Wallust] Chroma Fusion.css
+!/.config/waybar/style/[Wallust] Chroma Tally V2.css
+!/.config/waybar/style/[Wallust] Chroma Tally.css
+!/.config/waybar/style/[Wallust] Colored.css
+!/.config/waybar/style/[Wallust] Simple.css
+!/.config/waybar/style/catppuccin-themes/
+!/.config/waybar/style/catppuccin-themes/frappe.css
+!/.config/waybar/style/catppuccin-themes/latte.css
+!/.config/waybar/style/catppuccin-themes/mocha.css
+!/.config/waybar/style/catppuccin-themes/rgbmocha.css
+!/.config/wezterm/
+!/.config/wezterm/wezterm.lua
+!/.config/wlogout/
+!/.config/wlogout/icons/
+!/.config/wlogout/icons/hibernate-hover.png
+!/.config/wlogout/icons/hibernate-hover1.png
+!/.config/wlogout/icons/hibernate.png
+!/.config/wlogout/icons/lock-hover.png
+!/.config/wlogout/icons/lock.png
+!/.config/wlogout/icons/logout-hover.png
+!/.config/wlogout/icons/logout.png
+!/.config/wlogout/icons/moon_865813.png
+!/.config/wlogout/icons/power-hover.png
+!/.config/wlogout/icons/power.png
+!/.config/wlogout/icons/restart-hover.png
+!/.config/wlogout/icons/restart.png
+!/.config/wlogout/icons/sleep-hover.png
+!/.config/wlogout/icons/sleep.png
+!/.config/wlogout/icons/sleep2.png
+!/.config/wlogout/layout
+!/.config/wlogout/style.css
+!/.config/xfce4/
+!/.config/xfce4/helpers.rc
+!/.config/xfce4/xfconf/
+!/.config/xfce4/xfconf/xfce-perchannel-xml/
+!/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+!/.config/yad/
+!/.config/yad/settings.conf
+!/.config/zathura/
+!/.config/zathura/zathurarc
+!/.gitconfig
+!/.githooks/
+!/.githooks/pre-commit
+!/.githooks/pre-push
+!/.github/
+!/.github/workflows/
+!/.github/workflows/ci.yml
+!/.gitignore
+!/.gitleaks.toml
+!/.zprofile
+!/.zshrc
+!/NOTICE
+!/README.md
+!/bootstrap/
+!/bootstrap/bootstrap.sh
+!/bootstrap/packages/
+!/bootstrap/packages/aur.txt
+!/bootstrap/packages/pacman.txt
+!/bootstrap/post-install.sh
+!/bootstrap/verify.sh
+!/docs/
+!/docs/DECISIONS.md
+!/docs/INVENTORY.md
+!/docs/LINT-BASELINE.md
+!/docs/PORTABILITY.md
+!/docs/REMOVED.md
+!/docs/SECURITY-FINDINGS.md
+!/scripts/
+!/scripts/check.sh
+!/scripts/gen-gitignore.sh
 
-# User-generated state and rendered absolute-path configs
-.config/quickshell/weather_api.conf
-.config/quickshell/.cache/
-.cache/quickshell/
-.config/qt5ct/qt5ct.conf
-.config/qt6ct/qt6ct.conf
+# Generated user state and rendered install templates
+/.config/quickshell/weather_api.conf
+/.config/quickshell/.cache/
+/.cache/quickshell/
+/.config/qt5ct/qt5ct.conf
+/.config/qt6ct/qt6ct.conf
+/.config/ghostty/wallust.conf
+/.config/ghostty/theme.conf

@@ -1,0 +1,9 @@
+# Packages not found in the current pacman sync metadata; verify current CachyOS/AUR names. The installer reports unavailable entries without aborting.
+rofi-wayland
+wallust
+swww
+pokemon-colorscripts
+
+# VERIFY: cursor themes may be named differently in the current AUR.
+saturnian-cursors
+# VERIFY: use package search for emoji/cursor additions required by the local setup.
