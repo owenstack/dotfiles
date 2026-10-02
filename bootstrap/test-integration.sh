@@ -59,12 +59,19 @@ grep -Fx 'preexisting CI conflict' "$backup_file" >/dev/null
 cmp "$HOME/.zshrc" "$REPO_ROOT/.zshrc"
 first_mtime=$(stat -c %y "$HOME/.zshrc")
 backup_count=$(find "$HOME/.dotfiles-backup" -mindepth 1 -maxdepth 1 -type d | wc -l)
+tree_snapshot() {
+  find "$HOME" -mindepth 1 -path "$HOME/.dotfiles" -prune -o -printf '%P\t%y\t%T@\t%l\n' | sort
+  find "$HOME" -path "$HOME/.dotfiles" -prune -o -type f -print0 | sort -z | xargs -0 -r sha256sum
+}
+first_snapshot=$(tree_snapshot)
 
 bash "$REPO_ROOT/bootstrap/bootstrap.sh" --no-packages --no-post-install --yes
 second_mtime=$(stat -c %y "$HOME/.zshrc")
 second_backup_count=$(find "$HOME/.dotfiles-backup" -mindepth 1 -maxdepth 1 -type d | wc -l)
+second_snapshot=$(tree_snapshot)
 [[ $first_mtime == "$second_mtime" ]]
 [[ $backup_count == "$second_backup_count" ]]
+[[ $first_snapshot == "$second_snapshot" ]]
 [[ -z $(git --git-dir="$dotdir" --work-tree="$HOME" status --porcelain) ]]
 echo 'PASS: conflicting file backed up; second checkout left files and backups unchanged.'
 USER_SCRIPT

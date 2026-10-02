@@ -74,7 +74,6 @@ if ((DRY_RUN == 0)); then
 fi
 backup="$home/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 if ((DRY_RUN == 0)); then
-  mkdir -p "$backup"
   while IFS= read -r -d '' path; do
     target="$home/$path"
     [[ -e $target || -L $target ]] || continue
@@ -98,7 +97,6 @@ if ((DRY_RUN == 0)); then
     fi
     rm -f "$expected"
   done < <(dot ls-tree -r --name-only -z HEAD)
-  rmdir "$backup" 2>/dev/null || true
 fi
 if ((DRY_RUN)); then
   echo 'DRY-RUN dot checkout (conflicts would be backed up first)'
