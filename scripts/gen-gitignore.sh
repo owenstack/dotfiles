@@ -30,6 +30,7 @@ trap 'rm -f "$out"' EXIT
 /.config/ghostty/wallust.conf
 /.config/ghostty/theme.conf
 /.config/kitty/kitty-themes/
+/.config/wlogout/colors-wlogout.css
 IGNORE
 } > "$out"
 if ((dry_run)); then cat "$out"; else cp "$out" .gitignore; fi

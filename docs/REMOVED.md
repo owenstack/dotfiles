@@ -54,3 +54,18 @@ This log records deletions and case/path migrations. Git history retains prior c
 | Removed path | Reason / evidence | Evidence |
 |---|---|---|
 | `.config/btop/themes/catppuccin_frappe.theme`, `catppuccin_latte.theme`, `catppuccin_mocha.theme` | `.config/btop/btop.conf` selects only `catppuccin_macchiato.theme`; no btop theme switcher references the other filenames. | Repository-wide search for the three exact filenames and extensionless stems found no references outside the files. |
+
+## Phase 3: Waybar and inactive notification daemons
+
+| Removed / migrated paths | Reason / evidence | Result |
+|---|---|---|
+| `.config/waybar/**` (107 files), `.config/hypr/scripts/WaybarCava.sh`, `WaybarLayout.sh`, `WaybarScripts.sh`, `WaybarStyles.sh`, and `.config/rofi/config-waybar-layout.rasi`, `config-waybar-style.rasi` | Quickshell is the configured bar; no Waybar startup occurs in the Lua startup chain or systemd user units. Script/config references were internal to the removed Waybar tree or inactive legacy configuration. `shader.lua`, wallpaper refresh, and theme refresh branches are being rewired to task-bar QuickShell. | Deleted after references were updated. Cava was only included as an unused generated configuration and Waybar visualizer. |
+| `.config/hypr/scripts/RefreshNoWaybar.sh` | Functionally duplicate refresh helper used by wallpaper, animations, and monitor profile scripts. | Renamed to `.config/hypr/scripts/RefreshWallust.sh`; references updated to QuickShell and Dunst. |
+| `.config/mako/**` | No active startup, systemd, Quickshell, or script references; Dunst is the configured daemon. | Removed. |
+| `.config/swaync/config.json`, `.config/swaync/style.css` | SwayNC is not launched; Quickshell reads Dunst history and `hyprland.lua` starts Dunst. Existing shell scripts only needed notification images/icons. | Removed daemon config after moving referenced image/icon assets to `.config/hypr/assets/notifications/` and updating all paths. |
+| `.config/wallust/templates/colors-waybar.css` and Waybar target settings | Generated only for the removed Waybar configuration. | Removed template and target; no active runtime reference remains. |
+
+| `.config/cava/**`, `.config/wallust/templates/colors-cava`, `.config/wallust/templates/colors-swaync.css` | No active QuickShell or shell command launches Cava; these were only generated for removed Waybar/SwayNC modules. | Removed corresponding unused Wallust template entries and base package. |
+| `.config/wallust/templates/colors-waybar.css` | Also imported by wlogout. | Replaced with a focused `colors-wlogout.css` palette template and generated wlogout stylesheet. |
+
+| `.config/hypr/scripts/RofiEmoji.sh` embedded word list | The text payload after the shell script caused syntax/lint checks to parse non-shell emoji data as code. | Moved its full data payload to adjacent `RofiEmoji.data`; the shell script reads that data file. Menu output remains backed by the same entries. |

@@ -26,19 +26,6 @@
 !/.config/btop/btop.conf
 !/.config/btop/themes/
 !/.config/btop/themes/catppuccin_macchiato.theme
-!/.config/cava/
-!/.config/cava/config
-!/.config/cava/shaders/
-!/.config/cava/shaders/bar_spectrum.frag
-!/.config/cava/shaders/eye_of_phi.frag
-!/.config/cava/shaders/normalized_bars.frag
-!/.config/cava/shaders/northern_lights.frag
-!/.config/cava/shaders/pass_through.vert
-!/.config/cava/shaders/spectrogram.frag
-!/.config/cava/shaders/winamp_line_style_spectrum.frag
-!/.config/cava/themes/
-!/.config/cava/themes/solarized_dark
-!/.config/cava/themes/tricolor
 !/.config/dunst/
 !/.config/dunst/alert.sh
 !/.config/dunst/dunstrc
@@ -112,6 +99,35 @@
 !/.config/hypr/animations/Mahaveer - me-1.conf
 !/.config/hypr/animations/Mahaveer - me-2.conf
 !/.config/hypr/application-style.conf
+!/.config/hypr/assets/
+!/.config/hypr/assets/notifications/
+!/.config/hypr/assets/notifications/icons/
+!/.config/hypr/assets/notifications/icons/backup.png
+!/.config/hypr/assets/notifications/icons/battery-quarter-solid.svg
+!/.config/hypr/assets/notifications/icons/battery-status.png
+!/.config/hypr/assets/notifications/icons/brightness-100.png
+!/.config/hypr/assets/notifications/icons/brightness-20.png
+!/.config/hypr/assets/notifications/icons/brightness-40.png
+!/.config/hypr/assets/notifications/icons/brightness-60.png
+!/.config/hypr/assets/notifications/icons/brightness-80.png
+!/.config/hypr/assets/notifications/icons/dropper.png
+!/.config/hypr/assets/notifications/icons/microphone-mute.png
+!/.config/hypr/assets/notifications/icons/microphone.png
+!/.config/hypr/assets/notifications/icons/music.png
+!/.config/hypr/assets/notifications/icons/palette.png
+!/.config/hypr/assets/notifications/icons/picture.png
+!/.config/hypr/assets/notifications/icons/timer.png
+!/.config/hypr/assets/notifications/icons/uptime.png
+!/.config/hypr/assets/notifications/icons/volume-high.png
+!/.config/hypr/assets/notifications/icons/volume-low.png
+!/.config/hypr/assets/notifications/icons/volume-mid.png
+!/.config/hypr/assets/notifications/icons/volume-mute.png
+!/.config/hypr/assets/notifications/icons/vpn.png
+!/.config/hypr/assets/notifications/images/
+!/.config/hypr/assets/notifications/images/bell.png
+!/.config/hypr/assets/notifications/images/error.png
+!/.config/hypr/assets/notifications/images/ja.png
+!/.config/hypr/assets/notifications/images/note.png
 !/.config/hypr/configs/
 !/.config/hypr/configs/ENVariables.conf
 !/.config/hypr/configs/Keybinds.conf
@@ -162,7 +178,8 @@
 !/.config/hypr/scripts/Polkit.sh
 !/.config/hypr/scripts/PortalHyprland.sh
 !/.config/hypr/scripts/Refresh.sh
-!/.config/hypr/scripts/RefreshNoWaybar.sh
+!/.config/hypr/scripts/RefreshWallust.sh
+!/.config/hypr/scripts/RofiEmoji.data
 !/.config/hypr/scripts/RofiEmoji.sh
 !/.config/hypr/scripts/RofiSearch.sh
 !/.config/hypr/scripts/RofiThemeSelector-modified.sh
@@ -177,10 +194,6 @@
 !/.config/hypr/scripts/Volume.sh
 !/.config/hypr/scripts/WallpaperCycle.sh
 !/.config/hypr/scripts/WallustSwww.sh
-!/.config/hypr/scripts/WaybarCava.sh
-!/.config/hypr/scripts/WaybarLayout.sh
-!/.config/hypr/scripts/WaybarScripts.sh
-!/.config/hypr/scripts/WaybarStyles.sh
 !/.config/hypr/scripts/Wlogout.sh
 !/.config/hypr/scripts/audiocontrol.sh
 !/.config/hypr/scripts/brightnesscontrol.sh
@@ -239,16 +252,13 @@
 !/.config/kitty/themes/everforest.conf
 !/.config/kitty/themes/everforest_light.conf
 !/.config/kitty/themes/theme_switcher.sh
-!/.config/mako/
-!/.config/mako/config
-!/.config/mako/config_dark
-!/.config/mako/config_light
 !/.config/micro/
 !/.config/micro/colorschemes/
 !/.config/micro/colorschemes/catppuccin-macchiato.micro
 !/.config/micro/settings.json
 !/.config/mise/
 !/.config/mise/config.toml
+!/.config/mise/mise.lock
 !/.config/nwg-look/
 !/.config/nwg-look/config
 !/.config/qt5ct/
@@ -448,8 +458,6 @@
 !/.config/rofi/config-search.rasi
 !/.config/rofi/config-wallpaper-effect.rasi
 !/.config/rofi/config-wallpaper.rasi
-!/.config/rofi/config-waybar-layout.rasi
-!/.config/rofi/config-waybar-style.rasi
 !/.config/rofi/config-zsh-theme.rasi
 !/.config/rofi/config.rasi
 !/.config/rofi/crt/
@@ -542,164 +550,19 @@
 !/.config/rofi/wide.sh
 !/.config/rofi/wide_light.rasi
 !/.config/rofi/wide_light.sh
-!/.config/swaync/
-!/.config/swaync/config.json
-!/.config/swaync/icons/
-!/.config/swaync/icons/backup.png
-!/.config/swaync/icons/battery-quarter-solid.svg
-!/.config/swaync/icons/battery-status.png
-!/.config/swaync/icons/brightness-100.png
-!/.config/swaync/icons/brightness-20.png
-!/.config/swaync/icons/brightness-40.png
-!/.config/swaync/icons/brightness-60.png
-!/.config/swaync/icons/brightness-80.png
-!/.config/swaync/icons/dropper.png
-!/.config/swaync/icons/microphone-mute.png
-!/.config/swaync/icons/microphone.png
-!/.config/swaync/icons/music.png
-!/.config/swaync/icons/palette.png
-!/.config/swaync/icons/picture.png
-!/.config/swaync/icons/timer.png
-!/.config/swaync/icons/uptime.png
-!/.config/swaync/icons/volume-high.png
-!/.config/swaync/icons/volume-low.png
-!/.config/swaync/icons/volume-mid.png
-!/.config/swaync/icons/volume-mute.png
-!/.config/swaync/icons/vpn.png
-!/.config/swaync/images/
-!/.config/swaync/images/bell.png
-!/.config/swaync/images/error.png
-!/.config/swaync/images/ja.png
-!/.config/swaync/images/note.png
-!/.config/swaync/style.css
 !/.config/systemd/
 !/.config/systemd/user/
 !/.config/systemd/user/wallpaper-cycle.service
 !/.config/systemd/user/wallpaper-cycle.timer
 !/.config/wallust/
 !/.config/wallust/templates/
-!/.config/wallust/templates/colors-cava
 !/.config/wallust/templates/colors-ghostty.conf
 !/.config/wallust/templates/colors-hyprland.conf
 !/.config/wallust/templates/colors-kitty.conf
 !/.config/wallust/templates/colors-rofi.rasi
-!/.config/wallust/templates/colors-swaync.css
-!/.config/wallust/templates/colors-waybar.css
+!/.config/wallust/templates/colors-wlogout.css
 !/.config/wallust/templates/qml_color.json
 !/.config/wallust/wallust.toml
-!/.config/waybar/
-!/.config/waybar/Modules
-!/.config/waybar/ModulesCustom
-!/.config/waybar/ModulesGroups
-!/.config/waybar/ModulesVertical
-!/.config/waybar/ModulesWorkspaces
-!/.config/waybar/UserModules
-!/.config/waybar/config
-!/.config/waybar/config.jsonc
-!/.config/waybar/configs/
-!/.config/waybar/configs/[BOT & Left] SouthWest
-!/.config/waybar/configs/[BOT & Right] SouthEast
-!/.config/waybar/configs/[BOT] Camellia
-!/.config/waybar/configs/[BOT] Chrysanthemum
-!/.config/waybar/configs/[BOT] Default Laptop
-!/.config/waybar/configs/[BOT] Gardenia
-!/.config/waybar/configs/[BOT] Peony
-!/.config/waybar/configs/[BOT] Simple
-!/.config/waybar/configs/[BOT] Sleek
-!/.config/waybar/configs/[LEFT] WestWing
-!/.config/waybar/configs/[LEFT] WestWing v2
-!/.config/waybar/configs/[RIGHT] EastWing
-!/.config/waybar/configs/[RIGHT] EastWing v2
-!/.config/waybar/configs/[TOP & BOT] SummitSplit
-!/.config/waybar/configs/[TOP & BOT] SummitSplit v2
-!/.config/waybar/configs/[TOP & BOT] SummitSplit v3
-!/.config/waybar/configs/[TOP & BOT] SummitSplit-glass
-!/.config/waybar/configs/[TOP & Left] NorthWest
-!/.config/waybar/configs/[TOP & Right] NorthEast
-!/.config/waybar/configs/[TOP] 0-Ja-0
-!/.config/waybar/configs/[TOP] Arrow
-!/.config/waybar/configs/[TOP] Camellia
-!/.config/waybar/configs/[TOP] Chrysanthemum
-!/.config/waybar/configs/[TOP] Default Laptop
-!/.config/waybar/configs/[TOP] Default Laptop (old v1)
-!/.config/waybar/configs/[TOP] Default Laptop (old v2)
-!/.config/waybar/configs/[TOP] Default Laptop (old v3)
-!/.config/waybar/configs/[TOP] Default Laptop (old v4)
-!/.config/waybar/configs/[TOP] Default Laptop (old v5)
-!/.config/waybar/configs/[TOP] Default Laptop-glass
-!/.config/waybar/configs/[TOP] Everforest
-!/.config/waybar/configs/[TOP] Everforest-glass
-!/.config/waybar/configs/[TOP] Gardenia
-!/.config/waybar/configs/[TOP] Minimal - Long
-!/.config/waybar/configs/[TOP] Minimal - Short
-!/.config/waybar/configs/[TOP] Peony
-!/.config/waybar/configs/[TOP] Simple
-!/.config/waybar/configs/[TOP] Simpliest
-!/.config/waybar/configs/[TOP] Sleek
-!/.config/waybar/scripts/
-!/.config/waybar/scripts/title.sh
-!/.config/waybar/style.css
-!/.config/waybar/style/
-!/.config/waybar/style/Crystal Clear Glass.css
-!/.config/waybar/style/ML4W Glass-3d.css
-!/.config/waybar/style/ML4W Glass.css
-!/.config/waybar/style/ML4W/
-!/.config/waybar/style/ML4W/glass.css
-!/.config/waybar/style/[0 VERTICAL] Golden Noir.css
-!/.config/waybar/style/[0 VERTICAL] Oglo Chicklets.css
-!/.config/waybar/style/[0 VERTICAL] [Catpuccin] Mocha.css
-!/.config/waybar/style/[Black & White] Monochrome.css
-!/.config/waybar/style/[Catppuccin] Frappe.css
-!/.config/waybar/style/[Catppuccin] Latte.css
-!/.config/waybar/style/[Catppuccin] Mocha.css
-!/.config/waybar/style/[Colored] Chroma Glow.css
-!/.config/waybar/style/[Colored] Translucent.css
-!/.config/waybar/style/[Colorful] Aurora Blossom.css
-!/.config/waybar/style/[Colorful] Aurora.css
-!/.config/waybar/style/[Colorful] Oglo Chicklets.css
-!/.config/waybar/style/[Colorful] Rainbow Spectrum.css
-!/.config/waybar/style/[Colorful] stolen-style.css
-!/.config/waybar/style/[Dark] Golden Eclipse.css
-!/.config/waybar/style/[Dark] Golden Noir.css
-!/.config/waybar/style/[Dark] Half-Moon.css
-!/.config/waybar/style/[Dark] Latte-Wallust combined v2.css
-!/.config/waybar/style/[Dark] Latte-Wallust combined.css
-!/.config/waybar/style/[Dark] Purpl.css
-!/.config/waybar/style/[Dark] Wallust Obsidian Edge.css
-!/.config/waybar/style/[Extra] Arrow.css
-!/.config/waybar/style/[Extra] Crimson.css
-!/.config/waybar/style/[Extra] EverForest.css
-!/.config/waybar/style/[Extra] ML4W starter.css
-!/.config/waybar/style/[Extra] Mauve.css
-!/.config/waybar/style/[Extra] Modern-Combined - Transparent.css
-!/.config/waybar/style/[Extra] Modern-Combined.css
-!/.config/waybar/style/[Extra] Neon Circuit.css
-!/.config/waybar/style/[Extra] Prismatic Glow.css
-!/.config/waybar/style/[Extra] Rose Pine.css
-!/.config/waybar/style/[Extra] Simple Pink.css
-!/.config/waybar/style/[Light] Monochrome Contrast.css
-!/.config/waybar/style/[Light] Obsidian Glow.css
-!/.config/waybar/style/[Rainbow] RGB Bordered.css
-!/.config/waybar/style/[Retro] Simple Style.css
-!/.config/waybar/style/[Transparent] Crystal Clear.css
-!/.config/waybar/style/[VERTICAL] [Catpuccin] Mocha.css
-!/.config/waybar/style/[WALLUST] ML4W-modern-mixed.css
-!/.config/waybar/style/[WALLUST] ML4W-modern.css
-!/.config/waybar/style/[Wallust Bordered] Chroma Fusion Edge.css
-!/.config/waybar/style/[Wallust Bordered] Chroma Simple.css
-!/.config/waybar/style/[Wallust Transparent] Crystal Clear.css
-!/.config/waybar/style/[Wallust] Box type.css
-!/.config/waybar/style/[Wallust] Chroma Edge.css
-!/.config/waybar/style/[Wallust] Chroma Fusion.css
-!/.config/waybar/style/[Wallust] Chroma Tally V2.css
-!/.config/waybar/style/[Wallust] Chroma Tally.css
-!/.config/waybar/style/[Wallust] Colored.css
-!/.config/waybar/style/[Wallust] Simple.css
-!/.config/waybar/style/catppuccin-themes/
-!/.config/waybar/style/catppuccin-themes/frappe.css
-!/.config/waybar/style/catppuccin-themes/latte.css
-!/.config/waybar/style/catppuccin-themes/mocha.css
-!/.config/waybar/style/catppuccin-themes/rgbmocha.css
 !/.config/wezterm/
 !/.config/wezterm/wezterm.lua
 !/.config/wlogout/
@@ -770,3 +633,4 @@
 /.config/ghostty/wallust.conf
 /.config/ghostty/theme.conf
 /.config/kitty/kitty-themes/
+/.config/wlogout/colors-wlogout.css

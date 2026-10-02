@@ -6,7 +6,7 @@
 kitty_themes_DiR="${XDG_DATA_HOME:-$HOME/.local/share}/kitty-themes/themes" # Downloaded upstream theme set
 kitty_runtime_DiR="$HOME/.config/kitty/kitty-themes"
 kitty_config="$HOME/.config/kitty/kitty.conf"
-iDIR="$HOME/.config/swaync/images" # For notifications
+iDIR="$HOME/.config/hypr/assets/notifications/images" # For notifications
 rofi_theme_for_this_script="$HOME/.config/rofi/config-kitty-theme.rasi"
 
 # --- Helper Functions ---

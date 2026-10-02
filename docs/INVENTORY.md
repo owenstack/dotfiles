@@ -1,56 +1,53 @@
 # Inventory and reference graph
 
-Tracked file count at baseline: **969**. Tracked blob size: **6818702 total**. A normal analysis clone was made at `/tmp/dotfiles-work`.
+## Current tracked config inventory
 
-## Top-level `.config` inventory
+Current tracked file count: **532**. Total tracked working-file bytes: **6,052,307 bytes**. Initial branch inventory recorded 968 files and approximately 16 MiB.
 
-Sizes are tracked file bytes; origin is inferred from headers, directory structure, and known project conventions. Startup relevance is based on references from the listed startup roots, and is conservative where the graph is incomplete.
+Sizes and file counts cover only tracked files under each `.config/<app>`. Origin is inferred from headers and project metadata. Live means a reference from the Hyprland/QuickShell/systemd startup chain, a shell startup file, or a current script/menu edge.
 
-| App | Tracked bytes | Files | Origin | Live startup reference |
+| App | Tracked bytes | Files | Origin | Startup / live reference |
 |---|---:|---:|---|---|
-| `Kvantum` | 316,032 | 5 | unknown / mixed | indirect / unknown |
-| `Thunar` | 10,311 | 2 | unknown / mixed | indirect / unknown |
-| `btop` | 12,943 | 5 | unknown / mixed | indirect / unknown |
-| `cava` | 24,722 | 10 | upstream-vendored | indirect / unknown |
-| `dunst` | 5,614 | 4 | unknown / mixed | yes |
-| `fastfetch` | 417,718 | 8 | unknown / mixed | indirect / unknown |
-| `fish` | 160 | 1 | unknown / mixed | indirect / unknown |
-| `ghostty` | 1,557 | 2 | unknown / mixed | yes |
-| `gtk-3.0` | 477 | 1 | unknown / mixed | indirect / unknown |
-| `hypr` | 495,045 | 150 | JaKooLit + Owen Lua config | yes |
-| `kitty` | 1,033,225 | 187 | upstream-vendored themes + Owen config | yes |
-| `kvantum` | 371,235 | 8 | unknown / mixed | indirect / unknown |
-| `mako` | 1,675 | 3 | unknown / mixed | indirect / unknown |
-| `micro` | 298,251 | 151 | upstream-vendored | indirect / unknown |
-| `mise` | 67 | 1 | unknown / mixed | yes |
-| `nwg-look` | 282 | 1 | unknown / mixed | indirect / unknown |
-| `qt5ct` | 2,454 | 3 | unknown / mixed | indirect / unknown |
-| `qt6ct` | 4,034 | 5 | unknown / mixed | indirect / unknown |
-| `quickshell` | 817,998 | 143 | Owen / upstream-derived | yes |
-| `rofi` | 1,407,418 | 106 | JaKooLit + Owen changes | yes |
-| `swaync` | 850,047 | 27 | unknown / mixed | indirect / unknown |
-| `systemd` | 308 | 2 | unknown / mixed | yes |
-| `wallust` | 18,390 | 9 | upstream templates + Owen config | yes |
-| `waybar` | 367,240 | 107 | JaKooLit/upstream-vendored | indirect / unknown |
-| `wezterm` | 3,850 | 1 | unknown / mixed | indirect / unknown |
-| `wlogout` | 351,384 | 17 | unknown / mixed | indirect / unknown |
-| `xfce4` | 476 | 2 | unknown / mixed | indirect / unknown |
-| `yad` | 1,590 | 1 | unknown / mixed | indirect / unknown |
-| `zathura` | 2,194 | 1 | unknown / mixed | indirect / unknown |
+| `Kvantum` | 683,961 | 11 | Catppuccin/Everforest upstream assets | indirect |
+| `Thunar` | 10,311 | 2 | unknown / mixed | not found / unknown |
+| `btop` | 9,475 | 2 | unknown / mixed | not found / unknown |
+| `dunst` | 5,614 | 4 | unknown / mixed | direct |
+| `fastfetch` | 417,704 | 8 | unknown / mixed | indirect |
+| `fish` | 160 | 1 | unknown / mixed | not found / unknown |
+| `ghostty` | 1,557 | 2 | unknown / mixed | indirect |
+| `git` | 35 | 1 | unknown / mixed | indirect |
+| `gtk-3.0` | 477 | 1 | unknown / mixed | indirect |
+| `hypr` | 1,322,943 | 169 | JaKooLit-derived scripts + Owen Lua config | direct |
+| `kitty` | 938,477 | 16 | Owen config + selected upstream theme | indirect |
+| `micro` | 1,137 | 2 | Owen settings + Catppuccin upstream colorschemes | not found / unknown |
+| `mise` | 54 | 1 | unknown / mixed | indirect |
+| `nwg-look` | 282 | 1 | unknown / mixed | indirect |
+| `qt5ct` | 2,440 | 3 | unknown / mixed | indirect |
+| `qt6ct` | 4,020 | 5 | unknown / mixed | indirect |
+| `quickshell` | 819,472 | 143 | Owen / upstream-derived | direct |
+| `rofi` | 1,405,893 | 104 | JaKooLit-derived + Owen changes | indirect |
+| `systemd` | 308 | 2 | Owen units | direct |
+| `wallust` | 6,764 | 7 | Wallust templates + Owen config | indirect |
+| `wezterm` | 3,850 | 1 | unknown / mixed | not found / unknown |
+| `wlogout` | 351,356 | 17 | unknown / mixed | indirect |
+| `xfce4` | 476 | 2 | unknown / mixed | not found / unknown |
+| `yad` | 1,590 | 1 | unknown / mixed | not found / unknown |
+| `zathura` | 2,194 | 1 | unknown / mixed | not found / unknown |
 
 ## Reference graph method
 
-Starting roots: `.config/hypr/hyprland.lua`, `.config/hypr/shader.lua`, each quickshell `shell.qml`, `.config/systemd/user/*`, `.zshrc`, and active Lua keybind definitions. References were identified with repository-wide `rg` searches over filenames and extensionless basenames, plus inspection of `require`, QML imports, shell `source`/exec targets, systemd `ExecStart`, and keybind commands. This is a static reachability approximation; dynamic shell construction and user-invoked menus can hide edges.
+Starting roots: `.config/hypr/hyprland.lua`, `.config/hypr/shader.lua`, all QuickShell `shell.qml` files, `.config/systemd/user/*`, `.zshrc`, and keybinds in the active Lua config. `rg` searches covered filenames and extensionless basenames across QML/JS, Lua, shell, systemd, Rofi, Dunst, and Wallust files. Static edges were followed through Lua `require`, QML imports, shell sources and command paths, systemd `ExecStart`, and keybind exec targets. Dynamic path construction and user-invoked menus remain an approximation.
 
-### Confirmed live edges
+### Current graph result
 
-- `hyprland.lua` requires `shader.lua`, sets environment and starts `qs -c task-bar` and `qs -c overview`; it starts scripts and shell commands directly.
-- `task-bar/shell.qml` and `overview/shell.qml` are entry points. `top-bar` has no startup edge located and is retained for owner review.
-- `wallpaper-cycle.timer` activates `wallpaper-cycle.service`; service/script references remain in scope.
-- `shader.lua` invokes `qs -c task-bar` in its shader recovery path and still has Waybar-related branches.
-- Rofi menus and keybinds dynamically invoke scripts from `.config/hypr/scripts` and `.config/rofi`.
+- `hyprland.lua` requires `shader.lua` and `monitors.lua`, starts Dunst, `qs -c task-bar`, `hypridle`, wallpaper daemon, clipboard watchers, and polkit agent. The startup sound is guarded by a file check.
+- QuickShell entry points are `.config/quickshell/task-bar/shell.qml` and `.config/quickshell/overview/shell.qml`; top-bar has no startup edge and remains for owner review.
+- `wallpaper-cycle.timer` activates its service; wallpaper scripts generate Wallust palettes and restart task-bar QuickShell.
+- Active bar references no longer target Waybar; Waybar assets/scripts were removed. Notification image/icon files used by shell scripts now live under `.config/hypr/assets/notifications/`; Dunst remains the notification daemon.
+- Rofi launchers and QuickShell command execution reach many Hyprland scripts. User-invoked settings scripts are retained where the current graph does not prove them dead.
 
-### Limits / pending verification
+### Remaining uncertainty
 
-- `gitleaks`, `shellcheck`, `shfmt`, and `stylua` are unavailable in the analysis environment at baseline. `qmllint` and `zsh` are available. No Wayland session is available for runtime UI checks.
-- This inventory is a baseline. Phase 3 requires a refreshed graph after each removal group.
+- `shellcheck`, `shfmt`, `stylua`, and `gitleaks` were unavailable locally at baseline. `qmllint` and `zsh` are available.
+- No Wayland desktop session is available for Hyprland/Quickshell runtime validation.
+- Dynamic script/menu edges and the full Quickshell import graph need target-machine runtime verification.

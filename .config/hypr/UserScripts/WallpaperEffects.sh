@@ -10,9 +10,9 @@ SCRIPTSDIR="$HOME/.config/hypr/scripts"
 focused_monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
 rofi_theme="$HOME/.config/rofi/config-wallpaper-effect.rasi"
 
-# Directory for swaync
-iDIR="$HOME/.config/swaync/images"
-iDIRi="$HOME/.config/swaync/icons"
+# Directory for Dunst
+iDIR="$HOME/.config/hypr/assets/notifications/images"
+iDIRi="$HOME/.config/hypr/assets/notifications/icons"
 
 # swww transition config
 FPS=60
@@ -49,7 +49,7 @@ no-effects() {
     wait $!
     wallust run "$wallpaper_current" -s &&
     wait $!
-    # Refresh rofi, waybar, wallust palettes
+    # Refresh rofi, wallust palettes
 	sleep 2
 	"$SCRIPTSDIR/Refresh.sh"
 
@@ -89,7 +89,7 @@ main() {
   
             wallust run "$wallpaper_output" -s &
             sleep 1
-            # Refresh rofi, waybar, wallust palettes
+            # Refresh rofi, wallust palettes
             "${SCRIPTSDIR}/Refresh.sh"
             notify-send -u low -i "$iDIR/ja.png" "$choice" "effects applied"
         else

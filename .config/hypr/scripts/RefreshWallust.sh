@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-
-# Modified version of Refresh.sh but waybar wont refresh
-# Used by automatic wallpaper change
-# Modified inorder to refresh rofi background, Wallust, SwayNC only
+# Refresh QuickShell and generated palettes after wallpaper or monitor changes.
 
 SCRIPTSDIR=$HOME/.config/hypr/scripts
 UserScripts=$HOME/.config/hypr/UserScripts
@@ -25,18 +21,13 @@ for _prs in "${_ps[@]}"; do
     fi
 done
 
-# quit ags & relaunch ags
-#ags -q && ags &
-
-# quit quickshell & relaunch quickshell
-pkill qs && qs &
-
-# Wallust refresh (synchronous to ensure colors are ready)
-${SCRIPTSDIR}/WallustSwww.sh
+# Refresh generated palettes before restarting the active QuickShell configuration.
+"${SCRIPTSDIR}/WallustSwww.sh"
 sleep 0.2
+pkill -x qs >/dev/null 2>&1 || true
+qs -c task-bar >/dev/null 2>&1 &
 
-# reload swaync
-swaync-client --reload-config
+dunstctl reload >/dev/null 2>&1 || true
 
 # Relaunching rainbow borders if the script exists
 sleep 1

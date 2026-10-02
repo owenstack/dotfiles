@@ -178,7 +178,7 @@ M.complex_modes = {
 
             hl.exec_cmd("pkill qs")
             hl.exec_cmd("qs -p " .. home .. "/.config/quickshell/task-bar/lib/ThemeOSD.qml")
-            hl.exec_cmd("waybar &")
+            hl.exec_cmd("qs -c task-bar &")
 
             hl.config({
                 general = {
@@ -202,7 +202,7 @@ M.complex_modes = {
         deactivate = function()
             write_file(crt_state_file, "off")
 
-            hl.exec_cmd("pkill waybar")
+            hl.exec_cmd("pkill -x qs || true")
             hl.exec_cmd("qs -c task-bar &")
 
             local saved_theme = read_file(theme_mode_file, "dark")

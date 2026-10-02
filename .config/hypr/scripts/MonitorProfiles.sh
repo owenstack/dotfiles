@@ -8,7 +8,7 @@ if pidof rofi > /dev/null; then
 fi
 
 # Variables
-iDIR="$HOME/.config/swaync/images"
+iDIR="$HOME/.config/hypr/assets/notifications/images"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
 monitor_dir="$HOME/.config/hypr/Monitor_Profiles"
 target="$HOME/.config/hypr/monitors.conf"
@@ -39,4 +39,4 @@ if [[ -n "$chosen_file" ]]; then
 fi
 
 sleep 1
-${SCRIPTSDIR}/RefreshNoWaybar.sh &
+${SCRIPTSDIR}/RefreshWallust.sh &

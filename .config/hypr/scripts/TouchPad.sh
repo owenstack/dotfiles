@@ -7,7 +7,7 @@
 
 set -euo pipefail
 
-notif="$HOME/.config/swaync/images/ja.png"
+notif="$HOME/.config/hypr/assets/notifications/images/ja.png"
 laptops_conf="$HOME/.config/hypr/UserConfigs/Laptops.conf"
 
 touchpad_device="${TOUCHPAD_DEVICE:-}"

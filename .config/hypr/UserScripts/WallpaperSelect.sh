@@ -9,9 +9,9 @@ wallDIR="$PICTURES_DIR/wallpapers"
 SCRIPTSDIR="$HOME/.config/hypr/scripts"
 wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
 
-# Directory for swaync
-iDIR="$HOME/.config/swaync/images"
-iDIRi="$HOME/.config/swaync/icons"
+# Directory for Dunst
+iDIR="$HOME/.config/hypr/assets/notifications/images"
+iDIRi="$HOME/.config/hypr/assets/notifications/icons"
 
 # swww transition config
 FPS=60

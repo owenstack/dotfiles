@@ -17,7 +17,6 @@ qt5ct
 qt6ct
 nwg-look
 btop
-cava
 fastfetch
 lsd
 fzf
