@@ -3,13 +3,15 @@ set -euo pipefail
 DRY_RUN=0
 NO_PACKAGES=0
 YES=0
+NO_POST_INSTALL=0
 for arg in "$@"; do
   case "$arg" in
   --dry-run) DRY_RUN=1 ;;
   --no-packages) NO_PACKAGES=1 ;;
   --yes) YES=1 ;;
+  --no-post-install) NO_POST_INSTALL=1 ;;
   -h | --help)
-    echo 'Usage: bootstrap.sh [--dry-run] [--no-packages] [--yes]'
+    echo 'Usage: bootstrap.sh [--dry-run] [--no-packages] [--no-post-install] [--yes]'
     exit 0
     ;;
   *)
@@ -54,12 +56,13 @@ else
   echo 'DRY-RUN: Arch/root/network/package checks will be evaluated without changes.'
 fi
 home=${HOME:?HOME must be set}
+repo_url=${DOTFILES_REPO_URL:-https://github.com/owenstack/dotfiles.git}
 dotdir="$home/.dotfiles"
 dot() { git --git-dir="$dotdir" --work-tree="$home" "$@"; }
 if [[ ! -d $dotdir ]]; then
   if ((DRY_RUN)); then
-    echo "DRY-RUN git clone --bare https://github.com/owenstack/dotfiles.git $dotdir"
-  else git clone --bare https://github.com/owenstack/dotfiles.git "$dotdir"; fi
+    echo "DRY-RUN git clone --bare $repo_url $dotdir"
+  else git clone --bare "$repo_url" "$dotdir"; fi
 else
   if ((DRY_RUN)); then
     echo "DRY-RUN git --git-dir=$dotdir fetch --all --prune"
@@ -127,7 +130,9 @@ if ((NO_PACKAGES == 0)); then
     else echo 'No AUR helper is available; skipping AUR list.'; fi
   fi
 fi
-if ((DRY_RUN)); then echo 'DRY-RUN bootstrap/post-install.sh'; else
+if ((NO_POST_INSTALL)); then
+  echo 'Skipping post-install by request.'
+elif ((DRY_RUN)); then echo 'DRY-RUN bootstrap/post-install.sh'; else
   post_args=()
   ((YES)) && post_args+=(--yes)
   bash "$home/bootstrap/post-install.sh" "${post_args[@]}"

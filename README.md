@@ -10,7 +10,7 @@ Personal CachyOS / Hyprland dotfiles, kept in the repository root as a mirror of
 curl -fsSL https://raw.githubusercontent.com/owenstack/dotfiles/main/bootstrap/bootstrap.sh | bash
 ```
 
-The bootstrap checks out the bare repository, backs up conflicting files, installs packages listed under `bootstrap/packages/`, configures zsh plugins, renders machine-specific Qt paths, and prints any manual steps. Use `--dry-run`, `--no-packages`, or `--yes` when running a checked-out copy.
+The bootstrap checks out the bare repository, backs up conflicting files, installs packages listed under `bootstrap/packages/`, configures zsh plugins, renders machine-specific Qt paths, and prints any manual steps. Use `--dry-run`, `--no-packages`, or `--yes` when running a checked-out copy. `--no-post-install` skips user-level setup for controlled recovery or checkout tests.
 
 ## Bare-repository workflow
 

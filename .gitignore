@@ -609,6 +609,7 @@
 !/bootstrap/packages/aur.txt
 !/bootstrap/packages/pacman.txt
 !/bootstrap/post-install.sh
+!/bootstrap/test-integration.sh
 !/bootstrap/verify.sh
 !/docs/
 !/docs/CLEANUP-REPORT.md
