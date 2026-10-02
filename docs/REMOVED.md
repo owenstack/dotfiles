@@ -31,3 +31,7 @@ This log records deletions and case/path migrations. Git history retains prior c
 - `wezterm/` is not launched, but Quickshell still recognizes its window class; retained pending an explicit UI cleanup decision.
 - `fish/config.fish` remains referenced by Quickshell overview search commands, so fish is included as a package.
 - Animation presets and shaders remain until the preset selector and Quickshell shader drawer are exhaustively mapped; dynamic filename selectors make an incomplete grep unsafe.
+
+| Former path | Reason / evidence | Result |
+|---|---|---|
+| `.config/hypr/scripts/ScreenShot.sh` | Case-insensitive collision with active `.config/hypr/scripts/screenshot.sh`; active Lua binds invoke lowercase file, while legacy un-sourced `configs/Keybinds.conf` / `Laptops.conf` referenced the uppercase helper. | Preserved behavior under the distinct path `ScreenshotLegacy.sh`; updated those legacy references. No files were discarded. |
