@@ -10,7 +10,7 @@ xdg_state=${XDG_STATE_HOME:-$home/.local/state}
 xdg_cache=${XDG_CACHE_HOME:-$home/.cache}
 custom=${ZSH_CUSTOM:-$home/.oh-my-zsh/custom}
 if [[ ! -d $home/.oh-my-zsh ]]; then run env KEEP_ZSHRC=yes RUNZSH=no CHSH=no sh -c "\$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended; fi
-run mkdir -p "$custom/plugins" "$xdg_state/quickshell" "$xdg_cache/quickshell" "$xdg_config/kitty/kitty-themes"
+run mkdir -p "$custom/plugins" "$xdg_state/quickshell" "$xdg_cache/quickshell" "$xdg_config/kitty/kitty-themes" "$xdg_cache/zsh"
 if [[ ! -e $xdg_state/quickshell/weather_api.conf ]]; then run install -m 600 /dev/null "$xdg_state/quickshell/weather_api.conf"; fi
 for plugin in zsh-autosuggestions zsh-syntax-highlighting; do
   target="$custom/plugins/$plugin"

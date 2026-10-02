@@ -35,6 +35,10 @@ jq
 python
 python-requests
 fontconfig
+shellcheck
+shfmt
+stylua
+gitleaks
 noto-fonts-emoji
 # VERIFY: package availability can vary by Arch mirror state.
 swww

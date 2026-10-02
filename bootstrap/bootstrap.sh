@@ -14,13 +14,16 @@ for arg in "$@"; do
 done
 (( EUID != 0 )) || { echo 'Refusing to run as root.' >&2; exit 1; }
 [[ -f /etc/arch-release ]] || { echo 'This bootstrap requires Arch Linux or CachyOS.' >&2; exit 1; }
-command -v git >/dev/null || { echo 'git is required.' >&2; exit 1; }
-command -v curl >/dev/null || { echo 'curl is required.' >&2; exit 1; }
+command -v curl >/dev/null || { echo 'curl is required to run the bootstrap.' >&2; exit 1; }
+command -v pacman >/dev/null || { echo 'pacman is required on Arch-based systems.' >&2; exit 1; }
 if (( ! DRY_RUN )); then
   sudo -v
-  if ! pacman -Q base-devel >/dev/null 2>&1; then
-    if (( YES )); then sudo pacman -S --needed --noconfirm base-devel
-    else sudo pacman -S --needed base-devel
+  required=()
+  command -v git >/dev/null 2>&1 || required+=(git)
+  pacman -Q base-devel >/dev/null 2>&1 || required+=(base-devel)
+  if ((${#required[@]})); then
+    if (( YES )); then sudo pacman -S --needed --noconfirm "${required[@]}"
+    else sudo pacman -S --needed "${required[@]}"
     fi
   fi
   curl -fsSI --connect-timeout 5 https://github.com >/dev/null || { echo 'Network check failed.' >&2; exit 1; }
@@ -70,12 +73,16 @@ if (( ! NO_PACKAGES )); then
     done < "$home/bootstrap/packages/pacman.txt"
     if ((${#valid[@]})); then sudo pacman -S --needed "${valid[@]}"; fi
     if ((${#failed[@]})); then printf 'Unavailable packages (review manually): %s\n' "${failed[*]}"; fi
-    if command -v paru >/dev/null 2>&1; then
+    if ! command -v paru >/dev/null 2>&1 && ! command -v yay >/dev/null 2>&1; then
+      if pacman -Si paru >/dev/null 2>&1; then sudo pacman -S --needed paru; fi
+    fi
+    aur_helper=$(command -v paru || command -v yay || true)
+    if [[ -n $aur_helper ]]; then
       while IFS= read -r name; do
         [[ -z $name || $name == \#* ]] && continue
-        paru -Si "$name" >/dev/null 2>&1 && paru -S --needed "$name" || echo "AUR package unavailable: $name"
+        "$aur_helper" -Si "$name" >/dev/null 2>&1 && "$aur_helper" -S --needed "$name" || echo "AUR package unavailable: $name"
       done < "$home/bootstrap/packages/aur.txt"
-    else echo 'No paru/yay found; skipping AUR list. Install paru first if needed.'; fi
+    else echo 'No AUR helper is available; skipping AUR list.'; fi
   fi
 fi
 if (( DRY_RUN )); then echo 'DRY-RUN bootstrap/post-install.sh'; else
