@@ -63,7 +63,7 @@ PanelWindow {
     // Dark/light: shared with the rest of the shell
     Process {
         id: themeCheck
-        command: ["cat", Quickshell.env("XDG_CACHE_HOME") + "/quickshell/theme_mode"]
+        command: ["cat", (Quickshell.env("XDG_CACHE_HOME") || (Quickshell.env("HOME") + "/.cache")) + "/quickshell/theme_mode"]
         running: true
         stdout: StdioCollector {
             onTextChanged: {

@@ -75,9 +75,18 @@ Item {
           Item {
             anchors.fill: parent; layer.enabled: root.visible; layer.smooth: true
             layer.effect: OpacityMask { maskSource: pfpMask }
+            Rectangle {
+              anchors.fill: parent
+              radius: width / 2
+              color: root._outline
+              visible: profilePic.status !== Image.Ready
+              Text { anchors.centerIn: parent; text: root.profileName.length ? root.profileName.substring(0, 1).toUpperCase() : "?"; color: root._textPrimary; font.bold: true }
+            }
             Image {
+              id: profilePic
               anchors.fill: parent
               fillMode: Image.PreserveAspectCrop
+              visible: status === Image.Ready
               source: (root.profileImage.startsWith("file://") ? "" : "file://") + root.profileImage
               mipmap: true; smooth: true; cache: true; asynchronous: true
               sourceSize: Qt.size(256, 256)
