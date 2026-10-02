@@ -132,7 +132,7 @@ Item {
                 label: "Weather API"
                 Layout.fillWidth: true; Layout.fillHeight: true
 
-                FileView { id: weatherConf; path: Quickshell.env("HOME")+"/.config/quickshell/weather_api.conf" }
+                FileView { id: weatherConf; path: (Quickshell.env("XDG_STATE_HOME") || (Quickshell.env("HOME") + "/.local/state")) + "/quickshell/weather_api.conf" }
                 SField { id: apiKeyField; label: "API Key (OpenWeatherMap)"; isPassword: true; text: Lib.Configuration.weatherApiKey }
                 SField { Layout.fillWidth: true; id: latField; label: "Latitude"; text: Lib.Configuration.weatherLat }
                 SField { Layout.fillWidth: true; id: lonField; label: "Longitude"; text: Lib.Configuration.weatherLon }
@@ -146,6 +146,7 @@ Item {
                             Lib.Configuration.weatherLon=lonField.text.trim()
                             Lib.Configuration.save()
                             weatherConf.setText('API_KEY="'+apiKeyField.text.trim()+'"\nLAT="'+latField.text.trim()+'"\nLON="'+lonField.text.trim()+'"\n')
+                            Quickshell.execDetached(["bash", "-lc", "mkdir -p \"$(dirname \"" + weatherConf.path + "\")\" && chmod 600 \"" + weatherConf.path + "\""])
                             Quickshell.execDetached(["rm","-f",Quickshell.env("HOME")+"/.cache/quickshell/weather.json"])
                         }
                     }

@@ -375,7 +375,7 @@ PanelWindow {
                         if (mouse.button === Qt.LeftButton) win.det("pkill -x rofi || " + (win.isDarkMode ? "~/.config/rofi/launcher.sh" : "~/.config/rofi/launcher_2.sh"))
                         else if (mouse.button === Qt.RightButton) {
                             win.isDarkMode = !win.isDarkMode
-                            win.det("bash /home/owenstack/.config/quickshell/top-bar/bar/theme-mode.sh " + (win.isDarkMode ? "dark" : "light"))
+                            win.det("bash " + Quickshell.env("HOME") + "/.config/quickshell/top-bar/bar/theme-mode.sh " + (win.isDarkMode ? "dark" : "light"))
                         }
                     }
                 }
