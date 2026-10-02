@@ -1,5 +1,5 @@
 [tools]
-bun = "latest"
+bun = "1"
 gh = "latest"
-go = "latest"
-node = "latest"
+go = "1"
+node = "lts"
