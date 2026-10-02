@@ -15,3 +15,19 @@ This log records deletions and case/path migrations. Git history retains prior c
 
 - `.config/quickshell/top-bar/`: no startup edge found; retained because it may be manually launched.
 - Whether the optional top-bar profile image should be supplied, and whether `GDK_SCALE=2` is intentional on the 1080p panel.
+
+## Phase 3: safe dead-file removals
+
+| Removed path | Reason / evidence | Search evidence |
+|---|---|---|
+| `.config/hypr/scripts/Polkit-NixOS.sh` | CachyOS configuration starts the packaged polkit agent in `hyprland.lua`; Nix store traversal is obsolete. | Removed its only commented reference from `configs/Startup_Apps.conf`; no active Lua/QML/systemd references. |
+| `.config/hypr/scripts/UptimeNixOS.sh` | Nix-store-specific helper is not appropriate for CachyOS. | Replaced the only `hyprlock-2k.conf` fallback with plain `uptime -p`; re-grep found no remaining path reference. |
+| `.config/hypr/v2.3.20` | JaKooLit version marker; no code reads version marker. | Repository-wide search found only the marker path itself. |
+
+### Needs owner review (retained)
+
+- Waybar scripts/configs have references from scripts, menus, and inactive legacy Hyprland config; the graph does not prove all are dead until those live user-invoked paths are rewired.
+- `mako/` and `swaync/` remain referenced by notification/theme/asset scripts even though Dunst is the started daemon. Removing them now would leave those paths dangling.
+- `wezterm/` is not launched, but Quickshell still recognizes its window class; retained pending an explicit UI cleanup decision.
+- `fish/config.fish` remains referenced by Quickshell overview search commands, so fish is included as a package.
+- Animation presets and shaders remain until the preset selector and Quickshell shader drawer are exhaustively mapped; dynamic filename selectors make an incomplete grep unsafe.
