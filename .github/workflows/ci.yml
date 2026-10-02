@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
       - name: Run repository checks
         run: |
-          docker run --rm -v "$PWD:/work" -w /work archlinux:latest bash -lc 'pacman -Sy --noconfirm git ripgrep shellcheck shfmt stylua gitleaks && git config --global --add safe.directory /work && ./scripts/check.sh && shellcheck --severity=warning scripts/doctor.sh'
+          docker run --rm -v "$PWD:/work" -w /work archlinux:latest bash -lc 'pacman -Sy --noconfirm git ripgrep shellcheck shfmt stylua gitleaks && git config --global --add safe.directory /work && ./scripts/check.sh && shellcheck --severity=warning scripts/doctor.sh bootstrap/test-fresh-install.sh bootstrap/test-fresh-install-container.sh'
   bootstrap-dry-run:
     runs-on: ubuntu-latest
     steps:
