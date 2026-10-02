@@ -50,7 +50,7 @@ get_current_layout_info() {
         jq -r --arg name "$name" '.keyboards[] | select(.name==$name).active_layout_index')
       break
     fi
-  done <<< "$(get_keyboard_names)"
+  done <<<"$(get_keyboard_names)"
 
   $found_kb && return 0
   return 1
@@ -78,14 +78,13 @@ change_layout() {
   return 0
 }
 
-
 # Stores values in layout_mapping, variant_mapping and layout_index
 if ! get_current_layout_info; then
   echo "Could not get current layout information." >&2
   echo "There might not be any keyboards available, \
     or some were unnecessarily set as ignored." >&2
   notify-send -u low -t 2000 'kb_layout' " Error:" " Layout change failed"
-  echo "Exiting $0 $@" >&2
+  printf 'Exiting %s %s\n' "$0" "$*" >&2
   exit 1
 fi
 
@@ -100,7 +99,7 @@ elif [[ "$1" == "switch" ]]; then
   layout_count=${#layout_mapping[@]}
   echo "Number of layouts: $layout_count"
 
-  next_index=$(( (layout_index + 1) % layout_count ))
+  next_index=$(((layout_index + 1) % layout_count))
   new_layout="${layout_mapping[$next_index]}"
   new_variant="${variant_mapping[$next_index]}"
   echo "Next layout: $new_layout"

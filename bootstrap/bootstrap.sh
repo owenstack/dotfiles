@@ -34,7 +34,7 @@ command -v pacman >/dev/null || {
   echo 'pacman is required on Arch-based systems.' >&2
   exit 1
 }
-if ((!DRY_RUN)); then
+if ((DRY_RUN == 0)); then
   sudo -v
   required=()
   command -v git >/dev/null 2>&1 || required+=(git)
@@ -65,12 +65,12 @@ else
     echo "DRY-RUN git --git-dir=$dotdir fetch --all --prune"
   else dot fetch --all --prune; fi
 fi
-if ((!DRY_RUN)); then
+if ((DRY_RUN == 0)); then
   dot config --local status.showUntrackedFiles no
   dot config --local core.hooksPath .githooks
 fi
 backup="$home/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
-if ((!DRY_RUN)); then
+if ((DRY_RUN == 0)); then
   mkdir -p "$backup"
   while IFS= read -r -d '' path; do
     target="$home/$path"
@@ -91,7 +91,7 @@ if ((DRY_RUN)); then
 else
   dot checkout
 fi
-if ((!NO_PACKAGES)); then
+if ((NO_PACKAGES == 0)); then
   if ((DRY_RUN)); then
     echo 'DRY-RUN install packages listed in bootstrap/packages/*.txt'
   else
