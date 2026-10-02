@@ -17,7 +17,7 @@ fi
   echo 'This integration test requires an Arch container.' >&2
   exit 1
 }
-for tool in git curl sudo runuser useradd userdel; do
+for tool in git curl sudo runuser useradd userdel gitleaks; do
   command -v "$tool" >/dev/null || {
     echo "Missing test dependency: $tool" >&2
     exit 1
@@ -73,5 +73,33 @@ second_snapshot=$(tree_snapshot)
 [[ $backup_count == "$second_backup_count" ]]
 [[ $first_snapshot == "$second_snapshot" ]]
 [[ -z $(git --git-dir="$dotdir" --work-tree="$HOME" status --porcelain) ]]
+
+dot() { git --git-dir="$dotdir" --work-tree="$HOME" "$@"; }
+dot status --short >/dev/null
+mkdir -p "$HOME/.config/followup-smoke" "$HOME/hook-bin" "$HOME/no-gitleaks-bin"
+printf 'hook smoke test\n' >"$HOME/.config/followup-smoke/staged.txt"
+real_gitleaks=$(command -v gitleaks)
+cat >"$HOME/hook-bin/gitleaks" <<WRAPPER
+#!/usr/bin/env bash
+printf 'invoked\n' >>"\$HOME/.gitleaks-invoked"
+exec "$real_gitleaks" "\$@"
+WRAPPER
+chmod 0755 "$HOME/hook-bin/gitleaks"
+PATH="$HOME/hook-bin:$PATH" dot add -f .config/followup-smoke/staged.txt
+PATH="$HOME/hook-bin:$PATH" dot commit -m 'test: exercise installed pre-commit hook'
+[[ -s $HOME/.gitleaks-invoked ]]
+
+ln -s /usr/bin/bash "$HOME/no-gitleaks-bin/bash"
+ln -s /usr/bin/git "$HOME/no-gitleaks-bin/git"
+for hook in pre-commit pre-push; do
+  hook_log="$HOME/$hook-missing-gitleaks.log"
+  if PATH="$HOME/no-gitleaks-bin" /usr/bin/bash "$REPO_ROOT/.githooks/$hook" >"$hook_log" 2>&1; then
+    echo "FAIL: $hook passed without gitleaks." >&2
+    exit 1
+  fi
+  grep -F 'sudo pacman -S gitleaks' "$hook_log" >/dev/null
+  grep -F -- '--no-verify' "$hook_log" >/dev/null
+done
 echo 'PASS: conflicting file backed up; second checkout left files and backups unchanged.'
+echo 'PASS: bare-repo status/add/commit ran pre-commit with gitleaks; both hooks failed closed without gitleaks.'
 USER_SCRIPT

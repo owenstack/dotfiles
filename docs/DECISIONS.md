@@ -7,6 +7,10 @@
 
 ## Recorded choices
 
+- Bootstrap clones oh-my-zsh directly rather than evaluating its downloaded installer script. This keeps `--dry-run` free of command-substitution downloads and avoids running an unpinned `curl | sh` payload; future oh-my-zsh updates can replace the clone intentionally.
+- Install gitleaks after checkout but before configuring `core.hooksPath`. `--no-packages` still installs/checks this hook prerequisite; it skips the desktop package manifests only.
+- Hook failures name `sudo pacman -S gitleaks` and the manual `--no-verify` escape hatch. The escape hatch is for an equivalent prior scan, not a normal install path.
+
 - Retain the top-bar Quickshell configuration under Needs owner review: no startup or keybind edge was found, but deletion is irreversible from the user perspective and the brief says to retain it when uncertain.
 - Use Open-Meteo `WeatherWrap.sh` as the top-bar weather source because it uses the existing no-key weather implementation and its fallback, instead of introducing another dependency on an absent ags tree.
 - Canonicalize Kvantum at `.config/Kvantum/`, which matches the live theme settings and current Catppuccin theme-switch commands; preserve the Everforest theme assets under the canonical directory.

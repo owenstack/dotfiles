@@ -33,7 +33,7 @@ jobs:
           fetch-depth: 0
       - name: Test conflict backup and repeat checkout in Arch container
         run: |
-          docker run --rm -v "$PWD:/work:ro" -w /work archlinux:latest bash -lc 'pacman -Sy --noconfirm git curl sudo base-devel && git config --system --add safe.directory /work && DOTFILES_CI_CONTAINER=1 bash bootstrap/test-integration.sh'
+          docker run --rm -v "$PWD:/work:ro" -w /work archlinux:latest bash -lc 'pacman -Sy --noconfirm git curl sudo base-devel gitleaks && git config --system --add safe.directory /work && DOTFILES_CI_CONTAINER=1 bash bootstrap/test-integration.sh'
   gitleaks:
     runs-on: ubuntu-latest
     steps:
