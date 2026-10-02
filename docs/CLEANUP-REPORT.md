@@ -51,7 +51,7 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - Local tools were unavailable; the PR static CI subsequently passed. CI runs ShellCheck over tracked shell files at error severity, shfmt on maintained bootstrap/check scripts, StyLua over all tracked Lua files, gitleaks on the checked-out tree, collision checks, and the username-path scan. ShellCheck warnings below error severity were not baseline-compared.
 - `qmllint` passed 40 tracked QML files but exited 255 without diagnostics on 33; QuickShell runtime loading could not be checked without a Wayland session.
 - `systemd-analyze --user verify` could not access a user systemd manager in this environment. No Hyprland/QuickShell graphical session was available.
-- Package installation, post-install behavior on a fresh desktop, and the user-systemd timer remain unverified. AUR entries with uncertain names are marked `# VERIFY`; AUR RPC validation was unavailable.
+- Package installation and post-install behavior on a fresh desktop remain unverified. Workstream C validated every `pacman.txt` name against CachyOS sync metadata and every `aur.txt` name through AUR RPC v5; see `docs/PACKAGE-AUDIT.md`. The Arch-container CI run and actual package installation are pending. `simple_sddm_2` maps to `simple-sddm-theme-2-git`; Saturnian cursor package availability remains unresolved and is not included in the manifest. The user-systemd timer remains unverified.
 - The attempted local systemd verification and local bootstrap verifier are not equivalent to a fresh Arch install. Target-machine verification remains necessary before calling the desktop bootstrappable.
 
 ## Deviations and owner review
