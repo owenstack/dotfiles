@@ -41,14 +41,14 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 | Measure | Original `main` | `cleanup/bootstrap` | Change |
 |---|---:|---:|---:|
 | Tracked files | 968 | **532** | **−436 files (45.0%)** |
-| Git blob payload | 6,014,175 bytes | **5,266,237 bytes** | **−747,938 bytes (12.4%)** |
+| Git blob payload | 6,014,175 bytes | **5,264,625 bytes** | **−749,550 bytes (12.5%)** |
 
 `zsh -i -c exit` was measured over 20 runs with temporary XDG cache/state directories: median **209.5 ms before** and **91.6 ms after**. Final stderr was empty on all 20 runs.
 
 ## Verification
 
 - Passed: `bash -n` on tracked shell scripts; Hyprland `--verify-config` with `XDG_CONFIG_HOME` set to the repository `.config`; case-collision check; required `/home/owenstack` scan outside docs; shell startup timing/empty stderr; bootstrap and post-install dry runs.
-- The repository check gate returned success for available checks. `shellcheck`, `shfmt`, `stylua`, and `gitleaks` were skipped because they are not installed. Attempted package installation could not obtain a sudo password in this non-interactive environment.
+- Local tools were unavailable; the PR static CI subsequently passed. CI runs ShellCheck over tracked shell files at error severity, shfmt on maintained bootstrap/check scripts, StyLua over all tracked Lua files, gitleaks on the checked-out tree, collision checks, and the username-path scan. ShellCheck warnings below error severity were not baseline-compared.
 - `qmllint` passed 40 tracked QML files but exited 255 without diagnostics on 33; QuickShell runtime loading could not be checked without a Wayland session.
 - `systemd-analyze --user verify` could not access a user systemd manager in this environment. No Hyprland/QuickShell graphical session was available.
 - The user-systemd timer, package installation, real checkout conflict backup, fresh install, and second-run idempotency remain unverified. AUR entries with uncertain names are marked `# VERIFY`; AUR RPC validation was unavailable.
@@ -60,7 +60,8 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - `top-bar` is not in autostart but is retained for manual use; Fish is referenced by the overview search command; WezTerm is recognized by QuickShell. These are listed for owner review.
 - The `agnosterzak` theme was not found in the tracked tree. Post-install warns if it is absent from the local oh-my-zsh installation; the owner must supply/approve the theme if needed.
 - The public AUR and package metadata could not all be queried reliably from this environment. Package install reports unavailable names instead of aborting; check `bootstrap/packages/aur.txt` and `pacman.txt` before relying on a fresh install.
-- No CI run, full gitleaks scan, historical secret scan, visual desktop comparison, full container bootstrap, or PR CI result is available yet.
+- `shfmt` is enforced on the maintained bootstrap, hook, and repository-check scripts rather than all inherited third-party shell files, which would create broad unrelated formatting churn. ShellCheck runs across tracked shell files at error severity; warning-level results were not compared against a pre-cleanup baseline.
+- PR static CI and the Arch bootstrap dry-run passed. The gitleaks CI checkout was shallow and reported one commit scanned, so full historical secret scanning remains unverified. No visual desktop comparison or real fresh-HOME/conflict-backup/idempotency run was available.
 
 ## Open questions
 

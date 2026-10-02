@@ -11,3 +11,5 @@ Date: 2026-10-02. `shellcheck`, `shfmt`, and `stylua` are unavailable in the env
 - `scripts/check.sh` passed available checks and skipped gitleaks, shellcheck, shfmt, and stylua because they were not installed. An attempted package install could not prompt for sudo credentials in this non-interactive execution environment.
 - `systemd-analyze --user verify` could not complete because the sandbox disallows the user-systemd socket operations; no user service manager session is exposed.
 - Full bootstrap conflict-backup/idempotency tests were not run: Docker is installed but its daemon socket is inaccessible. Arch `--dry-run --no-packages` and post-install `--dry-run` both passed.
+
+- PR CI later passed ShellCheck at error severity, shfmt on maintained bootstrap/check scripts, StyLua across all Lua files, and gitleaks on its shallow checkout. The full-tree style-warning baseline is still not available.

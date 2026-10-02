@@ -2,7 +2,7 @@
 
 ## Current tracked config inventory
 
-Current tracked file count: **532**. Total Git blob payload: **5,266,237 bytes**. Baseline `main`: 968 files / 6,014,175 bytes.
+Current tracked file count: **532**. Total Git blob payload: **5,264,625 bytes**. Baseline `main`: 968 files / 6,014,175 bytes.
 
 Sizes are Git blob sizes (so the before/after comparison uses the same measure); per-app counts cover tracked files under `.config/<app>`. Origin is inferred from headers and project metadata. Live means a reference from the Hyprland/QuickShell/systemd startup chain, shell startup, or a current script/menu edge.
 
@@ -17,7 +17,7 @@ Sizes are Git blob sizes (so the before/after comparison uses the same measure);
 | `ghostty` | 896 | 1 | Owen config | indirect |
 | `git` | 35 | 1 | Owen config | indirect |
 | `gtk-3.0` | 477 | 1 | unknown / mixed | not found / unknown |
-| `hypr` | 1,320,028 | 168 | JaKooLit-derived + Owen Lua/scripts | direct |
+| `hypr` | 1,317,280 | 168 | JaKooLit-derived + Owen Lua/scripts | direct |
 | `kitty` | 938,477 | 16 | Owen config + selected upstream theme | indirect |
 | `micro` | 1,137 | 2 | Owen settings + Catppuccin | not found / unknown |
 | `mise` | 7,863 | 2 | Owen config | indirect |
@@ -28,7 +28,7 @@ Sizes are Git blob sizes (so the before/after comparison uses the same measure);
 | `rofi` | 602,691 | 104 | JaKooLit-derived + Owen changes | indirect |
 | `systemd` | 308 | 2 | Owen units | direct |
 | `wallust` | 6,764 | 7 | Wallust templates + Owen config | indirect |
-| `wezterm` | 3,850 | 1 | unknown / mixed | not found / unknown |
+| `wezterm` | 3,790 | 1 | unknown / mixed | not found / unknown |
 | `wlogout` | 351,356 | 17 | unknown / mixed | not found / unknown |
 | `xfce4` | 476 | 2 | unknown / mixed | not found / unknown |
 | `yad` | 1,590 | 1 | unknown / mixed | not found / unknown |
