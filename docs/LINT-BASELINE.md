@@ -10,6 +10,7 @@ Date: 2026-10-02. `shellcheck`, `shfmt`, and `stylua` are unavailable in the env
 - `zsh -i -c exit` median improved from 209.5 ms (before) to 91.6 ms (after), 20 runs each. All final runs had empty stderr, using temporary XDG cache/state paths.
 - `scripts/check.sh` passed available checks and skipped gitleaks, shellcheck, shfmt, and stylua because they were not installed. An attempted package install could not prompt for sudo credentials in this non-interactive execution environment.
 - `systemd-analyze --user verify` could not complete because the sandbox disallows the user-systemd socket operations; no user service manager session is exposed.
-- Full bootstrap conflict-backup/idempotency tests were not run: Docker is installed but its daemon socket is inaccessible. Arch `--dry-run --no-packages` and post-install `--dry-run` both passed.
+- Full package-consuming install and post-install behavior were not run locally because the Docker daemon socket is inaccessible. The targeted Arch-container conflict-backup and second-run snapshot integration subsequently passed in PR CI.
 
 - PR CI later passed ShellCheck at error severity, shfmt on maintained bootstrap/check scripts, StyLua across all Lua files, and gitleaks on its shallow checkout. The full-tree style-warning baseline is still not available.
+- The Arch-container checkout integration passed: it preserved a conflicting `.zshrc` under the backup path and confirmed the second run left the temporary HOME snapshot unchanged.

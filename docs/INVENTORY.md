@@ -2,7 +2,7 @@
 
 ## Current tracked config inventory
 
-Current tracked file count: **532**. Total Git blob payload: **5,264,625 bytes**. Baseline `main`: 968 files / 6,014,175 bytes.
+Current tracked file count: **532**. Total Git blob payload: **5,269,605 bytes**. Baseline `main`: 968 files / 6,014,175 bytes.
 
 Sizes are Git blob sizes (so the before/after comparison uses the same measure); per-app counts cover tracked files under `.config/<app>`. Origin is inferred from headers and project metadata. Live means a reference from the Hyprland/QuickShell/systemd startup chain, shell startup, or a current script/menu edge.
 
@@ -25,7 +25,7 @@ Sizes are Git blob sizes (so the before/after comparison uses the same measure);
 | `qt5ct` | 2,440 | 3 | unknown / mixed | indirect |
 | `qt6ct` | 4,020 | 5 | unknown / mixed | indirect |
 | `quickshell` | 819,472 | 143 | Owen / upstream-derived | direct |
-| `rofi` | 602,691 | 104 | JaKooLit-derived + Owen changes | indirect |
+| `rofi` | 602,635 | 103 | JaKooLit-derived + Owen changes | indirect |
 | `systemd` | 308 | 2 | Owen units | direct |
 | `wallust` | 6,764 | 7 | Wallust templates + Owen config | indirect |
 | `wezterm` | 3,790 | 1 | unknown / mixed | not found / unknown |

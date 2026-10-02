@@ -28,7 +28,7 @@ Status: prepared for review; not merged.
 
 - Hardened zsh startup, history, PATH, mise activation, Git defaults, fallback Bash startup, and bare-repo aliases. Added `scripts/gen-gitignore.sh`, repository checks, hooks, package manifests, installer, post-install, verifier, and pinned-action CI workflow.
 - Set mise policy to Node LTS, Bun and Go major lines, and latest GitHub CLI; committed the generated mise lockfile.
-- Bootstrap dry runs passed on the CachyOS host. The local bare-repo smoke test passed status/add/commit (hook bypassed only for missing gitleaks). Full fresh-HOME, conflict backup, and idempotent second-run tests could not be run because the available Docker daemon socket is inaccessible.
+- Bootstrap dry runs passed on the CachyOS host. The local bare-repo smoke test passed status/add/commit (hook bypassed only for missing gitleaks). A CI Arch-container integration test seeded a fresh temporary HOME with a conflicting `.zshrc`, verified its backup, and compared a full HOME filesystem/content snapshot across the second run; it passed without package or post-install steps.
 
 ### Phase 6: documentation
 
@@ -41,7 +41,7 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 | Measure | Original `main` | `cleanup/bootstrap` | Change |
 |---|---:|---:|---:|
 | Tracked files | 968 | **532** | **−436 files (45.0%)** |
-| Git blob payload | 6,014,175 bytes | **5,264,625 bytes** | **−749,550 bytes (12.5%)** |
+| Git blob payload | 6,014,175 bytes | **5,269,605 bytes** | **−744,570 bytes (12.4%)** |
 
 `zsh -i -c exit` was measured over 20 runs with temporary XDG cache/state directories: median **209.5 ms before** and **91.6 ms after**. Final stderr was empty on all 20 runs.
 
@@ -51,7 +51,7 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - Local tools were unavailable; the PR static CI subsequently passed. CI runs ShellCheck over tracked shell files at error severity, shfmt on maintained bootstrap/check scripts, StyLua over all tracked Lua files, gitleaks on the checked-out tree, collision checks, and the username-path scan. ShellCheck warnings below error severity were not baseline-compared.
 - `qmllint` passed 40 tracked QML files but exited 255 without diagnostics on 33; QuickShell runtime loading could not be checked without a Wayland session.
 - `systemd-analyze --user verify` could not access a user systemd manager in this environment. No Hyprland/QuickShell graphical session was available.
-- The user-systemd timer, package installation, real checkout conflict backup, fresh install, and second-run idempotency remain unverified. AUR entries with uncertain names are marked `# VERIFY`; AUR RPC validation was unavailable.
+- Package installation, post-install behavior on a fresh desktop, and the user-systemd timer remain unverified. AUR entries with uncertain names are marked `# VERIFY`; AUR RPC validation was unavailable.
 - The attempted local systemd verification and local bootstrap verifier are not equivalent to a fresh Arch install. Target-machine verification remains necessary before calling the desktop bootstrappable.
 
 ## Deviations and owner review
@@ -61,7 +61,7 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - The `agnosterzak` theme was not found in the tracked tree. Post-install warns if it is absent from the local oh-my-zsh installation; the owner must supply/approve the theme if needed.
 - The public AUR and package metadata could not all be queried reliably from this environment. Package install reports unavailable names instead of aborting; check `bootstrap/packages/aur.txt` and `pacman.txt` before relying on a fresh install.
 - `shfmt` is enforced on the maintained bootstrap, hook, and repository-check scripts rather than all inherited third-party shell files, which would create broad unrelated formatting churn. ShellCheck runs across tracked shell files at error severity; warning-level results were not compared against a pre-cleanup baseline.
-- PR static CI and the Arch bootstrap dry-run passed. The gitleaks CI checkout was shallow and reported one commit scanned, so full historical secret scanning remains unverified. No visual desktop comparison or real fresh-HOME/conflict-backup/idempotency run was available.
+- PR static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. The gitleaks CI checkout was shallow and reported one commit scanned, so full historical secret scanning remains unverified. No visual desktop comparison or full package-consuming install was available.
 
 ## Open questions
 
