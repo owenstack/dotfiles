@@ -3,7 +3,8 @@
 # Kitty Themes Source https://github.com/dexpota/kitty-themes #
 
 # Define directories and variables
-kitty_themes_DiR="$HOME/.config/kitty/kitty-themes" # Kitty Themes Directory
+kitty_themes_DiR="${XDG_DATA_HOME:-$HOME/.local/share}/kitty-themes/themes" # Downloaded upstream theme set
+kitty_runtime_DiR="$HOME/.config/kitty/kitty-themes"
 kitty_config="$HOME/.config/kitty/kitty.conf"
 iDIR="$HOME/.config/swaync/images" # For notifications
 rofi_theme_for_this_script="$HOME/.config/rofi/config-kitty-theme.rasi"
@@ -27,6 +28,8 @@ apply_kitty_theme_to_config() {
     return 1
   fi
 
+  mkdir -p "$kitty_runtime_DiR"
+  cp "$theme_file_path_to_apply" "$kitty_runtime_DiR/$theme_name_to_apply.conf"
   local temp_kitty_config_file
   temp_kitty_config_file=$(mktemp)
   cp "$kitty_config" "$temp_kitty_config_file"
@@ -54,8 +57,12 @@ apply_kitty_theme_to_config() {
 # --- Main Script Execution ---
 
 if [ ! -d "$kitty_themes_DiR" ]; then
-  notify_user "$iDIR/error.png" "E-R-R-O-R" "Kitty Themes directory not found: $kitty_themes_DiR"
-  exit 1
+  repo_dir="${XDG_DATA_HOME:-$HOME/.local/share}/kitty-themes"
+  mkdir -p "$(dirname "$repo_dir")"
+  if ! git clone --depth 1 https://github.com/kovidgoyal/kitty-themes.git "$repo_dir"; then
+    notify_user "$iDIR/error.png" "Kitty themes unavailable" "Could not download kitty-themes. Check network access."
+    exit 1
+  fi
 fi
 
 if [ ! -f "$rofi_theme_for_this_script" ]; then

@@ -29,6 +29,7 @@ trap 'rm -f "$out"' EXIT
 /.config/qt6ct/qt6ct.conf
 /.config/ghostty/wallust.conf
 /.config/ghostty/theme.conf
+/.config/kitty/kitty-themes/
 IGNORE
 } > "$out"
 if ((dry_run)); then cat "$out"; else cp "$out" .gitignore; fi

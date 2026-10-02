@@ -14,3 +14,5 @@ This repository includes upstream-derived or vendored configuration and assets. 
 
 - Verify redistribution licenses for @snes19xx configuration and any vendored JaKooLit, kitty, micro, Cava, and Wallust material that lacks a clear per-file notice.
 - Confirm whether to add MIT licensing for Owen-authored configuration.
+
+- Kitty theme files fetched at runtime come from `kovidgoyal/kitty-themes`; the upstream repository is GPLv3 overall, while individual themes may have distinct licenses. The selector only copies a selected theme into ignored runtime config. Check the individual theme metadata before redistribution.

@@ -35,3 +35,9 @@ This log records deletions and case/path migrations. Git history retains prior c
 | Former path | Reason / evidence | Result |
 |---|---|---|
 | `.config/hypr/scripts/ScreenShot.sh` | Case-insensitive collision with active `.config/hypr/scripts/screenshot.sh`; active Lua binds invoke lowercase file, while legacy un-sourced `configs/Keybinds.conf` / `Laptops.conf` referenced the uppercase helper. | Preserved behavior under the distinct path `ScreenshotLegacy.sh`; updated those legacy references. No files were discarded. |
+
+## Phase 3: kitty theme vendor reduction
+
+| Removed path | Reason / evidence | Replacement |
+|---|---|---|
+| `.config/kitty/kitty-themes/*.conf` (171 upstream-vendored files) | Whole-repository search found no literal theme filename dependencies; `Kitty_themes.sh` dynamically enumerated every file from this directory. | Selector now shallow-clones `kovidgoyal/kitty-themes` into XDG data on first menu use, and copies only the selected theme into the ignored runtime config directory. Wallust writes its generated `01-Wallust.conf` target there. |
