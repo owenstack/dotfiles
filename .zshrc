@@ -1,5 +1,6 @@
 # zsh is the primary interactive shell; bash remains a small fallback.
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
 
 typeset -U path
 path=("$HOME/.local/bin" "$HOME/.local/share/mise/shims" $path)
@@ -20,7 +21,7 @@ if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh 2>/dev/null) 2>/dev/null || true
 fi
 if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh)"
+  eval "$(mise activate zsh 2>/dev/null)"
 fi
 
 # Quiet in scripts, SSH, tmux, and IDE terminals. Config remains user-local.
