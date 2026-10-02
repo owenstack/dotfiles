@@ -1,6 +1,7 @@
 # zsh is the primary interactive shell; bash remains a small fallback.
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump"
+[[ -d "${ZSH_COMPDUMP:h}" ]] || mkdir -p "${ZSH_COMPDUMP:h}" 2>/dev/null
 
 typeset -U path
 path=("$HOME/.local/bin" "$HOME/.local/share/mise/shims" $path)
