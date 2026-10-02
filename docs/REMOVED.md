@@ -41,3 +41,10 @@ This log records deletions and case/path migrations. Git history retains prior c
 | Removed path | Reason / evidence | Replacement |
 |---|---|---|
 | `.config/kitty/kitty-themes/*.conf` (171 upstream-vendored files) | Whole-repository search found no literal theme filename dependencies; `Kitty_themes.sh` dynamically enumerated every file from this directory. | Selector now shallow-clones `kovidgoyal/kitty-themes` into XDG data on first menu use, and copies only the selected theme into the ignored runtime config directory. Wallust writes its generated `01-Wallust.conf` target there. |
+
+## Phase 3: micro runtime data
+
+| Removed path | Reason / evidence | Evidence |
+|---|---|---|
+| `.config/micro/syntax/*.yaml` (146 upstream runtime syntax definitions) | These are runtime syntax definitions shipped by micro itself and duplicate its packaged runtime. | `settings.json` only selects a colorscheme; repository-wide search outside the syntax directory found no imports/references to these filenames. |
+| `.config/micro/colorschemes/catppuccin-frappe.micro`, `catppuccin-latte.micro`, `catppuccin-mocha.micro` | Not selected by `.config/micro/settings.json`, which selects `catppuccin-macchiato`. | Search of repo references found no references to the three unselected names. |
