@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Run repository checks
         run: |
-          docker run --rm -v "$PWD:/work" -w /work archlinux:latest bash -lc 'pacman -Sy --noconfirm shellcheck shfmt stylua gitleaks && ./scripts/check.sh'
+          docker run --rm -v "$PWD:/work" -w /work archlinux:latest bash -lc 'git config --global --add safe.directory /work && pacman -Sy --noconfirm shellcheck shfmt stylua gitleaks && ./scripts/check.sh'
   bootstrap-dry-run:
     runs-on: ubuntu-latest
     steps:
