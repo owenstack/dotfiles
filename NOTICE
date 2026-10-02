@@ -6,7 +6,7 @@ This repository includes upstream-derived or vendored configuration and assets. 
 - Remaining Hyprland scripts/configuration include material from JaKooLit/Hyprland-Dots. License status for the precise retained files is not yet verified; preserve original headers and treat files without clear notices as owner review items.
 - Catppuccin colors and theme assets are from the Catppuccin project; verify notices for each retained asset.
 - Wallust templates are upstream-derived; verify the license for each retained template against its original source headers.
-- The micro syntax files and kitty theme collection are upstream material and remain subject to their upstream licenses. Kitty theme entries may have individual licenses; check their metadata before redistribution.
+- The selected Catppuccin micro colorscheme is upstream material; check its source notice before redistribution.
 - The `agnosterzak` theme is expected from a local oh-my-zsh installation but is not currently tracked; bootstrap reports this as a manual check when absent.
 
 ## Needs owner review
@@ -14,4 +14,6 @@ This repository includes upstream-derived or vendored configuration and assets. 
 - Verify redistribution licenses for @snes19xx configuration and any vendored JaKooLit, kitty, micro, and Wallust material that lacks a clear per-file notice.
 - Confirm whether to add MIT licensing for Owen-authored configuration.
 
-- Kitty theme files fetched at runtime come from `kovidgoyal/kitty-themes`; the upstream repository is GPLv3 overall, while individual themes may have distinct licenses. The selector only copies a selected theme into ignored runtime config. Check the individual theme metadata before redistribution.
+- Kitty theme files fetched at runtime come from `kovidgoyal/kitty-themes`; the upstream repository is GPLv3 overall, while individual themes may have distinct licenses. The selector only copies a selected theme into ignored runtime config. Check individual theme metadata before redistribution.
+
+- The retained CMU Typewriter Variable font assets include their SIL Open Font License 1.1 text at `.config/kitty/Typewriter Variable/OFL.txt`. Bootstrap copies the referenced TTF files into the user font directory.

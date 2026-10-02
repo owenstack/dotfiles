@@ -39,6 +39,9 @@ shfmt
 stylua
 gitleaks
 noto-fonts-emoji
+ttf-fira-code
+ttf-jetbrains-mono-nerd
+sddm
 # VERIFY: package availability can vary by Arch mirror state.
 swww
 # VERIFY: verify this exact package name on CachyOS.

@@ -2,7 +2,7 @@
 
 Personal CachyOS / Hyprland dotfiles, kept in the repository root as a mirror of `$HOME` and managed with a bare Git repository. The active desktop bar and shell UI is QuickShell.
 
-![Desktop screenshot](docs/screenshot-placeholder.png)
+<!-- Screenshot placeholder: add an owner-approved desktop capture here. -->
 
 ## Install
 
@@ -48,7 +48,7 @@ The active Quickshell entry points are `.config/quickshell/task-bar/shell.qml` a
 
 ## Adding files
 
-Place files at their `$HOME`-relative path. Run `scripts/gen-gitignore.sh` after adding intentional tracked paths, then `dot add` the exact new files. Do not add caches, generated output, credentials, `.env` files, or anything from `~/.cache`.
+Place files at their `$HOME`-relative path. Since unknown paths are ignored, stage only the intended file with `dot add -f path`, run `scripts/gen-gitignore.sh` to refresh the allow-list from the index, review it, then commit. Do not add caches, generated output, credentials, `.env` files, or anything from `~/.cache`.
 
 ## Troubleshooting
 

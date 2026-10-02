@@ -2,34 +2,34 @@
 
 ## Current tracked config inventory
 
-Current tracked file count: **532**. Total tracked working-file bytes: **6,052,307 bytes**. Initial branch inventory recorded 968 files and approximately 16 MiB.
+Current tracked file count: **532**. Total Git blob payload: **5,266,237 bytes**. Baseline `main`: 968 files / 6,014,175 bytes.
 
-Sizes and file counts cover only tracked files under each `.config/<app>`. Origin is inferred from headers and project metadata. Live means a reference from the Hyprland/QuickShell/systemd startup chain, a shell startup file, or a current script/menu edge.
+Sizes are Git blob sizes (so the before/after comparison uses the same measure); per-app counts cover tracked files under `.config/<app>`. Origin is inferred from headers and project metadata. Live means a reference from the Hyprland/QuickShell/systemd startup chain, shell startup, or a current script/menu edge.
 
 | App | Tracked bytes | Files | Origin | Startup / live reference |
 |---|---:|---:|---|---|
 | `Kvantum` | 683,961 | 11 | Catppuccin/Everforest upstream assets | indirect |
 | `Thunar` | 10,311 | 2 | unknown / mixed | not found / unknown |
-| `btop` | 9,475 | 2 | unknown / mixed | not found / unknown |
+| `btop` | 9,475 | 2 | unknown / mixed | indirect |
 | `dunst` | 5,614 | 4 | unknown / mixed | direct |
 | `fastfetch` | 417,704 | 8 | unknown / mixed | indirect |
-| `fish` | 160 | 1 | unknown / mixed | not found / unknown |
-| `ghostty` | 1,557 | 2 | unknown / mixed | indirect |
-| `git` | 35 | 1 | unknown / mixed | indirect |
-| `gtk-3.0` | 477 | 1 | unknown / mixed | indirect |
-| `hypr` | 1,322,943 | 169 | JaKooLit-derived scripts + Owen Lua config | direct |
+| `fish` | 160 | 1 | unknown / mixed | indirect (QuickShell command) |
+| `ghostty` | 896 | 1 | Owen config | indirect |
+| `git` | 35 | 1 | Owen config | indirect |
+| `gtk-3.0` | 477 | 1 | unknown / mixed | not found / unknown |
+| `hypr` | 1,320,028 | 168 | JaKooLit-derived + Owen Lua/scripts | direct |
 | `kitty` | 938,477 | 16 | Owen config + selected upstream theme | indirect |
-| `micro` | 1,137 | 2 | Owen settings + Catppuccin upstream colorschemes | not found / unknown |
-| `mise` | 54 | 1 | unknown / mixed | indirect |
+| `micro` | 1,137 | 2 | Owen settings + Catppuccin | not found / unknown |
+| `mise` | 7,863 | 2 | Owen config | indirect |
 | `nwg-look` | 282 | 1 | unknown / mixed | indirect |
 | `qt5ct` | 2,440 | 3 | unknown / mixed | indirect |
 | `qt6ct` | 4,020 | 5 | unknown / mixed | indirect |
 | `quickshell` | 819,472 | 143 | Owen / upstream-derived | direct |
-| `rofi` | 1,405,893 | 104 | JaKooLit-derived + Owen changes | indirect |
+| `rofi` | 602,691 | 104 | JaKooLit-derived + Owen changes | indirect |
 | `systemd` | 308 | 2 | Owen units | direct |
 | `wallust` | 6,764 | 7 | Wallust templates + Owen config | indirect |
 | `wezterm` | 3,850 | 1 | unknown / mixed | not found / unknown |
-| `wlogout` | 351,356 | 17 | unknown / mixed | indirect |
+| `wlogout` | 351,356 | 17 | unknown / mixed | not found / unknown |
 | `xfce4` | 476 | 2 | unknown / mixed | not found / unknown |
 | `yad` | 1,590 | 1 | unknown / mixed | not found / unknown |
 | `zathura` | 2,194 | 1 | unknown / mixed | not found / unknown |

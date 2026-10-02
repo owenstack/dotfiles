@@ -29,7 +29,16 @@ for config in qt5ct qt6ct; do
   fi
 done
 [[ -e $xdg_cache/quickshell/theme_mode ]] || { if ((DRY_RUN)); then echo 'DRY-RUN create dark theme mode'; else printf 'dark\n' > "$xdg_cache/quickshell/theme_mode"; fi; }
-if command -v fc-cache >/dev/null 2>&1; then run fc-cache -f; fi
+font_source="$xdg_config/kitty/Typewriter Variable"
+font_target="$home/.local/share/fonts/Typewriter Variable"
+if [[ -d $font_source ]]; then
+  run mkdir -p "$font_target"
+  for font in "$font_source"/*.ttf; do
+    [[ -f $font ]] || continue
+    run install -m 644 "$font" "$font_target/"
+  done
+fi
+if command -v fc-cache >/dev/null 2>&1; then run fc-cache -f "$home/.local/share/fonts"; fi
 if command -v gh >/dev/null 2>&1 && ! gh auth status >/dev/null 2>&1; then echo 'Run gh auth login to configure GitHub credentials.'; fi
 if command -v systemctl >/dev/null 2>&1; then run systemctl --user enable --now wallpaper-cycle.timer || true; fi
 if ((YES)) && command -v zsh >/dev/null 2>&1; then run chsh -s "$(command -v zsh)"; fi

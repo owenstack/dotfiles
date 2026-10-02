@@ -7,3 +7,5 @@
 - Arch zsh plugin `archlinux` is intentionally retained for CachyOS. Other distributions need this plugin removed or replaced.
 - Quickshell profile images are optional user files under the relevant Quickshell config folder. Weather cache and settings belong under XDG cache/state directories.
 - Some Rasi, Hyprlock, and app-specific formats accept `~` in path fields; installer output should be checked on the target versions.
+
+- Kitty's active Everforest themes reference the included CMU Typewriter Text Variable face. Bootstrap installs its TTF assets into `~/.local/share/fonts` and refreshes fontconfig.

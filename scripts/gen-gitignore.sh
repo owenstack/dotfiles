@@ -3,7 +3,12 @@ set -euo pipefail
 
 dry_run=0
 [[ ${1:-} == --dry-run ]] && dry_run=1
-root=$(git rev-parse --show-toplevel)
+script_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+root=$(git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "$script_root")
+if ! git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1 && [[ -d ${HOME:?}/.dotfiles ]]; then
+  export GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$root"
+fi
+git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo 'Run from a dotfiles Git checkout or configured bare work tree.' >&2; exit 1; }
 cd "$root"
 out=$(mktemp)
 trap 'rm -f "$out"' EXIT
@@ -22,6 +27,7 @@ trap 'rm -f "$out"' EXIT
   cat <<'IGNORE'
 
 # Generated user state and rendered install templates
+/.local/state/quickshell/weather_api.conf
 /.config/quickshell/weather_api.conf
 /.config/quickshell/.cache/
 /.cache/quickshell/

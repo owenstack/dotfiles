@@ -22,7 +22,8 @@ if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh 2>/dev/null) 2>/dev/null || true
 fi
 if command -v mise >/dev/null 2>&1; then
-  eval "$(mise activate zsh 2>/dev/null)"
+  # Shims avoid hook-env warnings when pinned tools have not been installed yet.
+  eval "$(mise activate zsh --shims --quiet 2>/dev/null)"
 fi
 
 # Quiet in scripts, SSH, tmux, and IDE terminals. Config remains user-local.

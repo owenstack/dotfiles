@@ -3,6 +3,9 @@ rofi-wayland
 wallust
 swww
 pokemon-colorscripts
+ttf-manrope
+# VERIFY: theme folder is simple_sddm_2; confirm the package providing it.
+simple-sddm-2
 
 # VERIFY: cursor themes may be named differently in the current AUR.
 saturnian-cursors

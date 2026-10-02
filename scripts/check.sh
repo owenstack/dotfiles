@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
-root=$(git rev-parse --show-toplevel)
+script_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+root=$(git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "$script_root")
+if ! git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1 && [[ -d ${HOME:?}/.dotfiles ]]; then
+  export GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$root"
+fi
+git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo 'Run from a dotfiles Git checkout or configured bare work tree.' >&2; exit 1; }
 cd "$root"
 fail=0
 if command -v shellcheck >/dev/null 2>&1; then git ls-files -z -- '*.sh' '*.bash' | xargs -0 -r shellcheck || fail=1; else echo 'SKIP missing shellcheck'; fi

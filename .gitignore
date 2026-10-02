@@ -44,7 +44,6 @@
 !/.config/fish/config.fish
 !/.config/ghostty/
 !/.config/ghostty/config
-!/.config/ghostty/wallust.conf
 !/.config/git/
 !/.config/git/ignore
 !/.config/gtk-3.0/
@@ -98,7 +97,6 @@
 !/.config/hypr/animations/ML4W - standard.conf
 !/.config/hypr/animations/Mahaveer - me-1.conf
 !/.config/hypr/animations/Mahaveer - me-2.conf
-!/.config/hypr/application-style.conf
 !/.config/hypr/assets/
 !/.config/hypr/assets/notifications/
 !/.config/hypr/assets/notifications/icons/
@@ -141,7 +139,6 @@
 !/.config/hypr/hyprland.lua
 !/.config/hypr/hyprlock-2k.conf
 !/.config/hypr/hyprlock.conf
-!/.config/hypr/initial-boot.sh
 !/.config/hypr/monitors.conf
 !/.config/hypr/monitors.lua
 !/.config/hypr/screenshots/
@@ -614,6 +611,7 @@
 !/bootstrap/post-install.sh
 !/bootstrap/verify.sh
 !/docs/
+!/docs/CLEANUP-REPORT.md
 !/docs/DECISIONS.md
 !/docs/INVENTORY.md
 !/docs/LINT-BASELINE.md
@@ -625,6 +623,7 @@
 !/scripts/gen-gitignore.sh
 
 # Generated user state and rendered install templates
+/.local/state/quickshell/weather_api.conf
 /.config/quickshell/weather_api.conf
 /.config/quickshell/.cache/
 /.cache/quickshell/

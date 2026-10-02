@@ -10,5 +10,9 @@
 - Retain the top-bar Quickshell configuration under Needs owner review: no startup or keybind edge was found, but deletion is irreversible from the user perspective and the brief says to retain it when uncertain.
 - Use Open-Meteo `WeatherWrap.sh` as the top-bar weather source because it uses the existing no-key weather implementation and its fallback, instead of introducing another dependency on an absent ags tree.
 - Canonicalize Kvantum at `.config/Kvantum/`, which matches the live theme settings and current Catppuccin theme-switch commands; preserve the Everforest theme assets under the canonical directory.
-- Keep current monitor geometry and scale. Extracting this changes config architecture, not visual output; validation against Hyprland 0.55 Lua monitor module support remains needed before relocation.
+- Keep current monitor geometry and scale. Extracting this changes config architecture, not visual output; validated with `hyprland --verify-config` against the repository `.config` root; runtime testing still needs a Wayland session.
 - Pin mise to supported policy choices: use Node LTS, major Go and Bun lines where known, and `latest` only for GitHub CLI; exact versions should be resolved and locked by installed mise during bootstrap.
+
+- Remove Waybar, Mako, SwayNC, and Cava configurations after rewiring active refresh and shader branches to Quickshell/Dunst; migrate referenced notification icon files rather than dropping them.
+- Preserve selected active Kitty theme files that reference the OFL Computer Modern Typewriter variable font. Do not silently replace the typeface; owner review is needed before pruning or replacing its font assets.
+- Package names that fail the local CachyOS `pacman -Si` lookup are isolated in the AUR manifest with verification comments; install failures are reported and do not abort bootstrap.

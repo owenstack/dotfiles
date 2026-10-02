@@ -55,6 +55,7 @@ if (( ! DRY_RUN )); then
       mkdir -p "$backup/$(dirname "$path")"
       cp -a "$target" "$backup/$path"
       printf 'Backed up %s\n' "$path"
+      rm -rf -- "$target"
     fi
     rm -f "$expected"
   done < <(dot ls-tree -r --name-only -z HEAD)
@@ -71,16 +72,25 @@ if (( ! NO_PACKAGES )); then
       [[ -z $name || $name == \#* ]] && continue
       if pacman -Si "$name" >/dev/null 2>&1; then valid+=("$name"); else failed+=("$name"); fi
     done < "$home/bootstrap/packages/pacman.txt"
-    if ((${#valid[@]})); then sudo pacman -S --needed "${valid[@]}"; fi
+    if ((${#valid[@]})); then
+      if (( YES )); then sudo pacman -S --needed --noconfirm "${valid[@]}"
+      else sudo pacman -S --needed "${valid[@]}"; fi
+    fi
     if ((${#failed[@]})); then printf 'Unavailable packages (review manually): %s\n' "${failed[*]}"; fi
     if ! command -v paru >/dev/null 2>&1 && ! command -v yay >/dev/null 2>&1; then
-      if pacman -Si paru >/dev/null 2>&1; then sudo pacman -S --needed paru; fi
+      if pacman -Si paru >/dev/null 2>&1; then
+        if (( YES )); then sudo pacman -S --needed --noconfirm paru
+        else sudo pacman -S --needed paru; fi
+      fi
     fi
     aur_helper=$(command -v paru || command -v yay || true)
     if [[ -n $aur_helper ]]; then
       while IFS= read -r name; do
         [[ -z $name || $name == \#* ]] && continue
-        "$aur_helper" -Si "$name" >/dev/null 2>&1 && "$aur_helper" -S --needed "$name" || echo "AUR package unavailable: $name"
+        if "$aur_helper" -Si "$name" >/dev/null 2>&1; then
+          if (( YES )); then "$aur_helper" -S --needed --noconfirm "$name"
+          else "$aur_helper" -S --needed "$name"; fi
+        else echo "AUR package unavailable: $name"; fi
       done < "$home/bootstrap/packages/aur.txt"
     else echo 'No AUR helper is available; skipping AUR list.'; fi
   fi

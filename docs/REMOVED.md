@@ -4,6 +4,8 @@ This log records deletions and case/path migrations. Git history retains prior c
 
 ## Phase 2 portability migrations
 
+### Case collision migration
+
 | Former path | Reason / evidence | Result |
 |---|---|---|
 | `.config/kvantum/kvantum.kvconfig` | Duplicate case-colliding Kvantum config; live `.config/Kvantum/kvantum.kvconfig` and DarkLight settings select Catppuccin assets in uppercase path. | Canonicalized under `.config/Kvantum/`; canonical selected theme remains Catppuccin. |
@@ -26,11 +28,13 @@ This log records deletions and case/path migrations. Git history retains prior c
 
 ### Needs owner review (retained)
 
-- Waybar scripts/configs have references from scripts, menus, and inactive legacy Hyprland config; the graph does not prove all are dead until those live user-invoked paths are rewired.
-- `mako/` and `swaync/` remain referenced by notification/theme/asset scripts even though Dunst is the started daemon. Removing them now would leave those paths dangling.
-- `wezterm/` is not launched, but Quickshell still recognizes its window class; retained pending an explicit UI cleanup decision.
+- `.config/quickshell/top-bar/` is not started by the current chain, but may be manually launched.
+- `.config/kitty/Typewriter Variable/` is referenced by both active Everforest Kitty theme files; confirm the OFL font should remain and be installed.
+- `wezterm/` is not launched, but Quickshell recognizes its window class; remove the label/config only if this is no longer useful.
 - `fish/config.fish` remains referenced by Quickshell overview search commands, so fish is included as a package.
-- Animation presets and shaders remain until the preset selector and Quickshell shader drawer are exhaustively mapped; dynamic filename selectors make an incomplete grep unsafe.
+- Animation presets and shader assets remain where selectors use dynamic filename discovery; complete reachability mapping is still needed before pruning them.
+- `.config/hypr/configs/` and `.config/hypr/UserConfigs/` are not sourced by Lua, but settings/keybind helper scripts read and edit those files. Their deadness is not proven until those legacy helper scripts are removed or rewritten.
+- Verify licenses for retained upstream-derived Hyprland, Quickshell, Rofi, Wallust, and Kitty theme files that lack per-file notices.
 
 | Former path | Reason / evidence | Result |
 |---|---|---|
@@ -59,13 +63,26 @@ This log records deletions and case/path migrations. Git history retains prior c
 
 | Removed / migrated paths | Reason / evidence | Result |
 |---|---|---|
-| `.config/waybar/**` (107 files), `.config/hypr/scripts/WaybarCava.sh`, `WaybarLayout.sh`, `WaybarScripts.sh`, `WaybarStyles.sh`, and `.config/rofi/config-waybar-layout.rasi`, `config-waybar-style.rasi` | Quickshell is the configured bar; no Waybar startup occurs in the Lua startup chain or systemd user units. Script/config references were internal to the removed Waybar tree or inactive legacy configuration. `shader.lua`, wallpaper refresh, and theme refresh branches are being rewired to task-bar QuickShell. | Deleted after references were updated. Cava was only included as an unused generated configuration and Waybar visualizer. |
+| `.config/waybar/**` (107 files), `.config/hypr/scripts/WaybarCava.sh`, `WaybarLayout.sh`, `WaybarScripts.sh`, `WaybarStyles.sh`, and `.config/rofi/config-waybar-layout.rasi`, `config-waybar-style.rasi` | Quickshell is the configured bar; no Waybar startup occurs in the Lua startup chain or systemd user units. Script/config references were internal to the removed Waybar tree or inactive legacy configuration. `shader.lua`, wallpaper refresh, and theme refresh branches were rewired to task-bar QuickShell. | Deleted after references were updated. Cava was only included as an unused generated configuration and Waybar visualizer. |
 | `.config/hypr/scripts/RefreshNoWaybar.sh` | Functionally duplicate refresh helper used by wallpaper, animations, and monitor profile scripts. | Renamed to `.config/hypr/scripts/RefreshWallust.sh`; references updated to QuickShell and Dunst. |
 | `.config/mako/**` | No active startup, systemd, Quickshell, or script references; Dunst is the configured daemon. | Removed. |
 | `.config/swaync/config.json`, `.config/swaync/style.css` | SwayNC is not launched; Quickshell reads Dunst history and `hyprland.lua` starts Dunst. Existing shell scripts only needed notification images/icons. | Removed daemon config after moving referenced image/icon assets to `.config/hypr/assets/notifications/` and updating all paths. |
 | `.config/wallust/templates/colors-waybar.css` and Waybar target settings | Generated only for the removed Waybar configuration. | Removed template and target; no active runtime reference remains. |
 
+| Removed / migrated path | Reason / evidence | Result |
+|---|---|---|
 | `.config/cava/**`, `.config/wallust/templates/colors-cava`, `.config/wallust/templates/colors-swaync.css` | No active QuickShell or shell command launches Cava; these were only generated for removed Waybar/SwayNC modules. | Removed corresponding unused Wallust template entries and base package. |
 | `.config/wallust/templates/colors-waybar.css` | Also imported by wlogout. | Replaced with a focused `colors-wlogout.css` palette template and generated wlogout stylesheet. |
 
 | `.config/hypr/scripts/RofiEmoji.sh` embedded word list | The text payload after the shell script caused syntax/lint checks to parse non-shell emoji data as code. | Moved its full data payload to adjacent `RofiEmoji.data`; the shell script reads that data file. Menu output remains backed by the same entries. |
+
+## Phase 3: unreferenced Hyprland setup scaffolding
+
+| Removed path | Reason / evidence | Evidence |
+|---|---|---|
+| `.config/hypr/initial-boot.sh` | One-time JaKooLit first-boot setup is not in the Lua startup chain and has no script/keybind references. | Whole-repository filename search found only its own path and generated allow-list entry. |
+| `.config/hypr/application-style.conf` | Legacy JaKooLit application style config is not sourced by the Lua configuration. | Whole-repository filename/basename search found no reader or source reference. |
+
+| Removed path | Reason / evidence | Result |
+|---|---|---|
+| `.config/ghostty/wallust.conf` | Generated Wallust palette output; `.config/wallust/wallust.toml` writes it and Ghostty includes it as an optional config. | Removed from tracking and added to generated-file ignores; wallpaper theming recreates it. |
