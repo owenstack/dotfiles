@@ -48,3 +48,9 @@ This log records deletions and case/path migrations. Git history retains prior c
 |---|---|---|
 | `.config/micro/syntax/*.yaml` (146 upstream runtime syntax definitions) | These are runtime syntax definitions shipped by micro itself and duplicate its packaged runtime. | `settings.json` only selects a colorscheme; repository-wide search outside the syntax directory found no imports/references to these filenames. |
 | `.config/micro/colorschemes/catppuccin-frappe.micro`, `catppuccin-latte.micro`, `catppuccin-mocha.micro` | Not selected by `.config/micro/settings.json`, which selects `catppuccin-macchiato`. | Search of repo references found no references to the three unselected names. |
+
+## Phase 3: unused btop themes
+
+| Removed path | Reason / evidence | Evidence |
+|---|---|---|
+| `.config/btop/themes/catppuccin_frappe.theme`, `catppuccin_latte.theme`, `catppuccin_mocha.theme` | `.config/btop/btop.conf` selects only `catppuccin_macchiato.theme`; no btop theme switcher references the other filenames. | Repository-wide search for the three exact filenames and extensionless stems found no references outside the files. |

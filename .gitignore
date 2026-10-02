@@ -25,10 +25,7 @@
 !/.config/btop/
 !/.config/btop/btop.conf
 !/.config/btop/themes/
-!/.config/btop/themes/catppuccin_frappe.theme
-!/.config/btop/themes/catppuccin_latte.theme
 !/.config/btop/themes/catppuccin_macchiato.theme
-!/.config/btop/themes/catppuccin_mocha.theme
 !/.config/cava/
 !/.config/cava/config
 !/.config/cava/shaders/
