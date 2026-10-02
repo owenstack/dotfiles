@@ -36,5 +36,6 @@ The broader manifests also contain standalone applications such as `btop`, `fast
 
 - CachyOS sync metadata, `pacman -Si` per manifest line: **PASSED**, every `pacman.txt` entry resolved.
 - AUR RPC v5 for each manifest line: **PASSED**, every `aur.txt` entry resolved. Metadata is printed by the validation script; warnings do not fail the check.
-- Arch container package validation workflow: **NOT RUN locally** (Docker daemon unavailable); the committed workflow runs this check on pull requests touching the manifests and weekly.
+- Arch container package validation workflow: **PASSED** in [PR #4 CI run](https://github.com/owenstack/dotfiles/actions/runs/37078644962); all official-repository and AUR package names resolved. The RPC reported age warnings for three AUR packages, without marking any missing or orphaned.
+- Local full package checker in a container: **NOT RUN locally** (Docker daemon unavailable); the PR workflow ran the same checker in an Arch container.
 - Fresh package installation and confirmation that `simple_sddm_2` lands at the expected SDDM theme path: **NOT RUN**; Workstream D owns clean-machine installation verification.
