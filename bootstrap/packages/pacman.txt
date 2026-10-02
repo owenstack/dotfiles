@@ -31,6 +31,7 @@ base-devel
 git
 curl
 jq
+ripgrep
 python
 python-requests
 fontconfig

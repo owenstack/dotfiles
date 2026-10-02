@@ -8,7 +8,10 @@ root=$(git rev-parse --show-toplevel 2>/dev/null || printf '%s\n' "$script_root"
 if ! git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1 && [[ -d ${HOME:?}/.dotfiles ]]; then
   export GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$root"
 fi
-git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1 || { echo 'Run from a dotfiles Git checkout or configured bare work tree.' >&2; exit 1; }
+git -C "$root" rev-parse --is-inside-work-tree >/dev/null 2>&1 || {
+  echo 'Run from a dotfiles Git checkout or configured bare work tree.' >&2
+  exit 1
+}
 cd "$root"
 out=$(mktemp)
 trap 'rm -f "$out"' EXIT
@@ -16,11 +19,14 @@ trap 'rm -f "$out"' EXIT
   printf '%s\n' '/*' '!/.gitignore'
   declare -A emitted_dirs=()
   while IFS= read -r -d '' path; do
-    IFS=/ read -r -a parts <<< "$path"
+    IFS=/ read -r -a parts <<<"$path"
     current=""
-    for ((i=0; i<${#parts[@]}-1; i++)); do
+    for ((i = 0; i < ${#parts[@]} - 1; i++)); do
       current+="/${parts[i]}"
-      if [[ -z ${emitted_dirs[$current]+x} ]]; then printf '!%s/\n' "$current"; emitted_dirs[$current]=1; fi
+      if [[ -z ${emitted_dirs[$current]+x} ]]; then
+        printf '!%s/\n' "$current"
+        emitted_dirs[$current]=1
+      fi
     done
     printf '!/%s\n' "$path"
   done < <(git ls-files -z)
@@ -38,5 +44,5 @@ trap 'rm -f "$out"' EXIT
 /.config/kitty/kitty-themes/
 /.config/wlogout/colors-wlogout.css
 IGNORE
-} > "$out"
+} >"$out"
 if ((dry_run)); then cat "$out"; else cp "$out" .gitignore; fi

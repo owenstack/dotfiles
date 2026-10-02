@@ -3,7 +3,10 @@ set -u
 home=${HOME:?}
 fail=0
 pass() { printf 'PASS | %s\n' "$1"; }
-failed() { printf 'FAIL | %s\n' "$1"; fail=1; }
+failed() {
+  printf 'FAIL | %s\n' "$1"
+  fail=1
+}
 for exe in hyprland hypridle hyprlock qs dunst blueman-applet vdirsyncer mpv wl-paste cliphist; do
   if command -v "$exe" >/dev/null 2>&1; then pass "executable: $exe"; else failed "executable: $exe"; fi
 done

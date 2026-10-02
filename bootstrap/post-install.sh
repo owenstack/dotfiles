@@ -2,8 +2,12 @@
 set -euo pipefail
 DRY_RUN=0
 YES=0
-for arg in "$@"; do case "$arg" in --dry-run) DRY_RUN=1;; --yes) YES=1;; esac; done
-run() { if ((DRY_RUN)); then printf 'DRY-RUN'; printf ' %q' "$@"; printf '\n'; else "$@"; fi; }
+for arg in "$@"; do case "$arg" in --dry-run) DRY_RUN=1 ;; --yes) YES=1 ;; esac done
+run() { if ((DRY_RUN)); then
+  printf 'DRY-RUN'
+  printf ' %q' "$@"
+  printf '\n'
+else "$@"; fi; }
 home=${HOME:?HOME must be set}
 xdg_config=${XDG_CONFIG_HOME:-$home/.config}
 xdg_state=${XDG_STATE_HOME:-$home/.local/state}
@@ -25,10 +29,10 @@ for config in qt5ct qt6ct; do
   tmpl="$xdg_config/$config/$config.conf.tmpl"
   out="$xdg_config/$config/$config.conf"
   if [[ -f $tmpl ]]; then
-    if ((DRY_RUN)); then echo "DRY-RUN render $tmpl to $out"; else sed "s|@HOME@|$home|g" "$tmpl" > "$out"; fi
+    if ((DRY_RUN)); then echo "DRY-RUN render $tmpl to $out"; else sed "s|@HOME@|$home|g" "$tmpl" >"$out"; fi
   fi
 done
-[[ -e $xdg_cache/quickshell/theme_mode ]] || { if ((DRY_RUN)); then echo 'DRY-RUN create dark theme mode'; else printf 'dark\n' > "$xdg_cache/quickshell/theme_mode"; fi; }
+[[ -e $xdg_cache/quickshell/theme_mode ]] || { if ((DRY_RUN)); then echo 'DRY-RUN create dark theme mode'; else printf 'dark\n' >"$xdg_cache/quickshell/theme_mode"; fi; }
 font_source="$xdg_config/kitty/Typewriter Variable"
 font_target="$home/.local/share/fonts/Typewriter Variable"
 if [[ -d $font_source ]]; then
