@@ -30,7 +30,7 @@ GDK_BACKEND=$BACKEND yad \
 " enter" "Terminal" "(kitty)" \
 " SHIFT enter" "DropDown Terminal" " Q to close" \
 " B" "Launch Browser" "(Default browser)" \
-" A" "Desktop Overview" "(AGS - if opted to install)" \
+" A" "Desktop Overview" "(Quickshell)" \
 " D" "Application Launcher" "(rofi-wayland)" \
 " E" "Open File Manager" "(Thunar)" \
 " S" "Google Search using rofi" "(rofi)" \
@@ -42,11 +42,6 @@ GDK_BACKEND=$BACKEND yad \
 " W" "Choose wallpaper" "(Wallpaper Menu)" \
 " Shift W" "Choose wallpaper effects" "(imagemagick + swww)" \
 "CTRL ALT W" "Random wallpaper" "(via swww)" \
-" CTRL ALT B" "Hide/UnHide Waybar" "waybar" \
-" CTRL B" "Choose waybar styles" "(waybar styles)" \
-" ALT B" "Choose waybar layout" "(waybar layout)" \
-" ALT R" "Reload Waybar swaync Rofi" "CHECK NOTIFICATION FIRST!!!" \
-" SHIFT N" "Launch Notification Panel" "swaync Notification Center" \
 " Print" "screenshot" "(grim)" \
 " Shift Print" "screenshot region" "(grim + slurp)" \
 " Shift S" "screenshot region" "(swappy)" \

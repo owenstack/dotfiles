@@ -1,0 +1,51 @@
+# Derived from hyprland.lua, scripts, systemd units, Quickshell, and shell config.
+hyprland
+hypridle
+hyprlock
+hyprsunset
+xdg-desktop-portal-hyprland
+quickshell
+dunst
+cliphist
+wl-clipboard
+polkit-gnome
+blueman
+mpv
+vdirsyncer
+kvantum
+qt5ct
+qt6ct
+nwg-look
+btop
+fastfetch
+lsd
+fzf
+micro
+kitty
+ghostty
+zsh
+mise
+github-cli
+fish
+base-devel
+git
+curl
+jq
+ripgrep
+python
+python-requests
+fontconfig
+shellcheck
+shfmt
+stylua
+gitleaks
+noto-fonts-emoji
+ttf-fira-code
+ttf-jetbrains-mono-nerd
+sddm
+# VERIFY: package availability can vary by Arch mirror state.
+swww
+# VERIFY: verify this exact package name on CachyOS.
+ttf-fantasque-nerd
+# VERIFY: add the Nerd Font families actually used by QuickShell.
+ttf-nerd-fonts-symbols-mono

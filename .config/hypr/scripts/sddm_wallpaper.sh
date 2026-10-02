@@ -26,9 +26,9 @@ if [[ ! -f "$rofi_wallust" ]]; then
     exit 1
 fi
 
-# Directory for swaync
-iDIR="$HOME/.config/swaync/images"
-iDIRi="$HOME/.config/swaync/icons"
+# Directory for Dunst
+iDIR="$HOME/.config/hypr/assets/notifications/images"
+iDIRi="$HOME/.config/hypr/assets/notifications/icons"
 
 # Parse arguments
 mode="effects" # default

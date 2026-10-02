@@ -102,8 +102,8 @@ detach_generated_target "$HOME/.config/quickshell/qml_color.json"
 
 wallust run -q -s -n "$wallpaper_path"
 wallust_targets=(
-  "$HOME/.config/waybar/wallust/colors-waybar.css"
   "$HOME/.config/rofi/wallust/colors-rofi.rasi"
+  "$HOME/.config/wlogout/colors-wlogout.css"
   "$HOME/.config/kitty/kitty-themes/01-Wallust.conf"
   "$hypr_wallust"
   "$HOME/.config/quickshell/qml_color.json"
@@ -141,9 +141,3 @@ if pidof kitty >/dev/null; then
   for pid in $(pidof kitty); do kill -SIGUSR1 "$pid" 2>/dev/null || true; done
 fi
 
-# Prompt Waybar to reload colors
-if command -v waybar-msg >/dev/null 2>&1; then
-  waybar-msg cmd reload >/dev/null 2>&1 || true
-elif pidof waybar >/dev/null; then
-  killall -SIGUSR2 waybar 2>/dev/null || true
-fi

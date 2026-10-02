@@ -1,7 +1,7 @@
 .pragma library
 
-// hardcoding just for now.
-var PROFILE_IMG = "/home/owenstack/.config/quickshell/task-bar/profile.jpg"
+// Optional personal image. Missing files leave the avatar blank.
+var PROFILE_IMG = (Quickshell.env("HOME") || "") + "/.config/quickshell/task-bar/profile.jpg"
 var PROFILE_NAME = "snes"
 
 var TOP_GAP = 50

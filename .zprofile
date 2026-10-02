@@ -1,3 +1,1 @@
-#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-#       Hyprland 
-#fi
+# The display manager starts the Hyprland session; no TTY autostart is configured.

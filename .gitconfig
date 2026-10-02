@@ -1,11 +1,36 @@
 [credential "https://github.com"]
-	helper = 
+	helper =
 	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
+	helper =
 	helper = !gh auth git-credential
 [user]
 	name = owenstack
 	email = 89314101+owenstack@users.noreply.github.com
 [alias]
 	dotfiles = !git --git-dir=$HOME/.dotfiles --work-tree=$HOME
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
+[fetch]
+	prune = true
+[push]
+	autoSetupRemote = true
+[rerere]
+	enabled = true
+[diff]
+	algorithm = histogram
+[merge]
+	conflictstyle = zdiff3
+[core]
+	excludesfile = ~/.config/git/ignore
+[help]
+	autocorrect = prompt
+# Optional signing, only after configuring a key:
+# [commit]
+#     gpgsign = true
+# [user]
+#     signingkey = YOUR_KEY_ID

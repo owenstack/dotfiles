@@ -1,0 +1,7 @@
+# Security scan findings
+
+Baseline scan date: 2026-10-02. No `gitleaks` binary is installed in the environment, so an independent gitleaks scan could not be run. A textual scan was performed for common credential markers and API key write paths; the QuickShell settings panel currently writes a user-entered weather API key to `~/.config/quickshell/weather_api.conf` (see Phase 2 remediation). No secret value is recorded here. Run `gitleaks detect` after installing gitleaks and before publishing.
+
+The QuickShell settings writer now stores its file below `${XDG_STATE_HOME:-$HOME/.local/state}/quickshell/weather_api.conf`, requests mode 0600 after writing, and the generated user path is ignored. No tracked weather secret was found. `.gitleaks.toml` includes a focused custom rule for serialized `API_KEY` assignments. The QuickShell FileView API available here does not expose a file creation mode; the UI applies `chmod 600` immediately after writing, so a very short creation-to-chmod interval remains a limitation.
+
+PR CI later ran gitleaks successfully on the checked-out tree and reported no leaks; its checkout contained one commit, so this does not certify the full repository history. GitGuardian also passed on the pull request.

@@ -1,0 +1,8 @@
+[extend]
+useDefault = true
+
+[[rules]]
+id = "quickshell-weather-secret-assignment"
+description = "OpenWeather API key assignment stored by QuickShell settings"
+regex = '''(?i)API_KEY\s*=\s*["'][^"']{12,}["']'''
+keywords = ["API_KEY"]
