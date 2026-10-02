@@ -12,6 +12,7 @@ This log records deletions and case/path migrations. Git history retains prior c
 | `.config/kvantum/EverforestGreenDark/*`, `.config/kvantum/EverforestGreenLight/*` | Case-colliding duplicate tree; no script selected its configured Everforest theme. | Theme assets preserved by moving them to `.config/Kvantum/`. |
 | `.config/kvantum/kdeglobals` | No reader or writer references this nonstandard nested path; theme scripts use `$HOME/.config/kdeglobals`. | Removed. |
 | `.config/qt5ct/qt5ct.conf`, `.config/qt6ct/qt6ct.conf` | Contained `/home/owenstack`; Qtct settings use absolute palette paths and do not expand shell variables. | Converted to install-rendered `.conf.tmpl` templates; installer still needs to render them. |
+| `.config/rofi/.current_wallpaper` | Tracked symlink pointed at a specific wallpaper under `/home/owenstack/Pictures`, so it was machine-local generated state and broken on fresh installs. Rofi themes and wallpaper scripts already refer to this runtime path and update/read it dynamically. | Removed the tracked link and added it to generated-state ignores; retain a user's existing link and let wallpaper selection create one on a fresh setup. |
 
 ## Needs owner review
 

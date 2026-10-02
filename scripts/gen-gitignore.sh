@@ -36,6 +36,7 @@ trap 'rm -f "$out"' EXIT
 /.local/state/quickshell/weather_api.conf
 /.config/quickshell/weather_api.conf
 /.config/quickshell/.cache/
+/.config/rofi/.current_wallpaper
 /.cache/quickshell/
 /.config/qt5ct/qt5ct.conf
 /.config/qt6ct/qt6ct.conf

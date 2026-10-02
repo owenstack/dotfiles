@@ -79,7 +79,18 @@ if ((DRY_RUN == 0)); then
     target="$home/$path"
     [[ -e $target || -L $target ]] || continue
     expected=$(mktemp)
-    if dot show "HEAD:$path" >"$expected" 2>/dev/null && ! cmp -s "$expected" "$target"; then
+    mode=$(dot ls-tree HEAD -- "$path")
+    mode=${mode%% *}
+    matches=0
+    if dot show "HEAD:$path" >"$expected" 2>/dev/null; then
+      if [[ $mode == 120000 ]]; then
+        expected_link=$(<"$expected")
+        [[ -L $target && $(readlink -- "$target") == "$expected_link" ]] && matches=1
+      elif [[ -f $target && ! -L $target ]] && cmp -s "$expected" "$target"; then
+        matches=1
+      fi
+    fi
+    if ((matches == 0)); then
       mkdir -p "$backup/$(dirname "$path")"
       cp -a "$target" "$backup/$path"
       printf 'Backed up %s\n' "$path"

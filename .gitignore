@@ -439,7 +439,6 @@
 !/.config/quickshell/top-bar/shell.qml
 !/.config/quickshell/top-bar/theme.js
 !/.config/rofi/
-!/.config/rofi/.current_wallpaper
 !/.config/rofi/0-shared-fonts.rasi
 !/.config/rofi/config-Animations.rasi
 !/.config/rofi/config-Monitors.rasi
@@ -627,6 +626,7 @@
 /.local/state/quickshell/weather_api.conf
 /.config/quickshell/weather_api.conf
 /.config/quickshell/.cache/
+/.config/rofi/.current_wallpaper
 /.cache/quickshell/
 /.config/qt5ct/qt5ct.conf
 /.config/qt6ct/qt6ct.conf
