@@ -10,6 +10,7 @@ Audit basis: repository runtime references and package metadata checked on 2026-
 | Wallpaper daemon and theme generation | `awww-git`, `wallust` | Active wallpaper scripts and `shader.lua` call `awww`/`awww-daemon`; `WallustSwww.sh` uses `awww query --json` and `wallust`. AUR RPC v5 returned both package names. |
 | Screenshot, video wallpaper and logout | `grimblast-git`, `grim`, `slurp`, `swappy`, `mpvpaper`, `wlogout` | `screenshot.sh`, `WallpaperSelect.sh`, and `Wlogout.sh`; package metadata found in the official repos or AUR RPC. |
 | System controls, notifications, network, media keys, calendar | `brightnessctl`, `pamixer`, `pipewire-pulse`, `libnotify`, `networkmanager`, `playerctl`, `khal`, `upower` | Hyprland scripts and task-bar QML invoke these commands/services. `pacman -Si` passed for each listed official package. |
+| File manager | `thunar` | Super+E invokes `thunar` in `.config/hypr/hyprland.lua`; CachyOS `pacman -Si thunar` resolves it in Extra. |
 | Wallpaper picker helpers | `bc`, `ffmpeg`, `imagemagick`, `xdg-user-dirs`, `waypaper` | `WallpaperSelect.sh`, `WallpaperEffects.sh`, `DarkLight.sh`, and retained top-bar `theme-mode.sh`. `waypaper` is AUR; the others resolved in CachyOS. |
 | Fantasque Sans Mono Nerd Font | `ttf-fantasque-nerd` | `.config/ghostty/config` selects `FantasqueSansM Nerd Font Mono`; this exact package exists in official Arch Extra and CachyOS. |
 | SDDM theme directory `simple_sddm_2` | `simple-sddm-theme-2-git` | AUR RPC v5 returns this package with upstream `https://github.com/JaKooLit/simple-sddm-2`. The package name and source are confirmed; CI package-name validation does not inspect the installed theme directory. A real install check remains part of Workstream D. |
@@ -31,6 +32,8 @@ These packages are retained because this audit is not authorization to remove us
 - `sddm`: display-manager choice is part of the install profile; verify the owner wants SDDM enabled on a fresh machine.
 
 The broader manifests also contain standalone applications such as `btop`, `fastfetch`, `lsd`, `fzf`, `kitty`, `ghostty`, `zsh`, `mise`, `github-cli`, and `fish`. Some are interactive user tools and shell defaults, rather than commands invoked by the desktop autostart chain. Keep them pending explicit owner preference.
+
+The `Helium.AppImage` browser keybind under `~/Applications/` is a user-managed AppImage path, not a repository-provided package. The install and doctor checks should treat it as an owner-managed optional application.
 
 ## Validation results
 
