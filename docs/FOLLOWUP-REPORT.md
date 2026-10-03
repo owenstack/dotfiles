@@ -85,7 +85,7 @@ The same Git-tree method (`git ls-tree -r -l`) was used for every branch. Each f
 | #6 | 532 → 534 | 5,269,899 → 5,285,755 |
 | #7 | 532 → 531 | 5,269,899 → 5,274,171 |
 | #8 | 532 → 533 | 5,269,899 → 5,277,659 |
-| #9 | 532 → 536 | 5,269,899 → 5,293,670 |
+| #9 | 532 → 536 | 5,269,899 → 5,293,774 |
 
 - `.git` occupied 4.1 MiB at the binary-audit measurement; `git count-objects -vH` reported 552 KiB loose objects and a 3.18 MiB pack.
 - The PR #1 cleanup report measured `zsh -i -c exit` at a 91.6 ms median after cleanup (20 runs; empty stderr). No comparable installed-machine measurement was available in this follow-up.
