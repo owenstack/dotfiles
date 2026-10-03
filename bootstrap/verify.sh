@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 set -u
+((EUID != 0)) || {
+  echo 'Refusing to run verifier as root.' >&2
+  exit 1
+}
 home=${HOME:?}
 fail=0
 pass() { printf 'PASS | %s\n' "$1"; }

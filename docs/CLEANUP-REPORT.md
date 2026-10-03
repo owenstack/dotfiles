@@ -56,6 +56,13 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 
 ## Deviations and owner review
 
+### Hook and bootstrap follow-up (2026-10-02)
+
+- **PASSED:** `pacman -Si gitleaks` on the CachyOS host resolved to `extra/gitleaks` v8.30.1.
+- **PASSED:** ShellCheck v0.11.0 at warning severity and `shfmt -d -i 2` on touched scripts; bootstrap and post-install dry runs were run with a throwaway `HOME`.
+- **PASSED:** both hooks were manually invoked with a minimal `PATH` that omitted gitleaks; each exited nonzero and printed the pacman install command and `--no-verify` escape hatch.
+- **NOT RUN:** the Arch-container integration test could not sync Arch package databases because the configured mirrors timed out. The PR CI integration job will provide the clean-container result.
+
 - The brief's aggressive pruning criteria could not safely prove animation/shader presets or legacy `UserConfigs`/`configs` dead: selector/helper code constructs their names dynamically. Those trees remain, documented in `docs/REMOVED.md`.
 - `top-bar` is not in autostart but is retained for manual use; Fish is referenced by the overview search command; WezTerm is recognized by QuickShell. These are listed for owner review.
 - The `agnosterzak` theme was not found in the tracked tree. Post-install warns if it is absent from the local oh-my-zsh installation; the owner must supply/approve the theme if needed.
