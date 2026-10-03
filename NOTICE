@@ -5,6 +5,7 @@ This repository includes upstream-derived or vendored configuration and assets. 
 - `.config/hypr/hyprland.lua` identifies @snes19xx; check the source project’s license before redistribution. The attribution is retained in the file header.
 - Remaining Hyprland scripts/configuration include material from JaKooLit/Hyprland-Dots. License status for the precise retained files is not yet verified; preserve original headers and treat files without clear notices as owner review items.
 - Catppuccin colors and theme assets are from the Catppuccin project; verify notices for each retained asset.
+- The Kvantum theme assets under `.config/Kvantum/catppuccin-*` are from `catppuccin/kvantum`, licensed under MIT; the upstream copyright and MIT license apply to those copied theme assets. See https://github.com/catppuccin/kvantum/blob/main/LICENSE.
 - Wallust templates are upstream-derived; verify the license for each retained template against its original source headers.
 - The selected Catppuccin micro colorscheme is upstream material; check its source notice before redistribution.
 - The `agnosterzak` theme is expected from a local oh-my-zsh installation but is not currently tracked; bootstrap reports this as a manual check when absent.

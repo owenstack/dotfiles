@@ -616,6 +616,7 @@
 !/bootstrap/test-integration.sh
 !/bootstrap/verify.sh
 !/docs/
+!/docs/BINARIES.md
 !/docs/CLEANUP-REPORT.md
 !/docs/DECISIONS.md
 !/docs/DOCTOR.md
