@@ -615,6 +615,7 @@
 !/docs/
 !/docs/CLEANUP-REPORT.md
 !/docs/DECISIONS.md
+!/docs/DOCTOR.md
 !/docs/INVENTORY.md
 !/docs/LINT-BASELINE.md
 !/docs/PACKAGE-AUDIT.md
@@ -624,6 +625,7 @@
 !/scripts/
 !/scripts/check-packages.sh
 !/scripts/check.sh
+!/scripts/doctor.sh
 !/scripts/gen-gitignore.sh
 
 # Generated user state and rendered install templates
