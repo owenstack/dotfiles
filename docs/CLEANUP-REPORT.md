@@ -51,7 +51,7 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - Local tools were unavailable; the PR static CI subsequently passed. CI runs ShellCheck over tracked shell files at error severity, shfmt on maintained bootstrap/check scripts, StyLua over all tracked Lua files, gitleaks on the checked-out tree, collision checks, and the username-path scan. ShellCheck warnings below error severity were not baseline-compared.
 - `qmllint` passed 40 tracked QML files but exited 255 without diagnostics on 33; QuickShell runtime loading could not be checked without a Wayland session.
 - `systemd-analyze --user verify` could not access a user systemd manager in this environment. No Hyprland/QuickShell graphical session was available.
-- Package installation and post-install behavior on a fresh desktop remain unverified. Workstream C validated every `pacman.txt` name against CachyOS sync metadata and every `aur.txt` name through AUR RPC v5; its Arch-container CI run passed; see `docs/PACKAGE-AUDIT.md`. `simple_sddm_2` maps to `simple-sddm-theme-2-git`; Saturnian cursor package availability remains unresolved and is not included in the manifest. The user-systemd timer remains unverified.
+- Package installation and post-install behavior on a fresh desktop remain unverified. Workstream C validated package names against CachyOS sync metadata and AUR RPC v5; see `docs/PACKAGE-AUDIT.md` and [PR #4](https://github.com/owenstack/dotfiles/pull/4). The fresh-install harness in [PR #5](https://github.com/owenstack/dotfiles/pull/5) has not been run locally; its CI/VM result remains the stronger evidence for that path. The user-systemd timer remains unverified.
 - The attempted local systemd verification and local bootstrap verifier are not equivalent to a fresh Arch install. Target-machine verification remains necessary before calling the desktop bootstrappable.
 
 ## Deviations and owner review
@@ -68,7 +68,7 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - The `agnosterzak` theme was not found in the tracked tree. Post-install warns if it is absent from the local oh-my-zsh installation; the owner must supply/approve the theme if needed.
 - The public AUR and package metadata could not all be queried reliably from this environment. Package install reports unavailable names instead of aborting; check `bootstrap/packages/aur.txt` and `pacman.txt` before relying on a fresh install.
 - `shfmt` is enforced on the maintained bootstrap, hook, and repository-check scripts rather than all inherited third-party shell files, which would create broad unrelated formatting churn. ShellCheck runs across tracked shell files at error severity; warning-level results were not compared against a pre-cleanup baseline.
-- PR static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. The gitleaks CI checkout was shallow and reported one commit scanned, so full historical secret scanning remains unverified. No visual desktop comparison or full package-consuming install was available.
+- PR static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. The full package-consuming install and visual desktop comparison remain unverified pending a container run and human VM/hardware checks. The read-only doctor is in Workstream E; its invocation here stopped because this workspace does not expose `~/.dotfiles`, so it was not a live-machine result.
 
 ### Follow-up verification status (2026-10-02)
 
