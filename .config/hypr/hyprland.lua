@@ -50,7 +50,17 @@ hl.env("HYPRCURSOR_THEME", cursor_theme)
 hl.env("HYPRCURSOR_SIZE", "32")
 hl.env("XCURSOR_THEME", cursor_theme)
 hl.env("XCURSOR_SIZE", "32")
-hl.env("GDK_SCALE", "2")
+local gdk_scale = "2"
+local local_scale_file = io.open(home .. "/.config/hypr/env.local", "r")
+if local_scale_file then
+	local candidate = local_scale_file:read("*a")
+	local_scale_file:close()
+	candidate = candidate:match("^%s*GDK_SCALE%s*=%s*([12])%s*$")
+	if candidate then
+		gdk_scale = candidate
+	end
+end
+hl.env("GDK_SCALE", gdk_scale)
 hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("CLUTTER_BACKEND", "wayland")
 hl.env("TERMINAL", "kitty")

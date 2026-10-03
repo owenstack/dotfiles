@@ -4,6 +4,9 @@
 
 - Is `GDK_SCALE=2` intentional on a 1080p panel? Keep current scale 1 plus GDK_SCALE=2 (current behavior) or set GDK_SCALE=1 to match the panel; changing it can alter application sizing, so no visual change was made.
 - Confirm the owner’s preferred license for original configuration. An MIT `LICENSE` is proposed but not committed pending confirmation.
+- Confirm whether to retain the Typewriter Variable font files and optional QuickShell profile photo. See `docs/LICENSE-AUDIT.md` for provenance and license notes.
+- Confirm whether the Saturnian cursor is a manual installation or should be replaced; no exact AUR package was located. The FantasqueSansM Nerd Font package is verified as `ttf-fantasque-nerd`.
+- Verify on a fresh package install that `simple-sddm-theme-2-git` installs theme folder `simple_sddm_2`; package identity is confirmed but the theme path is unverified.
 
 ## Recorded choices
 
@@ -16,6 +19,8 @@
 - Canonicalize Kvantum at `.config/Kvantum/`, which matches the live theme settings and current Catppuccin theme-switch commands; preserve the Everforest theme assets under the canonical directory.
 - Keep current monitor geometry and scale. Extracting this changes config architecture, not visual output; validated with `hyprland --verify-config` against the repository `.config` root; runtime testing still needs a Wayland session.
 - Pin mise to supported policy choices: use Node LTS, major Go and Bun lines where known, and `latest` only for GitHub CLI; exact versions should be resolved and locked by installed mise during bootstrap.
+- Preserve the existing `GDK_SCALE=2` default, while allowing an untracked `~/.config/hypr/env.local` override containing `GDK_SCALE=1` or `GDK_SCALE=2`. No personal scale preference is decided here; follow `docs/SCALE-TEST.md` before changing the tracked default.
+- Keep third-party licensing notices scoped to their source files. Do not commit a repository-wide license until the owner chooses the proposal scope and the attributed, unlicensed `snes19xx` files have permission/provenance resolved.
 
 - Remove Waybar, Mako, SwayNC, and Cava configurations after rewiring active refresh and shader branches to Quickshell/Dunst; migrate referenced notification icon files rather than dropping them.
 - Preserve selected active Kitty theme files that reference the OFL Computer Modern Typewriter variable font. Do not silently replace the typeface; owner review is needed before pruning or replacing its font assets.

@@ -42,6 +42,7 @@ trap 'rm -f "$out"' EXIT
 /.config/qt6ct/qt6ct.conf
 /.config/ghostty/wallust.conf
 /.config/ghostty/theme.conf
+/.config/hypr/env.local
 /.config/kitty/kitty-themes/
 /.config/wlogout/colors-wlogout.css
 IGNORE
