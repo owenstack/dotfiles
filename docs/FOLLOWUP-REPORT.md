@@ -70,7 +70,7 @@ No PR has been merged by this agent. All branches are based on the same current 
 | [#6](https://github.com/owenstack/dotfiles/pull/6) | E: read-only doctor | 4 | Green | CodeRabbit rate-limited; no comments |
 | [#7](https://github.com/owenstack/dotfiles/pull/7) | F: safe pruning audit | 5 | Green; draft | CodeRabbit skipped draft |
 | [#8](https://github.com/owenstack/dotfiles/pull/8) | G: binary audit | 2 | Green | CodeRabbit rate-limited; no comments |
-| #9 (this PR) | H: decision preparation and consolidated report | 9 | Initial checks pending; final status in PR | CodeRabbit status in PR |
+| [#9](https://github.com/owenstack/dotfiles/pull/9) | H: decision preparation and consolidated report | 9 | Green: static, bootstrap dry-run, integration, GitGuardian, Socket | CodeRabbit review still in progress at report time; no findings yet |
 
 ## Tree measurements
 
