@@ -38,6 +38,9 @@ install_file() {
 }
 if [[ ! -d $home/.oh-my-zsh ]]; then run git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git "$home/.oh-my-zsh"; fi
 run mkdir -p "$custom/plugins" "$xdg_state/quickshell" "$xdg_cache/quickshell" "$xdg_config/kitty/kitty-themes" "$xdg_cache/zsh"
+if [[ -x $home/bootstrap/install-helium.sh ]]; then
+  if ((DRY_RUN)); then run "$home/bootstrap/install-helium.sh" --dry-run; else run "$home/bootstrap/install-helium.sh"; fi
+fi
 if [[ ! -e $xdg_state/quickshell/weather_api.conf ]]; then
   run install -m 600 /dev/null "$xdg_state/quickshell/weather_api.conf"
 else

@@ -182,7 +182,7 @@ M.complex_modes = {
 			write_file(crt_state_file, "on")
 
 			hl.exec_cmd(
-				"swww img "
+				"awww img "
 					.. home
 					.. "/Pictures/retro/van.png --transition-type grow --transition-pos 0.5,0.5 --transition-duration 1.5 --transition-fps 60"
 			)
@@ -221,7 +221,7 @@ M.complex_modes = {
 			local saved_theme = read_file(theme_mode_file, "dark")
 			local wp = saved_theme == "light" and home .. "/Pictures/desktop/l2.png"
 				or home .. "/Pictures/desktop/1.png"
-			hl.exec_cmd("swww img " .. wp .. " --transition-type none")
+			hl.exec_cmd("awww img " .. wp .. " --transition-type none")
 
 			restore_defaults()
 		end,

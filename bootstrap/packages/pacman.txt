@@ -27,6 +27,24 @@ zsh
 mise
 github-cli
 fish
+brightnessctl
+bc
+ffmpeg
+grim
+imagemagick
+khal
+libnotify
+networkmanager
+pamixer
+pipewire-pulse
+playerctl
+procps-ng
+rofi
+thunar
+slurp
+swappy
+upower
+xdg-user-dirs
 base-devel
 git
 curl
@@ -43,9 +61,7 @@ noto-fonts-emoji
 ttf-fira-code
 ttf-jetbrains-mono-nerd
 sddm
-# VERIFY: package availability can vary by Arch mirror state.
-swww
-# VERIFY: verify this exact package name on CachyOS.
+# Fantasque Sans Mono Nerd Font is in the official Arch Extra repository.
 ttf-fantasque-nerd
 # VERIFY: add the Nerd Font families actually used by QuickShell.
 ttf-nerd-fonts-symbols-mono
