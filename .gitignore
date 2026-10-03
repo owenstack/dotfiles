@@ -596,6 +596,7 @@
 !/.github/
 !/.github/workflows/
 !/.github/workflows/ci.yml
+!/.github/workflows/package-validation.yml
 !/.gitignore
 !/.gitleaks.toml
 !/.zprofile
@@ -604,6 +605,7 @@
 !/README.md
 !/bootstrap/
 !/bootstrap/bootstrap.sh
+!/bootstrap/install-helium.sh
 !/bootstrap/packages/
 !/bootstrap/packages/aur.txt
 !/bootstrap/packages/pacman.txt
@@ -615,10 +617,12 @@
 !/docs/DECISIONS.md
 !/docs/INVENTORY.md
 !/docs/LINT-BASELINE.md
+!/docs/PACKAGE-AUDIT.md
 !/docs/PORTABILITY.md
 !/docs/REMOVED.md
 !/docs/SECURITY-FINDINGS.md
 !/scripts/
+!/scripts/check-packages.sh
 !/scripts/check.sh
 !/scripts/gen-gitignore.sh
 
