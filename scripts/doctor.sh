@@ -116,7 +116,7 @@ else
 fi
 
 if [[ -d $quickshell_config ]]; then
-  if python3 - "$quickshell_config" <<'PY'; then :; else failed=1; fi
+  if python3 - "$quickshell_config" <<'PY'
 import pathlib
 import re
 import sys
@@ -143,6 +143,7 @@ for source_file in sorted(root.rglob("*.qml")):
             failed = True
 sys.exit(1 if failed else 0)
 PY
+  then :; else failed=1; fi
 else
   fail 'Quickshell configuration directory is missing'
 fi
