@@ -51,7 +51,7 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - Local tools were unavailable; the PR static CI subsequently passed. CI runs ShellCheck over tracked shell files at error severity, shfmt on maintained bootstrap/check scripts, StyLua over all tracked Lua files, gitleaks on the checked-out tree, collision checks, and the username-path scan. ShellCheck warnings below error severity were not baseline-compared.
 - `qmllint` passed 40 tracked QML files but exited 255 without diagnostics on 33; QuickShell runtime loading could not be checked without a Wayland session.
 - `systemd-analyze --user verify` could not access a user systemd manager in this environment. No Hyprland/QuickShell graphical session was available.
-- Package installation and post-install behavior on a fresh desktop remain unverified. Workstream C validated package names against CachyOS sync metadata and AUR RPC v5; see `docs/PACKAGE-AUDIT.md` and [PR #4](https://github.com/owenstack/dotfiles/pull/4). The fresh-install harness in [PR #5](https://github.com/owenstack/dotfiles/pull/5) has not been run locally; its CI/VM result remains the stronger evidence for that path. The user-systemd timer remains unverified.
+- Package installation and post-install behavior on a fresh desktop remain unverified. Workstream C package-name validation is recorded in `docs/PACKAGE-AUDIT.md` and [PR #4](https://github.com/owenstack/dotfiles/pull/4). Workstream D adds a package-consuming Arch-container harness and manual/weekly workflow; its rehearsal run is pending. The user-systemd timer and human-visible display-manager, monitor, cursor, and font behavior remain hardware/VM checks; see `docs/FRESH-INSTALL-CHECKLIST.md`.
 - The attempted local systemd verification and local bootstrap verifier are not equivalent to a fresh Arch install. Target-machine verification remains necessary before calling the desktop bootstrappable.
 
 ## Deviations and owner review
@@ -68,14 +68,13 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - The `agnosterzak` theme was not found in the tracked tree. Post-install warns if it is absent from the local oh-my-zsh installation; the owner must supply/approve the theme if needed.
 - The public AUR and package metadata could not all be queried reliably from this environment. Package install reports unavailable names instead of aborting; check `bootstrap/packages/aur.txt` and `pacman.txt` before relying on a fresh install.
 - `shfmt` is enforced on the maintained bootstrap, hook, and repository-check scripts rather than all inherited third-party shell files, which would create broad unrelated formatting churn. ShellCheck runs across tracked shell files at error severity; warning-level results were not compared against a pre-cleanup baseline.
-- PR static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. The full package-consuming install and visual desktop comparison remain unverified pending a container run and human VM/hardware checks. The read-only doctor is in Workstream E; its invocation here stopped because this workspace does not expose `~/.dotfiles`, so it was not a live-machine result.
+- PR static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. Workstream D adds the package-consuming install harness; its rehearsal run is pending. Full package installation and visual desktop comparison remain unverified until the container and VM/hardware checks run. The read-only doctor is in Workstream E; its invocation here was not a live-machine result.
 
 ### Follow-up verification status (2026-10-02)
 
-- **PASSED:** full-history gitleaks v8.30.1 scan across available refs: 30 commits scanned, about 3.49 MB, zero findings. **PASSED:** working-tree gitleaks scan: about 1.61 MB, zero findings. See [SECURITY-FINDINGS.md](SECURITY-FINDINGS.md). This supersedes PR #1's shallow scan status.
-- **NOT RUN:** trufflehog second opinion; no local binary was available and the local Docker socket was inaccessible.
-- **NOT RUN:** package manifest validation, full fresh-machine package installation, post-install desktop behavior, wallpaper user timer, QuickShell runtime loading, monitor application on the physical display, and graphical visual checks. These remain assigned to later workstreams or the human VM checklist.
-- The gitleaks CI checkout is being changed to fetch full history and scan all refs plus the working tree. CI status is pending the follow-up PR.
+- **PASSED:** full-history gitleaks v8.30.1 scan across available refs; see `docs/SECURITY-FINDINGS.md`. **NOT RUN:** trufflehog second opinion. The actual rehearsal scan result is recorded in the merge-train report.
+- **NOT RUN:** full fresh-machine package installation, post-install desktop behavior, wallpaper user timer, QuickShell runtime loading, monitor application on the physical display, and graphical visual checks. These remain assigned to later workstreams or the human VM checklist.
+- The gitleaks CI checkout fetches full history and scans all refs plus the working tree; CI status is pending for the rebased PRs.
 
 ## Open questions
 

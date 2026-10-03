@@ -596,6 +596,7 @@
 !/.github/
 !/.github/workflows/
 !/.github/workflows/ci.yml
+!/.github/workflows/fresh-install.yml
 !/.github/workflows/package-validation.yml
 !/.gitignore
 !/.gitleaks.toml
@@ -610,12 +611,15 @@
 !/bootstrap/packages/aur.txt
 !/bootstrap/packages/pacman.txt
 !/bootstrap/post-install.sh
+!/bootstrap/test-fresh-install-container.sh
+!/bootstrap/test-fresh-install.sh
 !/bootstrap/test-integration.sh
 !/bootstrap/verify.sh
 !/docs/
 !/docs/CLEANUP-REPORT.md
 !/docs/DECISIONS.md
 !/docs/DOCTOR.md
+!/docs/FRESH-INSTALL-CHECKLIST.md
 !/docs/INVENTORY.md
 !/docs/LINT-BASELINE.md
 !/docs/PACKAGE-AUDIT.md
