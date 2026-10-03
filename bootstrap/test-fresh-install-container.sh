@@ -155,10 +155,12 @@ fi
 
 smoke_pass=0
 smoke_runtime_failure=0
+smoke_not_run=0
 for attempt in 1 2; do
   echo "Headless attempt $attempt/2" >>/artifacts/headless-attempts.log
   # shellcheck disable=SC2016 # The nested Bash process expands the positional argument.
   if ! run_as_test_user bash -c 'command -v "$1" >/dev/null 2>&1' _ hyprland || ! run_as_test_user bash -c 'command -v "$1" >/dev/null 2>&1' _ qs; then
+    smoke_not_run=1
     echo 'NOT RUN: Hyprland or Quickshell is not installed.' >>/artifacts/headless-attempts.log
     break
   fi
@@ -201,8 +203,14 @@ for attempt in 1 2; do
   echo "Attempt $attempt failed; see compositor and Quickshell logs." >>/artifacts/headless-attempts.log
 done
 if ((smoke_pass == 0)); then
-  echo 'NOT RUN: headless graphical smoke test did not start cleanly after two bounded attempts; see headless-attempts.log and runtime logs.' | tee -a /artifacts/results.txt
-  ((smoke_runtime_failure == 0)) || failed=1
+  if ((smoke_not_run == 1)); then
+    echo 'NOT RUN: headless graphical smoke test prerequisites are unavailable; see headless-attempts.log and runtime logs.' | tee -a /artifacts/results.txt
+  else
+    if ((smoke_runtime_failure == 0)); then
+      echo 'FAIL: headless graphical smoke test failed after two bounded attempts; see headless-attempts.log and runtime logs.' | tee -a /artifacts/results.txt
+    fi
+    failed=1
+  fi
 fi
 
 printf '\nPackage install results:\n'
