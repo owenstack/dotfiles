@@ -53,6 +53,18 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - `systemd-analyze --user verify` could not access a user systemd manager in this environment. No Hyprland/QuickShell graphical session was available.
 - Package installation and post-install behavior on a fresh desktop remain unverified. Workstream C package-name validation is recorded in `docs/PACKAGE-AUDIT.md` and [PR #4](https://github.com/owenstack/dotfiles/pull/4). Workstream D adds a package-consuming Arch-container harness and manual/weekly workflow; its rehearsal run is pending. The user-systemd timer and human-visible display-manager, monitor, cursor, and font behavior remain hardware/VM checks; see `docs/FRESH-INSTALL-CHECKLIST.md`.
 - The attempted local systemd verification and local bootstrap verifier are not equivalent to a fresh Arch install. Target-machine verification remains necessary before calling the desktop bootstrappable.
+- Passed: `bash -n` on tracked shell scripts; Hyprland `--verify-config` with `XDG_CONFIG_HOME` set to the repository `.config`; case-collision check; required `/home/owenstack` scan outside docs; shell startup timing/empty stderr; bootstrap and post-install dry runs.
+- Local tools were unavailable; the PR static CI subsequently passed. CI runs ShellCheck over tracked shell files at error severity, shfmt on maintained bootstrap/check scripts, StyLua over all tracked Lua files, gitleaks on the checked-out tree, collision checks, and the username-path scan. ShellCheck warnings below error severity were not baseline-compared.
+- `qmllint` passed 40 tracked QML files but exited 255 without diagnostics on 33; QuickShell runtime loading could not be checked without a Wayland session.
+- `systemd-analyze --user verify` could not access a user systemd manager in this environment. No Hyprland/QuickShell graphical session was available.
+- Package installation, post-install behavior on a fresh desktop, and the user-systemd timer remain unverified. AUR entries with uncertain names are marked `# VERIFY`; AUR RPC validation was unavailable.
+- The attempted local systemd verification and local bootstrap verifier are not equivalent to a fresh Arch install. Target-machine verification remains necessary before calling the desktop bootstrappable.
+- Original PR #1 results above are historical. The follow-up status is summarized in [`FOLLOWUP-REPORT.md`](FOLLOWUP-REPORT.md), which distinguishes local, CI, and owner-machine verification.
+- **PASSED:** full-history gitleaks v8.30.1 scan and tree scan reported zero findings; PR #2's full-history CI gitleaks job passed. Trufflehog second opinion was **NOT RUN** because the binary was unavailable and Docker could not run.
+- **PASSED:** package-name checks against CachyOS sync metadata and AUR RPC, package-validation CI, and bare-repo hook integration CI. **NOT RUN:** full package install, real post-install, GitHub Helium AppImage download/install, SDDM theme directory check, and wallpaper timer firing on a fresh machine.
+- **PASSED:** local Hyprland `--verify-config` after follow-up edits. Real monitor application and graphical QuickShell behavior are **NOT RUN** because there is no valid installed owner `$HOME` or interactive graphical session in this environment.
+- **PASSED, partial tools:** follow-up `scripts/check.sh` ran with ShellCheck warning severity and shfmt available and reported no case collisions or owner-home hardcodes; Stylua and gitleaks were unavailable in that local run. PR CI passed the static jobs.
+- **NOT RUN:** fresh-install container harness, graphical preset reduced-set test, live doctor check, visual scale/theme/profile checks, and user-systemd timer check. Docker daemon was unavailable; the available `$HOME` had no `~/.dotfiles`, so it was not a valid owner bare-repo installation.
 
 ## Deviations and owner review
 
@@ -75,13 +87,15 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - **PASSED:** full-history gitleaks v8.30.1 scan across available refs; see `docs/SECURITY-FINDINGS.md`. **NOT RUN:** trufflehog second opinion. The actual rehearsal scan result is recorded in the merge-train report.
 - **NOT RUN:** full fresh-machine package installation, post-install desktop behavior, wallpaper user timer, QuickShell runtime loading, monitor application on the physical display, and graphical visual checks. These remain assigned to later workstreams or the human VM checklist.
 - The gitleaks CI checkout fetches full history and scans all refs plus the working tree; CI status is pending for the rebased PRs.
+- PR static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. The gitleaks CI checkout was shallow and reported one commit scanned, so full historical secret scanning remains unverified. No visual desktop comparison or full package-consuming install was available.
+- PR #1 static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. The shallow gitleaks result was superseded by the full-history scan in Workstream A. No visual desktop comparison or full package-consuming install was available.
 
-## Open questions
+## Owner decisions still open
 
-- Is `GDK_SCALE=2` intentional on a 1080p panel? Keep scale 1 plus GDK scale 2, or change GDK scale to 1; no visible behavior was changed.
-- Confirm the proposed MIT license for Owen-authored config.
-- Confirm whether to retain the selected Typewriter font and whether to provide the optional QuickShell profile image.
-- Confirm the package supplying the `simple_sddm_2` theme and the AUR font/cursor names marked for verification.
+- Run the A/B scale procedure; tracked GDK default is still 2 and an ignored `env.local` override enables comparison.
+- Decide the license scope; no top-level `LICENSE` was committed. Some inherited assets and `snes19xx`-attributed files need provenance/permission confirmation.
+- Decide whether to keep the bundled OFL Typewriter font and whether to provide personal task-bar/top-bar profile images.
+- Saturnian cursor AUR package name remains unresolved. `ttf-fantasque-nerd` and `simple-sddm-theme-2-git` package names are resolved; verify actual theme path during fresh install.
 
 ## Suggested repository metadata
 

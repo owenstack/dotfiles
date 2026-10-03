@@ -620,12 +620,16 @@
 !/docs/CLEANUP-REPORT.md
 !/docs/DECISIONS.md
 !/docs/DOCTOR.md
+!/docs/FOLLOWUP-REPORT.md
 !/docs/FRESH-INSTALL-CHECKLIST.md
 !/docs/INVENTORY.md
+!/docs/LICENSE-AUDIT.md
+!/docs/LICENSE-PROPOSAL.md
 !/docs/LINT-BASELINE.md
 !/docs/PACKAGE-AUDIT.md
 !/docs/PORTABILITY.md
 !/docs/REMOVED.md
+!/docs/SCALE-TEST.md
 !/docs/SECURITY-FINDINGS.md
 !/scripts/
 !/scripts/check-packages.sh
@@ -643,5 +647,6 @@
 /.config/qt6ct/qt6ct.conf
 /.config/ghostty/wallust.conf
 /.config/ghostty/theme.conf
+/.config/hypr/env.local
 /.config/kitty/kitty-themes/
 /.config/wlogout/colors-wlogout.css
