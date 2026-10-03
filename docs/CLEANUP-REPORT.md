@@ -63,6 +63,13 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - `shfmt` is enforced on the maintained bootstrap, hook, and repository-check scripts rather than all inherited third-party shell files, which would create broad unrelated formatting churn. ShellCheck runs across tracked shell files at error severity; warning-level results were not compared against a pre-cleanup baseline.
 - PR static CI, Arch bootstrap dry-run, and the fresh-HOME conflict-backup/idempotency integration passed. The gitleaks CI checkout was shallow and reported one commit scanned, so full historical secret scanning remains unverified. No visual desktop comparison or full package-consuming install was available.
 
+### Follow-up verification status (2026-10-02)
+
+- **PASSED:** full-history gitleaks v8.30.1 scan across available refs: 30 commits scanned, about 3.49 MB, zero findings. **PASSED:** working-tree gitleaks scan: about 1.61 MB, zero findings. See [SECURITY-FINDINGS.md](SECURITY-FINDINGS.md). This supersedes PR #1's shallow scan status.
+- **NOT RUN:** trufflehog second opinion; no local binary was available and the local Docker socket was inaccessible.
+- **NOT RUN:** package manifest validation, full fresh-machine package installation, post-install desktop behavior, wallpaper user timer, QuickShell runtime loading, monitor application on the physical display, and graphical visual checks. These remain assigned to later workstreams or the human VM checklist.
+- The gitleaks CI checkout is being changed to fetch full history and scan all refs plus the working tree. CI status is pending the follow-up PR.
+
 ## Open questions
 
 - Is `GDK_SCALE=2` intentional on a 1080p panel? Keep scale 1 plus GDK scale 2, or change GDK scale to 1; no visible behavior was changed.
@@ -75,6 +82,6 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 - Description: `Owen's CachyOS Hyprland and QuickShell dotfiles with a bare-repo bootstrap installer`.
 - Suggested topics: `dotfiles`, `cachyos`, `arch-linux`, `hyprland`, `quickshell`, `zsh`, `mise`.
 
-## Proposed PR
+## Original PR #1
 
 Title: **Clean up, harden and add bootstrap**. Do not merge until owner review items and target-machine install checks are addressed.
