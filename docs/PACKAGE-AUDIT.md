@@ -33,7 +33,7 @@ These packages are retained because this audit is not authorization to remove us
 
 The broader manifests also contain standalone applications such as `btop`, `fastfetch`, `lsd`, `fzf`, `kitty`, `ghostty`, `zsh`, `mise`, `github-cli`, and `fish`. Some are interactive user tools and shell defaults, rather than commands invoked by the desktop autostart chain. Keep them pending explicit owner preference.
 
-The `Helium.AppImage` browser keybind under `~/Applications/` is a user-managed AppImage path, not a repository-provided package. The install and doctor checks should treat it as an owner-managed optional application.
+The Helium browser keybind under `~/Applications/Helium.AppImage` is installed by `bootstrap/install-helium.sh`. It queries the latest official `imputnet/helium-linux` GitHub release, selects the architecture-specific AppImage, checks the SHA-256 digest returned in GitHub release metadata, and backs up an existing file before replacement. This is a runtime download, not a package-manager entry; the human fresh-install checklist should verify it launches.
 
 ## Validation results
 
