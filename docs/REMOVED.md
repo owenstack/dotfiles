@@ -1,5 +1,11 @@
 # Removed and migrated files
 
+## Workstream F: upstream updater removal
+
+| Removed path | Reason / evidence | Search evidence |
+|---|---|---|
+| `.config/hypr/scripts/KooLsDotsUpdate.sh` | Its update action cloned/pulled `JaKooLit/Hyprland-Dots` and ran `copy.sh`, which could overwrite dotfiles-managed `$HOME`. It had no callers. | Whole-repository filename/basename search found only the script itself and generated `.gitignore` allow-list entry; no `hyprland.lua`, Quickshell, systemd, script, or keybind reader. |
+
 This log records deletions and case/path migrations. Git history retains prior contents.
 
 ## Phase 2 portability migrations

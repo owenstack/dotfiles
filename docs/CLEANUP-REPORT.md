@@ -65,6 +65,14 @@ Counts and sizes use the same Git-tree method for the original `main` and the fi
 
 ## Open questions
 
+## Follow-up Workstream F status (2026-10-03)
+
+- **PASSED:** selector/reference audit documented in `docs/DECISIONS.md`; `scripts/check.sh` completed with ShellCheck and shfmt available, no case collisions, and no hardcoded `/home/owenstack` runtime paths. Stylua and gitleaks were unavailable and skipped by the script, so the repository-wide checks are partial.
+- **PASSED:** `XDG_CONFIG_HOME="$PWD/.config" hyprland --verify-config` returned `config ok`.
+- **PASSED:** removed the unreferenced `KooLsDotsUpdate.sh` after exact filename/basename searches found no callers; its updater action could run upstream `copy.sh` against `$HOME`.
+- **NOT RUN:** dynamic animation selector reduced-set experiment and graphical/QuickShell smoke verification; Docker daemon and graphical session are unavailable. All animation and shader presets remain retained pending that proof and owner review.
+- `Distro_update.sh`, `Kool_Quick_Settings.sh`, and `sddm_wallpaper.sh` remain documented with call/reference evidence and keep decisions in `docs/DECISIONS.md`; legacy `UserConfigs` and `configs` remain because helper scripts read or edit them.
+
 - Is `GDK_SCALE=2` intentional on a 1080p panel? Keep scale 1 plus GDK scale 2, or change GDK scale to 1; no visible behavior was changed.
 - Confirm the proposed MIT license for Owen-authored config.
 - Confirm whether to retain the selected Typewriter font and whether to provide the optional QuickShell profile image.
