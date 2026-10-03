@@ -71,7 +71,7 @@ Actual train order: #2, #3, #4, #6, #5, #8, skip #7, then #9. #2, #3, #4, #6, #5
 | [#5](https://github.com/owenstack/dotfiles/pull/5) | D: fresh-install harness | 7 | **MERGED** `60eea78` | Current-head static and bootstrap integration checks passed. CodeRabbit findings were fixed in `8fe2581` and `85b2819`, then its final status passed. |
 | [#8](https://github.com/owenstack/dotfiles/pull/8) | G: binary audit | 3 | **MERGED** `4b6507f` | Current-head static and integration checks passed; CodeRabbit was rate-limited. |
 | [#7](https://github.com/owenstack/dotfiles/pull/7) | F: prune presets | 5 | **SKIPPED** | Draft remains open; no `veto-list-approved` label or exact owner approval comment was present. |
-| [#9](https://github.com/owenstack/dotfiles/pull/9) | H: decision prep and consolidated report | 9 before rebase | **IN PROGRESS** | Rebase onto post-#8 main, report refresh, generator, checks, CI, and CodeRabbit review are pending. |
+| [#9](https://github.com/owenstack/dotfiles/pull/9) | H: decision prep and consolidated report | 9 | **OPEN; rebase and report refresh complete** | Rebased onto post-#8 main. Check the current PR status before merge; CodeRabbit was rate-limited on the latest review attempt. |
 
 ## Tree measurements
 
