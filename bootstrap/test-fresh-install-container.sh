@@ -156,6 +156,7 @@ fi
 smoke_pass=0
 smoke_runtime_failure=0
 smoke_not_run=0
+runtime_logs=("$test_home/hyprland-headless.log" "$test_home/quickshell-headless.log")
 for attempt in 1 2; do
   echo "Headless attempt $attempt/2" >>/artifacts/headless-attempts.log
   # shellcheck disable=SC2016 # The nested Bash process expands the positional argument.
@@ -168,10 +169,10 @@ for attempt in 1 2; do
   if run_as_test_user env HOME="$test_home" XDG_CONFIG_HOME="$test_home/.config" XDG_RUNTIME_DIR="/run/user/$(id -u "$test_user")" bash -c '
     set -u
     export WAYLAND_DISPLAY=wayland-fresh AQ_BACKENDS=headless WLR_RENDERER_ALLOW_SOFTWARE=1
-    hyprland --config "$HOME/.config/hypr/hyprland.lua" > /artifacts/hyprland-headless.log 2>&1 & compositor=$!
+    hyprland --config "$HOME/.config/hypr/hyprland.lua" > "$HOME/hyprland-headless.log" 2>&1 & compositor=$!
     for _ in {1..150}; do [[ -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" ]] && break; sleep 0.1; done
     [[ -S "$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" ]] || { kill "$compositor" 2>/dev/null; wait "$compositor" 2>/dev/null; exit 1; }
-    qs -c task-bar > /artifacts/quickshell-headless.log 2>&1 & shell_pid=$!
+    qs -c task-bar > "$HOME/quickshell-headless.log" 2>&1 & shell_pid=$!
     sleep 15
     if ! kill -0 "$shell_pid"; then
       echo QUICKSHELL_EARLY_EXIT
@@ -183,7 +184,7 @@ for attempt in 1 2; do
     wait "$shell_pid" 2>/dev/null || true
     wait "$compositor" 2>/dev/null || true
   ' >>/artifacts/headless-attempts.log 2>&1; then
-    if rg -qi 'failed to load|module .*not installed|qml.*(error|failed)|no such file|could not load|segmentation fault|crash' /artifacts/hyprland-headless.log /artifacts/quickshell-headless.log; then
+    if rg -qi 'failed to load|module .*not installed|qml.*(error|failed)|no such file|could not load|segmentation fault|crash' "${runtime_logs[@]}"; then
       smoke_runtime_failure=1
       echo 'FAIL: headless logs contain a QML/load error or crash.' | tee -a /artifacts/results.txt
       break
@@ -191,7 +192,7 @@ for attempt in 1 2; do
     smoke_pass=1
     echo 'PASS: headless Hyprland and qs -c task-bar stayed running without QML/load failures.' | tee -a /artifacts/results.txt
     break
-  elif rg -qi 'failed to load|module .*not installed|qml.*(error|failed)|no such file|could not load|segmentation fault|crash' /artifacts/hyprland-headless.log /artifacts/quickshell-headless.log; then
+  elif rg -qi 'failed to load|module .*not installed|qml.*(error|failed)|no such file|could not load|segmentation fault|crash' "${runtime_logs[@]}"; then
     smoke_runtime_failure=1
     echo 'FAIL: headless logs contain a QML/load error or crash.' | tee -a /artifacts/results.txt
     break
@@ -201,6 +202,9 @@ for attempt in 1 2; do
     break
   fi
   echo "Attempt $attempt failed; see compositor and Quickshell logs." >>/artifacts/headless-attempts.log
+done
+for runtime_log in "${runtime_logs[@]}"; do
+  [[ -f $runtime_log ]] && cp -- "$runtime_log" /artifacts/
 done
 if ((smoke_pass == 0)); then
   if ((smoke_not_run == 1)); then
